@@ -1,0 +1,216 @@
+//
+//
+//
+
+.buisness-text {
+  color: var(--text-dark);
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.017px;
+  margin-bottom: 48px;
+}
+
+.ready-examles-title {
+  color: var(--text-dark);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.022px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.ready-examles-gallery-full-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.first-and-second {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ready-examles-first-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.ready-examles-first-gallery-secondary {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.ready-examles-second-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ready-examles-second-gallery-secondary {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.ready-examles-third-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.more-projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.more-projects-link {
+  background-color: transparent;
+  display: inline-flex;
+  gap: 16px;
+  padding: 8px 16px;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--text-dark);
+  cursor: pointer;
+  margin-bottom: 48px;
+}
+
+.more-projects-link-text {
+  color: var(--text-text-dark, #232427);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 768px ==================================== */
+@media screen and (min-width: 768px) {
+  .buisness-text {
+    font-size: 16px;
+    letter-spacing: 0.019px;
+  }
+
+  .ready-examles-title {
+    font-size: 24px;
+    line-height: 1.4;
+    letter-spacing: 0.029px;
+    margin-bottom: 32px;
+  }
+
+  .ready-examles-gallery-full-block {
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  .first-and-second {
+    gap: 14px;
+  }
+
+  .ready-examles-first-gallery {
+    gap: 14px;
+  }
+
+  .ready-examles-second-gallery {
+    gap: 14px;
+  }
+
+  .ready-examles-third-gallery {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .more-projects-link-text {
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    padding-top: 2px;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 1300px ==================================== */
+@media screen and (min-width: 1300px) {
+  .buisness-text {
+    font-size: 20px;
+    letter-spacing: 0.024px;
+  }
+
+  .ready-examles-title {
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: 0.038px;
+  }
+
+  .ready-examles-gallery-full-block {
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  .first-and-second {
+    gap: 14px;
+  }
+
+  .ready-examles-first-gallery {
+    gap: 14px;
+  }
+
+  .ready-examles-second-gallery {
+    gap: 14px;
+  }
+
+  .ready-examles-third-gallery {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .more-projects-link {
+    gap: 20px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin-bottom: 80px;
+  }
+
+  .more-projects-link-text {
+    font-size: 18px;
+    letter-spacing: 0.9px;
+    padding-top: 2px;
+  }
+}

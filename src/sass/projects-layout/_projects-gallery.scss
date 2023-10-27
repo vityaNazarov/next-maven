@@ -1,0 +1,143 @@
+//
+//
+//
+
+.projects-container {
+  margin-top: 124px;
+  margin-bottom: 56px;
+}
+
+.projects-block-list {
+  display: flex;
+  // justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 19px;
+}
+
+.projects-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.projects-block-title {
+  color: var(--text-dark);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5; /* 24px */
+  letter-spacing: 0.019px;
+  text-transform: uppercase;
+}
+
+.projects-block-text {
+  color: var(--text-dark);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5; /* 30px */
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 768px ==================================== */
+@media screen and (min-width: 768px) {
+  .projects-container {
+    margin-top: 159px;
+    margin-bottom: 64px;
+  }
+
+  .projects-block-list {
+    row-gap: 32px;
+    column-gap: 17px;
+  }
+
+  .projects-info {
+    gap: 13px;
+    margin-top: 24px;
+  }
+
+  .projects-block-title {
+    font-size: 20px;
+    line-height: 1.2; /* 24px */
+    letter-spacing: 0.024px;
+  }
+
+  .projects-block-text {
+    font-size: 16px;
+    letter-spacing: 0.48px;
+  }
+}
+
+//
+//
+//
+
+/* ==================================== max-width: 1299px ==================================== */
+@media screen and (max-width: 1299px) {
+  .projects-block-list {
+    justify-content: center;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 1300px ==================================== */
+@media screen and (min-width: 1300px) {
+  .projects-container {
+    margin-top: 167px;
+    margin-bottom: 80px;
+  }
+
+  .projects-block-list {
+    row-gap: 48px;
+    column-gap: 23px;
+  }
+
+  .projects-block-item {
+    flex-basis: calc((100% - 46px) / 3);
+  }
+
+  .projects-info {
+    gap: 8px;
+  }
+
+  .projects-block-title {
+    font-size: 24px;
+    letter-spacing: 0.029px;
+  }
+
+  .projects-block-text {
+    font-size: 20px;
+    letter-spacing: 0.6px;
+  }
+}

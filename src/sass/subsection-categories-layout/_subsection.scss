@@ -1,0 +1,234 @@
+//
+//
+//
+/* ==================================== max-width: 767px ==================================== */
+@media screen and (max-width: 767px) {
+  .subsection-caegories-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 16px;
+  }
+
+  .subsection-caegories-img {
+    width: 278px;
+    height: 278px;
+  }
+
+  .subsection-caegories-info {
+    width: 240px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .subsection-caegories-infoproduct {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .subsection-caegories-nameproduct {
+    color: var(--text-dark);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.019px;
+    text-transform: uppercase;
+  }
+
+  .priceproduct {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .subsection-caegories-priceproduct {
+    color: var(--text-secondary);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.019px;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+
+  .subsection-caegories-priceproduct-svg {
+    width: 12px;
+    height: 24px;
+  }
+
+  .subsection-caegories-btn {
+    background-color: transparent;
+    border: none;
+  }
+
+  .subsection-caegories-svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 768px ==================================== */
+@media screen and (min-width: 768px) {
+  .subsection-caegories-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 16px;
+    row-gap: 24px;
+  }
+
+  .subsection-caegories-img {
+    width: 344px;
+    height: 347px;
+  }
+
+  .subsection-caegories-info {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .subsection-caegories-infoproduct {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .subsection-caegories-nameproduct {
+    color: var(--text-dark);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.024px;
+    text-transform: uppercase;
+  }
+
+  .priceproduct {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .subsection-caegories-priceproduct {
+    color: var(--text-secondary);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.024px;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+
+  .subsection-caegories-priceproduct-svg {
+    width: 15px;
+    height: 24px;
+  }
+
+  .subsection-caegories-btn {
+    background-color: transparent;
+    border: none;
+  }
+
+  .subsection-caegories-svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 1300px ==================================== */
+@media screen and (min-width: 1300px) {
+  .subsection-caegories-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 23px;
+    row-gap: 32px;
+  }
+
+  .subsection-caegories-img {
+    width: 411px;
+    height: 415px;
+  }
+
+  .subsection-caegories-info {
+    width: 366px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .subsection-caegories-infoproduct {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .subsection-caegories-nameproduct {
+    font-size: 24px;
+    letter-spacing: 0.029px;
+  }
+
+  .priceproduct {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .subsection-caegories-priceproduct {
+    font-size: 24px;
+    letter-spacing: 0.029px;
+  }
+
+  .subsection-caegories-priceproduct-svg {
+    width: 18px;
+    height: 29px;
+  }
+
+  .subsection-caegories-svg {
+    width: 40px;
+    height: 40px;
+  }
+}

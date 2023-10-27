@@ -1,0 +1,120 @@
+@import "./vendors/modern-normalize";
+
+@import "./utils/variables";
+@import "./utils/visually-hidden";
+
+@import "./components/header";
+@import "./components/footer";
+@import "./components/container";
+@import "./components/suptitle";
+@import "./components/title";
+@import "./components/chevron-btn";
+@import "./components/nonsense-svg";
+@import "./components/arrow-back";
+
+/* ==================================== MAIN-LAYOUT ==================================== */
+
+@import "./main-layout/hero";
+@import "./main-layout/advantages";
+@import "./main-layout/carousel";
+@import "./main-layout/inst-section";
+
+//
+//
+//
+
+/* ==================================== ABOUT US ==================================== */
+
+@import "./about-us-layout/container-nav";
+@import "./about-us-layout/about-company";
+@import "./about-us-layout/produce";
+
+//
+//
+//
+
+/* ==================================== CAREER ==================================== */
+
+@import "./career-layout/career";
+
+//
+//
+//
+
+/* ==================================== PROJECTS ==================================== */
+
+@import "./projects-layout/projects-gallery";
+
+//
+//
+//
+
+/* ==================================== PROJECT ==================================== */
+
+@import "./project-layout/project";
+@import "./project-layout/project-used-items";
+
+//
+//
+//
+
+/* ==================================== CATALOG ==================================== */
+
+@import "./catalog/catalog";
+
+//
+//
+//
+
+/* ==================================== SERIAL-PRODUCTS-SECTION ==================================== */
+
+@import "./serial-products-section-layout/serial-products-gallery";
+
+//
+//
+//
+
+/* ==================================== SUBSECTION-CATEGORIES ==================================== */
+
+@import "./subsection-categories-layout/subsection.scss";
+
+//
+//
+//
+
+/* ==================================== PRODUCT-CARD ==================================== */
+
+@import "./product-card/product-card-gallery";
+@import "./product-card/product-card-info";
+
+//
+//
+//
+
+/* ==================================== CART-WITH-ITEMS ==================================== */
+
+@import "./cart-with-item/cart-with-item";
+
+//
+//
+//
+
+/* ==================================== CART-WITH-ITEMS ==================================== */
+
+@import "./individual-projects/individual-projects";
+
+//
+//
+//
+
+/* ==================================== B2B ==================================== */
+
+@import "./b2b/business";
+
+//
+//
+//
+
+/* ==================================== CONTACTS ==================================== */
+
+@import "./contacts/contacts";

@@ -1,0 +1,96 @@
+//
+//
+//
+
+.container-company {
+  margin-top: 124px;
+}
+
+.container-nav {
+  margin-bottom: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.container-nav-link {
+  color: var(--text-dark);
+  font-size: 10px;
+  line-height: normal;
+  font-weight: 700;
+  letter-spacing: 0.012px;
+  padding: 2px 0;
+}
+
+.container-nav-link-arrow {
+  width: 12px;
+  height: 12px;
+}
+
+.container-nav-link:hover {
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 768px ==================================== */
+@media screen and (min-width: 768px) {
+  .container-company {
+    margin-top: 159px;
+  }
+
+  .container-nav {
+    margin-bottom: 40px;
+  }
+
+  .container-nav-link {
+    font-size: 14px;
+    letter-spacing: 0.017px;
+    padding: 4px 0;
+  }
+
+  .container-nav-link-arrow {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 1300px ==================================== */
+@media screen and (min-width: 1300px) {
+  .container-company {
+    margin-top: 167px;
+  }
+
+  .container-nav {
+    margin-bottom: 48px;
+  }
+}

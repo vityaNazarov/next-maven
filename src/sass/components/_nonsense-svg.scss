@@ -1,0 +1,13 @@
+.nonsense-svg {
+  position: fixed;
+  top: 50%;
+  left: 99%;
+  transform: translate(-99%, -50%);
+}
+
+/* ==================================== max-width: 1299px ==================================== */
+@media screen and (max-width: 1299px) {
+  .nonsense-svg {
+    display: none;
+  }
+}

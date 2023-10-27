@@ -1,0 +1,177 @@
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== max-width: 1299px ==================================== */
+@media screen and (max-width: 1299px) {
+  .menu {
+    display: none;
+  }
+}
+
+//
+//
+//
+
+.list {
+  list-style: none;
+}
+
+.page-header {
+  height: 112px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background: var(--background-header);
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+}
+
+.page-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-header-container-elements {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menu-open {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  line-height: 0;
+  margin-left: 24px;
+}
+
+.translate-btn {
+  color: var(--text-dark);
+  padding: 5px;
+  margin-left: 24px;
+  border: none;
+  background-color: transparent;
+
+  font-size: 20px;
+  font-weight: 300;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 768px ==================================== */
+@media screen and (min-width: 768px) {
+  .page-header {
+    height: 139px;
+  }
+
+  .logo-img {
+    width: 202px;
+    height: 75px;
+  }
+
+  .mobile-menu-open {
+    margin-left: 32px;
+  }
+
+  .translate-btn {
+    margin-left: 32px;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 1300px ==================================== */
+@media screen and (min-width: 1300px) {
+  .logo-img {
+    width: 193px;
+    height: 75px;
+  }
+
+  .mobile-menu-open {
+    display: none;
+  }
+
+  .page-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu {
+    min-width: 845px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--text-dark);
+  }
+
+  .list {
+    list-style: none;
+  }
+
+  .header-logo {
+    margin-right: 55px;
+  }
+
+  .link {
+    text-decoration: none;
+  }
+
+  .menu-link {
+    color: var(--text-dark);
+    // height: 75px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.29;
+    letter-spacing: 0.017px;
+    padding: 30px 0;
+  }
+
+  .translate-btn {
+    margin-left: 24px;
+  }
+}

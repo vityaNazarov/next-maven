@@ -1,0 +1,267 @@
+//
+//
+//
+
+.product-card-info {
+  width: 520px;
+}
+
+.product-card-info-title {
+  color: var(--text-dark);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.022px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.product-card-info-number {
+  color: var(--text-secondary);
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.017px;
+  text-align: left;
+}
+
+.product-card-info-table {
+  width: 254px;
+  margin-bottom: 24px;
+}
+
+.product-card-info-sizes {
+  color: var(--text-dark);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+}
+
+.product-card-info-table-tr {
+  border-bottom: 1px solid black;
+}
+
+.product-card-info-table-th1 {
+  width: 140px;
+  padding: 8px 0 16px 8px;
+  color: var(--text-dark);
+  font-family: Lato, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.014px;
+}
+
+.product-card-info-table-th2 {
+  width: 113px;
+  color: var(--text-dark);
+  font-family: Lato, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.014px;
+}
+
+.product-card-info-materials {
+  color: var(--text-dark);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.product-card-info-materials-list {
+  margin-bottom: 8px;
+}
+
+.product-card-info-materials-item {
+  width: 343px;
+  color: var(--text-dark);
+  font-family: Lato, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.014px;
+  margin-left: 18px;
+
+  &:not(:last-child) {
+    margin-bottom: 4px;
+  }
+}
+
+.product-card-info-materials-text {
+  color: var(--text-secondary);
+  font-family: Lato, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.3px;
+  margin-bottom: 32px;
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 768px ==================================== */
+@media screen and (min-width: 768px) {
+  .product-card-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  .product-card-info-title {
+    font-size: 24px;
+    line-height: 1.4;
+    letter-spacing: 0.029px;
+  }
+
+  .product-card-info-number {
+    font-size: 16px;
+    letter-spacing: 0.019px;
+  }
+
+  .product-card-info-table {
+    margin-bottom: 0;
+  }
+
+  .product-card-info-sizes {
+    font-size: 16px;
+    letter-spacing: 0.48px;
+  }
+
+  .product-card-info-table-th1 {
+    width: 310px;
+    font-size: 14px;
+    letter-spacing: 0.017px;
+  }
+
+  .product-card-info-table-th2 {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.017px;
+  }
+
+  .product-card-info-materials {
+    font-size: 16px;
+    letter-spacing: 0.48px;
+  }
+
+  .product-card-info-materials-item {
+    width: 380px;
+    font-size: 16px;
+    letter-spacing: 0.019px;
+    margin-left: 24px;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  .product-card-info-materials-text {
+    font-size: 12px;
+    letter-spacing: 0.36px;
+    margin-bottom: 0;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 1300px ==================================== */
+@media screen and (min-width: 1300px) {
+  .product-card-info {
+    width: 520px;
+    flex-direction: column;
+  }
+
+  .product-card-info-title {
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: 0.038px;
+    margin-bottom: 8px;
+  }
+
+  .product-card-info-number {
+    font-size: 20px;
+    letter-spacing: 0.024px;
+    margin-bottom: 24px;
+  }
+
+  .product-card-info-table {
+    width: 520px;
+    margin-bottom: 24px;
+  }
+
+  .product-card-info-sizes {
+    font-size: 20px;
+    letter-spacing: 0.6px;
+  }
+
+  .product-card-info-table-th1 {
+    width: 210px;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.019px;
+  }
+
+  .product-card-info-table-th2 {
+    width: 310px;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.019px;
+  }
+
+  .product-card-info-materials {
+    font-size: 20px;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
+
+  .product-card-info-materials-list {
+    margin-bottom: 16px;
+  }
+
+  .product-card-info-materials-item {
+    width: 450px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-left: 23px;
+
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+}

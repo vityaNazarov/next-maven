@@ -1,0 +1,263 @@
+/* ==================================== max-width: 767px ==================================== */
+@media screen and (max-width: 767px) {
+  .inst-section-tablet {
+    display: none;
+  }
+
+  //
+  //
+  //
+  .inst-section-decktop {
+    display: none;
+  }
+  //
+  //
+  //
+
+  .inst-section-mobile {
+    margin-top: 48px;
+    margin-bottom: 56px;
+  }
+
+  .inst-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .inst-title {
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    margin-bottom: 19px;
+  }
+
+  .inst-block-flex {
+    display: flex;
+    gap: 10px;
+  }
+
+  .inst-img {
+    border-radius: 8px;
+  }
+
+  .inst-text {
+    width: 343px;
+    color: var(--text-dark);
+    text-align: center;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0.017px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .chevron-btn-inst-mobile {
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-dark);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    min-width: 281px;
+    height: 44px;
+    margin-top: 32px;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* ==================================== min-width: 768px and max-width: 1299px ==================================== */
+@media screen and (min-width: 768px) and (max-width: 1299px) {
+  .inst-section-mobile {
+    display: none;
+  }
+
+  //
+  //
+  //
+  .inst-section-decktop {
+    display: none;
+  }
+  //
+  //
+  //
+
+  .inst-section-tablet {
+    margin-top: 48px;
+    margin-bottom: 64px;
+  }
+
+  .inst-section-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .inst-block-column {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+  }
+
+  .inst-img {
+    border-radius: 8px;
+  }
+
+  .inst-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .inst-title {
+    color: var(--text-dark);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.019px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .inst-text {
+    width: 344px;
+    color: var(--text-dark);
+    text-align: center;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.017px;
+    margin-bottom: 24px;
+  }
+
+  .chevron-btn-inst {
+    width: 311px;
+    height: 48px;
+    padding: 8px 12px;
+    color: var(--text-dark);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-top: 32px;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* ==================================== min-width: 1300px ==================================== */
+@media screen and (min-width: 1300px) {
+  .inst-section-mobile {
+    display: none;
+  }
+
+  //
+  //
+  //
+  .inst-section-tablet {
+    display: none;
+  }
+  //
+  //
+  //
+
+  .inst-section-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 64px;
+    margin-bottom: 80px;
+  }
+
+  .inst-block {
+    display: flex;
+    gap: 32px;
+  }
+
+  .inst-block-column {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .inst-img {
+    border-radius: 8px;
+  }
+
+  .inst-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .inst-title {
+    color: var(--text-dark);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.029px;
+    text-transform: uppercase;
+    margin-top: 39px;
+  }
+
+  .inst-text {
+    color: var(--text-dark);
+    width: 382px;
+    text-align: center;
+    font-family: Lato, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.024px;
+    margin-top: 69px;
+    margin-bottom: 75px;
+  }
+
+  .chevron-btn-inst {
+    min-width: 356px;
+    height: 56px;
+    color: var(--text-dark);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+  }
+}

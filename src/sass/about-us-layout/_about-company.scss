@@ -1,0 +1,221 @@
+//
+//
+//
+
+.about-company-main-none {
+  display: none;
+}
+
+.about-company-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-company-text {
+  color: var(--text-dark);
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5; /* 21px */
+  letter-spacing: 0.017px;
+  margin: 16px 0;
+}
+
+.about-company-gallery-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 10px;
+}
+
+.about-company-info-secondary {
+  margin-bottom: 48px;
+}
+
+.about-company-info-text {
+  color: var(--text-dark);
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+  letter-spacing: 0.017px;
+  margin-top: 16px;
+}
+
+.about-company-info-list {
+  margin-bottom: 16px;
+}
+
+.about-company-info-item {
+  color: var(--text-dark);
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+  letter-spacing: 0.017px;
+  margin-left: 20px;
+}
+
+.about-company-collective-img {
+  display: flex;
+  justify-content: center;
+}
+
+.about-us-title {
+  margin-bottom: 16px;
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 768px ==================================== */
+@media screen and (min-width: 768px) {
+  .about-company-main-none {
+    display: block;
+  }
+
+  .about-company-text-none {
+    display: none;
+  }
+
+  .about-company-main {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .about-company-text {
+    color: var(--text-dark);
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5; /* 21px */
+    letter-spacing: 0.019px;
+    margin: 0;
+    width: 344px;
+  }
+
+  .about-company-gallery-list {
+    justify-content: space-between;
+  }
+
+  .about-company-info-text {
+    font-size: 16px;
+    letter-spacing: 0.019px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+
+  .about-company-info-list {
+    margin-bottom: 32px;
+  }
+
+  .about-company-info-item {
+    font-size: 16px;
+    letter-spacing: 0.019px;
+    margin-left: 23px;
+  }
+
+  .about-us-title {
+    margin-bottom: 32px;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 1300px ==================================== */
+@media screen and (min-width: 1300px) {
+  .about-company-main-none {
+    display: none;
+  }
+
+  .about-company-main {
+    margin-bottom: 0;
+  }
+
+  .about-company-text-none {
+    display: block;
+  }
+
+  .about-company-block {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .about-company-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .about-company-text {
+    width: 737px;
+    color: var(--text-dark);
+    font-family: Lato, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5; /* 30px */
+    letter-spacing: 0.024px;
+  }
+
+  .about-company-gallery-list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .about-company-info-secondary {
+    margin-bottom: 64px;
+  }
+
+  .about-company-info-text {
+    color: var(--text-dark);
+    font-family: Lato, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5; /* 30px */
+    letter-spacing: 0.024px;
+    margin-top: 24px;
+  }
+
+  .about-company-info-item {
+    color: var(--text-dark);
+    font-family: Lato, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5; /* 30px */
+    letter-spacing: 0.024px;
+    margin-left: 30px;
+  }
+
+  .about-us-title {
+    margin-bottom: 40px;
+  }
+}

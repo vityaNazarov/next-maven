@@ -1,0 +1,330 @@
+//
+//
+//
+.individual-suptitle {
+  color: var(--coffee);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.019px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.steps-block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.steps-section {
+  text-align: center;
+}
+
+.steps-section-num {
+  color: var(--text-dark);
+  font-family: Bruno Ace, sans-serif;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.68px;
+  text-transform: uppercase;
+}
+
+.steps-section-text {
+  max-width: 285px;
+  margin-top: 12px;
+  color: var(--text-dark);
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.017px;
+  text-align: center;
+}
+
+.steps-section-text-first {
+  width: 170px;
+}
+
+.individual-projects-all {
+  display: flex;
+  flex-direction: column;
+}
+
+.individual-projects-one {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.individual-projects-one-img {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+}
+
+.individual-projects-two-img {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+}
+
+.individual-projects-one-text {
+  color: var(--text-dark);
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.017px;
+}
+
+.individual-projects-one-text-secondary {
+  margin-bottom: 16px;
+}
+
+.individual-projects-two {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 48px;
+}
+
+.individual-projects-two-text {
+  color: var(--text-dark);
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.017px;
+}
+
+.individual-projects-form-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.individual-form-title {
+  color: var(--text-dark);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.022px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 768px ==================================== */
+@media screen and (min-width: 768px) {
+  .individual-suptitle {
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.024px;
+    margin-bottom: 32px;
+  }
+
+  .steps-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .steps-section {
+    width: 100%;
+  }
+
+  .steps-section-text {
+    max-width: 161px;
+    margin-top: 22px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.017px;
+  }
+
+  .steps-section-text-first {
+    width: 100%;
+  }
+
+  .individual-projects-all {
+    flex-direction: column;
+  }
+
+  .individual-projects-one {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .individual-projects-one-text-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .individual-projects-one-img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+  }
+
+  .individual-projects-two-img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+  }
+
+  .individual-projects-one-text {
+    font-size: 16px;
+    letter-spacing: 0.019px;
+  }
+
+  .individual-projects-one-text-secondary {
+    margin-bottom: 0;
+  }
+
+  .individual-projects-two {
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .individual-projects-two-text {
+    font-size: 16px;
+    letter-spacing: 0.019px;
+  }
+
+  .individual-form-title {
+    font-size: 24px;
+    line-height: 1.4;
+    letter-spacing: 0.029px;
+    margin-bottom: 24px;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* ==================================== min-width: 1300px ==================================== */
+@media screen and (min-width: 1300px) {
+  .individual-suptitle {
+    font-size: 24px;
+    letter-spacing: 0.029px;
+    margin-bottom: 24px;
+  }
+
+  .steps-section {
+    width: 225px;
+  }
+
+  .steps-section-text {
+    max-width: 225px;
+    margin-top: 22px;
+    font-size: 20px;
+    letter-spacing: 0.024px;
+    text-align: center;
+  }
+
+  .individual-projects-all {
+    flex-direction: column;
+  }
+
+  .individual-projects-one {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .individual-projects-one-text-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .individual-projects-one-img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+  }
+
+  .individual-projects-two-img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+  }
+
+  .individual-projects-one-text {
+    font-size: 20px;
+    letter-spacing: 0.024px;
+  }
+
+  .individual-projects-one-text-secondary {
+    margin-bottom: 0;
+  }
+
+  .individual-projects-two {
+    flex-direction: row;
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .individual-projects-two-text {
+    font-size: 20px;
+    letter-spacing: 0.024px;
+  }
+
+  .individual-form-title {
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: 0.038px;
+  }
+
+  .individual-projects-form-block {
+    width: 734px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .individual-career-form-input {
+    width: 100%;
+  }
+
+  .individual-textarea-text {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+}
