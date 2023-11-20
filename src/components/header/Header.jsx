@@ -1,6 +1,28 @@
+"use client";
+
 import Link from "next/link";
+import MobileMenu from "../mobile-menu/MobileMenu";
+import { useState, useEffect, useRef } from "react";
 
 function Header() {
+  const [menuActive, setMenuActive] = useState(false);
+  const [dropdownActive, setDropdownActive] = useState(false);
+
+  const listRef = useRef(null);
+
+  const handleClick = (event) => {
+    if (listRef.current && !listRef.current.contains(event.target)) {
+      setDropdownActive(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClick);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, []);
+
   return (
     <header className="page-header">
       <div className="container page-header-container">
@@ -16,9 +38,43 @@ function Header() {
           </Link>
           <ul className="menu list">
             <li className="menu-item">
-              <Link className="menu-link link" href="/about-us">
-                Про нас
-              </Link>
+              <div
+                className="dropdown"
+                onClick={() => setDropdownActive(!dropdownActive)}
+              >
+                <span className="menu-link link">Про нас</span>
+                <svg
+                  className={`dropdown-chevron ${
+                    dropdownActive ? "active" : ""
+                  }`}
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.5129 23.5384L11.4258 22.4513L17.8976 15.9795L11.4258 9.49485L12.5129 8.40771L20.0719 15.9795L12.5129 23.5384Z"
+                    fill="#232427"
+                  />
+                </svg>
+              </div>
+              <div
+                className={`desktop-dropdown-block ${
+                  dropdownActive ? "active" : ""
+                }`}
+                onClick={() => setDropdownActive(false)}
+                ref={listRef}
+              >
+                <ul className="desktop-dropdown list">
+                  <li className="desktop-dropdown-item">
+                    <Link href="/about-us">Про компанію</Link>
+                  </li>
+                  <li className="desktop-dropdown-item">
+                    <Link href="/career">Кар&#39;єра</Link>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li className="menu-item">
               <Link className="menu-link link" href="/projects">
@@ -67,7 +123,13 @@ function Header() {
           <button type="button" className="translate-btn">
             ua
           </button>
-          <button type="button" className="mobile-menu-open">
+          <button
+            type="button"
+            className="mobile-menu-open"
+            onClick={() => {
+              setMenuActive(!menuActive);
+            }}
+          >
             <img
               width="40"
               height="40"
@@ -78,6 +140,11 @@ function Header() {
           </button>
         </div>
       </div>
+      <MobileMenu
+        active={menuActive}
+        setActive={setMenuActive}
+        className="mobile-menu-nav"
+      />
     </header>
   );
 }
