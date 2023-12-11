@@ -1,15 +1,20 @@
+import Image from "next/image";
+import Link from "next/link";
+
 function Footer() {
   return (
     <footer className="footer">
       <div className="container container-footer">
         <div className="container-footer-secondary">
-          <a className="logo footer-logo" href="./index.html">
-            <img
+          <Link className="logo footer-logo" href="/">
+            <Image
+              width={194}
+              height={74}
               className="logo-img footer-logo-mobile-img"
               src="/images/svg/footer-logo-mobile.svg"
               alt="логотип"
             />
-          </a>
+          </Link>
           <div className="footer-info">
             <div className="footer-privacy">
               <h3 className="footer-title privacy-title">PRIVACY</h3>
@@ -35,7 +40,7 @@ function Footer() {
               <h3 className="footer-title subscription-title">Follow us</h3>
               <div className="footer-socials-links">
                 <a className="subscription-link" href="">
-                  <img
+                  <Image
                     width="24"
                     height="24"
                     className="subscription-link-instagram"
@@ -44,7 +49,7 @@ function Footer() {
                   />
                 </a>
                 <a className="subscription-link" href="">
-                  <img
+                  <Image
                     width="23"
                     height="24"
                     className="subscription-link-tiktok"

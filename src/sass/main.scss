@@ -14,10 +14,10 @@
 
 /* ==================================== MAIN-LAYOUT ==================================== */
 
-@import "./main-layout/hero";
-@import "./main-layout/advantages";
-@import "./main-layout/carousel";
-@import "./main-layout/inst-section";
+@import "./home-page/hero";
+@import "./home-page/advantages";
+@import "./home-page/carousel";
+@import "./home-page/inst-section";
 
 //
 //
@@ -86,6 +86,14 @@
 
 @import "./product-card/product-card-gallery";
 @import "./product-card/product-card-info";
+
+//
+//
+//
+
+/* ==================================== INDIVIDUAL-MODAL ==================================== */
+
+@import "./individual-modal/individual-modal";
 
 //
 //

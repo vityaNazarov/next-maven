@@ -3,6 +3,7 @@
 //
 
 .chevron-btn {
+  width: 180px;
   color: var(--text-dark);
   display: flex;
   justify-content: space-between;
@@ -47,6 +48,7 @@
 /* ==================================== min-width: 768px ==================================== */
 @media screen and (min-width: 768px) {
   .chevron-btn {
+    width: 235px;
     gap: 16px;
     padding: 12px 16px;
     font-size: 16px;
@@ -79,6 +81,7 @@
 /* ==================================== min-width: 1300px ==================================== */
 @media screen and (min-width: 1300px) {
   .chevron-btn {
+    width: 280px;
     gap: 24px;
     border-radius: 16px;
     font-size: 24px;

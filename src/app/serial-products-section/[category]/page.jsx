@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/products", {
+  const res = await fetch(`http://localhost:3000/api/products`, {
+    mode: "cors",
     cache: "no-store",
   });
 
@@ -15,17 +16,13 @@ async function getData() {
 }
 
 const Category = async ({ params }) => {
-  console.log(params);
   const data = await getData();
+
+  const { category } = params;
+  const dataCategory = data.filter((item) => item.category == category);
 
   return (
     <div>
-      {/* <h1>{params.category} </h1>
-      <h1>{params.category} </h1>
-      <h1>{params.category} </h1>
-      <h1>{params.category} </h1>
-      <h1>{params.category} </h1> */}
-
       <svg
         className="nonsense-svg"
         width="48"
@@ -91,9 +88,9 @@ const Category = async ({ params }) => {
         <section className="catalog">
           <div className="container catalog-container">
             <div className="container-nav">
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/">
                 Головна
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -107,9 +104,9 @@ const Category = async ({ params }) => {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/catalog">
                 Каталог
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -123,9 +120,12 @@ const Category = async ({ params }) => {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
+              <Link
+                className="container-nav-link"
+                href="/serial-products-section"
+              >
                 Серійні вироби
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -139,33 +139,35 @@ const Category = async ({ params }) => {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
-                {params.category}
-              </a>
+              <Link className="container-nav-link" href="">
+                {dataCategory[0].categoryname}
+              </Link>
             </div>
 
             <div>
               <h2 className="title serial-products-title">
-                <svg
-                  className="arrow-back-products"
-                  width="16"
-                  height="12"
-                  viewBox="0 0 16 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.0637 11.6136L9.24834 10.8232L13.5445 6.52703H0.29834V5.39245H13.5445L9.23297 1.0809L10.0483 0.290527L15.7175 5.95975L10.0637 11.6136Z"
-                    fill="#232427"
-                  />
-                </svg>
+                <Link href="/serial-products-section">
+                  <svg
+                    className="arrow-back-products"
+                    width="16"
+                    height="12"
+                    viewBox="0 0 16 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.0637 11.6136L9.24834 10.8232L13.5445 6.52703H0.29834V5.39245H13.5445L9.23297 1.0809L10.0483 0.290527L15.7175 5.95975L10.0637 11.6136Z"
+                      fill="#232427"
+                    />
+                  </svg>
+                </Link>
 
-                {params.category}
+                {dataCategory[0].categoryname}
               </h2>
 
               <div className="subsection-caegories">
                 <ul className="subsection-caegories-list list">
-                  {data.map((item) => (
+                  {dataCategory.map((item) => (
                     <li className="subsection-caegories-item" key={item._id}>
                       <Link
                         className="subsection-caegories-link"
@@ -175,7 +177,7 @@ const Category = async ({ params }) => {
                           width={150}
                           height={150}
                           className="subsection-caegories-img"
-                          src={item.img}
+                          src={item.img1}
                           alt={item.name}
                         />
                       </Link>

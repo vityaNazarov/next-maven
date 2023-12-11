@@ -68,12 +68,10 @@ const SerialProductsSection = () => {
       <main>
         <section className="catalog">
           <div className="container catalog-container">
-            {/* NAV-BAR */}
-
             <div className="container-nav">
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/">
                 Головна
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -87,9 +85,9 @@ const SerialProductsSection = () => {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/catalog">
                 Каталог
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -103,26 +101,31 @@ const SerialProductsSection = () => {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
+              <Link
+                className="container-nav-link"
+                href="/serial-products-section"
+              >
                 Серійні вироби
-              </a>
+              </Link>
             </div>
 
             <div>
               <h2 className="title serial-products-title">
-                <svg
-                  className="arrow-back-products"
-                  width="16"
-                  height="12"
-                  viewBox="0 0 16 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.0637 11.6136L9.24834 10.8232L13.5445 6.52703H0.29834V5.39245H13.5445L9.23297 1.0809L10.0483 0.290527L15.7175 5.95975L10.0637 11.6136Z"
-                    fill="#232427"
-                  />
-                </svg>
+                <Link href="/catalog">
+                  <svg
+                    className="arrow-back-products"
+                    width="16"
+                    height="12"
+                    viewBox="0 0 16 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.0637 11.6136L9.24834 10.8232L13.5445 6.52703H0.29834V5.39245H13.5445L9.23297 1.0809L10.0483 0.290527L15.7175 5.95975L10.0637 11.6136Z"
+                      fill="#232427"
+                    />
+                  </svg>
+                </Link>
                 серійні вироби
               </h2>
               <div className="serial-caegories">

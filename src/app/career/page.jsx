@@ -1,4 +1,12 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+
 function Career() {
+  const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("No selected file");
+
   return (
     <>
       <svg
@@ -68,9 +76,9 @@ function Career() {
         <section className="career">
           <div className="container container-career">
             <div className="container-nav">
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/">
                 Головна
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -84,9 +92,9 @@ function Career() {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="">
                 Про Нас
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -100,9 +108,9 @@ function Career() {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/career">
                 Кар’єра
-              </a>
+              </Link>
             </div>
             <div className="career-block">
               <div className="career-info">
@@ -114,8 +122,9 @@ function Career() {
                   реалізації.
                 </p>
                 <p className="career-text">
-                  Звʼяжіться з нами якщо Ви хочете потрапити в дружній колектив,
-                  працювати з якісною продукцією та стати частиною Maven Group.
+                  Зв&#39;яжіться з нами якщо Ви хочете потрапити в дружній
+                  колектив, працювати з якісною продукцією та стати частиною
+                  Maven Group.
                 </p>
               </div>
               <div className="career-form-block">
@@ -177,26 +186,82 @@ function Career() {
                       placeholder="Введіть повідомлення"
                     ></textarea>
                     <label className="custom-file">
-                      <input type="file" />
+                      <input
+                        type="file"
+                        onChange={({ target: { files } }) => {
+                          files[0] && setFileName(files[0].name);
+                          if (files) {
+                            setFile("null");
+                          }
+                        }}
+                      />
                       <span className="input-file-span">
-                        <svg
-                          className="input-file-svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M21.44 11.05L12.25 20.24C11.1242 21.3658 9.59723 21.9983 8.00505 21.9983C6.41286 21.9983 4.88589 21.3658 3.76005 20.24C2.6342 19.1141 2.00171 17.5872 2.00171 15.995C2.00171 14.4028 2.6342 12.8758 3.76005 11.75L12.95 2.55998C13.7006 1.80942 14.7186 1.38776 15.78 1.38776C16.8415 1.38776 17.8595 1.80942 18.61 2.55998C19.3606 3.31054 19.7823 4.32852 19.7823 5.38998C19.7823 6.45144 19.3606 7.46942 18.61 8.21998L9.41005 17.41C9.03476 17.7853 8.52577 17.9961 7.99505 17.9961C7.46432 17.9961 6.95533 17.7853 6.58005 17.41C6.20476 17.0347 5.99393 16.5257 5.99393 15.995C5.99393 15.4643 6.20476 14.9553 6.58005 14.58L15.07 6.09998"
-                            stroke="#979797"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                        {file ? (
+                          ""
+                        ) : (
+                          <svg
+                            className="input-file-svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M21.44 11.05L12.25 20.24C11.1242 21.3658 9.59723 21.9983 8.00505 21.9983C6.41286 21.9983 4.88589 21.3658 3.76005 20.24C2.6342 19.1141 2.00171 17.5872 2.00171 15.995C2.00171 14.4028 2.6342 12.8758 3.76005 11.75L12.95 2.55998C13.7006 1.80942 14.7186 1.38776 15.78 1.38776C16.8415 1.38776 17.8595 1.80942 18.61 2.55998C19.3606 3.31054 19.7823 4.32852 19.7823 5.38998C19.7823 6.45144 19.3606 7.46942 18.61 8.21998L9.41005 17.41C9.03476 17.7853 8.52577 17.9961 7.99505 17.9961C7.46432 17.9961 6.95533 17.7853 6.58005 17.41C6.20476 17.0347 5.99393 16.5257 5.99393 15.995C5.99393 15.4643 6.20476 14.9553 6.58005 14.58L15.07 6.09998"
+                              stroke="#979797"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        )}
                       </span>
                     </label>
                   </div>
+                  <span className="uploaded">
+                    <p className="uploaded-text">{fileName}</p>
+                    <svg
+                      className="uploaded-delete"
+                      width="48"
+                      height="49"
+                      viewBox="0 0 48 49"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      onClick={() => {
+                        setFileName("No selected file");
+                        setFile(null);
+                      }}
+                    >
+                      <path
+                        d="M6 12.5H10H42"
+                        stroke="#979797"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M38.0003 12.5V40.5C38.0003 41.5609 37.5788 42.5783 36.8287 43.3284C36.0786 44.0786 35.0611 44.5 34.0003 44.5H14.0003C12.9394 44.5 11.922 44.0786 11.1718 43.3284C10.4217 42.5783 10.0003 41.5609 10.0003 40.5V12.5M16.0003 12.5V8.5C16.0003 7.43913 16.4217 6.42172 17.1718 5.67157C17.922 4.92143 18.9394 4.5 20.0003 4.5H28.0003C29.0611 4.5 30.0786 4.92143 30.8287 5.67157C31.5788 6.42172 32.0003 7.43913 32.0003 8.5V12.5"
+                        stroke="#979797"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M19.9997 22.5V34.5"
+                        stroke="#979797"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M28.0003 22.5V34.5"
+                        stroke="#979797"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
 
                   <p className="career-textarea-text">
                     *Нажавши кнопку “Відправити” Ви погоджуєтесь на обробку

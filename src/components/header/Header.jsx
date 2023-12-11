@@ -3,10 +3,18 @@
 import Link from "next/link";
 import MobileMenu from "../mobile-menu/MobileMenu";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import TranslateBlock from "../translateBlock/translateBlock";
+import "../../app/i18n";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 function Header() {
   const [menuActive, setMenuActive] = useState(false);
   const [dropdownActive, setDropdownActive] = useState(false);
+  const [translate, setTranslate] = useState(false);
+
+  const { t } = useTranslation();
 
   const listRef = useRef(null);
 
@@ -17,9 +25,9 @@ function Header() {
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("mouseup", handleClick);
     return () => {
-      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("mouseup", handleClick);
     };
   }, []);
 
@@ -28,10 +36,11 @@ function Header() {
       <div className="container page-header-container">
         <nav className="page-nav">
           <Link className="header-logo" href="/">
-            <img
+            <Image
               className="logo-img"
               src="/images/svg/logo.svg"
               alt="логотип"
+              priority={true}
               width="112"
               height="48"
             />
@@ -42,7 +51,7 @@ function Header() {
                 className="dropdown"
                 onClick={() => setDropdownActive(!dropdownActive)}
               >
-                <span className="menu-link link">Про нас</span>
+                <span className="menu-link link">{t("About_us")} </span>
                 <svg
                   className={`dropdown-chevron ${
                     dropdownActive ? "active" : ""
@@ -68,27 +77,27 @@ function Header() {
               >
                 <ul className="desktop-dropdown list">
                   <li className="desktop-dropdown-item">
-                    <Link href="/about-us">Про компанію</Link>
+                    <Link href="/about-us">{t("About_the_company")} </Link>
                   </li>
                   <li className="desktop-dropdown-item">
-                    <Link href="/career">Кар&#39;єра</Link>
+                    <Link href="/career">{t("Career")} </Link>
                   </li>
                 </ul>
               </div>
             </li>
             <li className="menu-item">
               <Link className="menu-link link" href="/projects">
-                Проєкти
+                {t("Projects")}
               </Link>
             </li>
             <li className="menu-item">
               <Link className="menu-link link" href="/catalog">
-                Каталог
+                {t("Catalogue")}
               </Link>
             </li>
             <li className="menu-item">
               <Link className="menu-link link" href="/individual-projects">
-                Індивідуальні проекти
+                {t("Individual_projects")}
               </Link>
             </li>
             <li className="menu-item">
@@ -98,14 +107,15 @@ function Header() {
             </li>
             <li className="menu-item">
               <Link className="menu-link link" href="/contacts">
-                Контакти
+                {t("Contacts")}
+                {/* Контакти */}
               </Link>
             </li>
           </ul>
         </nav>
 
         <div className="page-header-container-elements">
-          <Link className="cart-link" href="/cart-with-item">
+          <Link className="cart-link" href="/cart">
             <svg
               className="cart"
               width="24"
@@ -120,9 +130,16 @@ function Header() {
               />
             </svg>
           </Link>
-          <button type="button" className="translate-btn">
-            ua
+          <button
+            onClick={() => {
+              setTranslate(!translate);
+            }}
+            type="button"
+            className="translate-btn"
+          >
+            {i18next.language}
           </button>
+          {translate ? <TranslateBlock setTranslate={setTranslate} /> : ""}
           <button
             type="button"
             className="mobile-menu-open"
@@ -130,7 +147,7 @@ function Header() {
               setMenuActive(!menuActive);
             }}
           >
-            <img
+            <Image
               width="40"
               height="40"
               className="mobile-menu-open-burger"

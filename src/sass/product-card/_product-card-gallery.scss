@@ -22,6 +22,7 @@
 .product-card-block {
   display: flex;
   flex-direction: column;
+  margin-top: 15px;
 }
 
 .product-card-gallery {
@@ -35,6 +36,7 @@
   margin: 0 auto;
   width: 343px;
   height: 344px;
+  border-radius: 10%;
 }
 
 .product-card-gallery-secondary {
@@ -46,6 +48,7 @@
   width: 89px;
   height: 89px;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .product-card-gallery-link {
@@ -123,6 +126,26 @@
   border: none;
 }
 
+.individual-product-card-gallery-btn {
+  // width: 343px;
+  // height: 48px;
+  // gap: 16px;
+  // margin: 0 auto;
+
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+
+  color: var(--text-dark);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  border-radius: 16px;
+  background: var(--accent-blue);
+  border: none;
+}
+
 .product-card-gallery-btn-svg {
   width: 30px;
   height: 30px;
@@ -150,6 +173,10 @@
     margin-right: 56px;
   }
 
+  .product-card-block {
+    margin-top: 25px;
+  }
+
   .product-card-gallery {
     display: flex;
     justify-content: flex-end;
@@ -163,6 +190,7 @@
     margin: 0;
     width: 432px;
     height: 433px;
+    border-radius: 10%;
   }
 
   .product-card-gallery-secondary {
@@ -174,6 +202,7 @@
   .product-card-gallery-secondary-img {
     width: 140px;
     height: 140px;
+    border-radius: 50%;
   }
 
   .product-card-gallery-info {
@@ -225,7 +254,17 @@
     font-weight: 500;
     letter-spacing: 0.8px;
     margin-left: 0;
-    margin-top: 102px;
+    margin-top: 125px;
+  }
+
+  .individual-product-card-gallery-btn {
+    //     height: 56px;
+    // gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    // margin-left: 0;
+    // margin-top: 102px;
   }
 
   .product-card-gallery-btn-svg {
@@ -340,7 +379,14 @@
     width: 520px;
     height: 64px;
     margin-left: -640px;
-    margin-top: 0;
+    margin-top: 18px;
+    gap: 16px;
+  }
+
+  .individual-product-card-gallery-btn {
+    width: 520px;
+    height: 64px;
+    margin-top: 32px;
     gap: 16px;
   }
 

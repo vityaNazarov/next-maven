@@ -1,6 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
 
-function Projects() {
+async function GetFetch() {
+  const res = await fetch("http://localhost:3000/api/projects", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data!");
+  }
+
+  return res.json();
+}
+
+const Projects = async () => {
+  const data = await GetFetch();
+
   return (
     <>
       <svg
@@ -65,14 +80,12 @@ function Projects() {
       </svg>
 
       <main>
-        {/* ПРОЕКТИ */}
-
         <section className="projects">
           <div className="container projects-container">
             <div className="container-nav">
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/">
                 Головна
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -86,290 +99,49 @@ function Projects() {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/projects">
                 Проекти
-              </a>
+              </Link>
             </div>
             <div>
               <h2 className="title">Проекти</h2>
               <div className="projects-block">
                 <ul className="projects-block-list list">
-                  <li className="projects-block-item">
-                    <a className="projects-block-link" href="">
-                      <picture>
-                        <source
-                          media="(min-width:1300px)"
-                          width="411"
-                          height="415"
-                          srcSet="
-                            /images/img/projects/projects-desctop/miya.jpg
-                          "
-                        />
-                        <source
-                          media="(min-width:768px)"
-                          width="343"
-                          height="343"
-                          srcSet="
-                            /images/img/projects/projects-mobile/miya.jpg
-                          "
-                        />
-                        <Image
-                          className="projects-block-img"
-                          width="342"
-                          height="342"
-                          src="/images/img/projects/projects-mobile/miya.jpg"
-                          alt=""
-                        />
-                      </picture>
+                  {data.map((item) => (
+                    <li className="projects-block-item" key={item._id}>
+                      <Link
+                        className="projects-block-link"
+                        href={`projects/${item._id}`}
+                      >
+                        <picture>
+                          <source
+                            media="(min-width:1300px)"
+                            width="411"
+                            height="415"
+                            srcSet={item.imgMainDesk}
+                          />
+                          <source
+                            media="(min-width:768px)"
+                            width="343"
+                            height="343"
+                            srcSet={item.imgMainMob}
+                          />
+                          <Image
+                            className="projects-block-img"
+                            width="342"
+                            height="342"
+                            src={item.imgMainMob}
+                            alt=""
+                          />
+                        </picture>
 
-                      <div className="projects-info">
-                        <h3 className="projects-block-title">miya</h3>
-                        <p className="projects-block-text">kyiv / 2022</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li className="projects-block-item">
-                    <a className="projects-block-link" href="./project.html">
-                      <picture>
-                        <source
-                          media="(min-width:1300px)"
-                          width="411"
-                          height="415"
-                          srcSet="
-                            /images/img/projects/projects-desctop/virgin-izakaya.jpg
-                          "
-                        />
-                        <source
-                          media="(min-width:768px)"
-                          width="343"
-                          height="343"
-                          srcSet="
-                            /images/img/projects/projects-mobile/virgin-izakaya.jpg
-                          "
-                        />
-                        <Image
-                          className="projects-block-img"
-                          width="342"
-                          height="342"
-                          src="/images/img/projects/projects-mobile/virgin-izakaya.jpg"
-                          alt=""
-                        />
-                      </picture>
-
-                      <div className="projects-info">
-                        <h3 className="projects-block-title">virgin izakaya</h3>
-                        <p className="projects-block-text">Dubai / 2022</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li className="projects-block-item">
-                    <a className="projects-block-link" href="">
-                      <picture>
-                        <source
-                          media="(min-width:1300px)"
-                          width="411"
-                          height="415"
-                          srcSet="
-                            /images/img/projects/projects-desctop/radisson-blu-hotel.jpg
-                          "
-                        />
-                        <source
-                          media="(min-width:768px)"
-                          width="343"
-                          height="343"
-                          srcSet="
-                            /images/img/projects/projects-mobile/radisson-blu-hotel.jpg
-                          "
-                        />
-                        <Image
-                          className="projects-block-img"
-                          width="342"
-                          height="342"
-                          src="/images/img/projects/projects-mobile/radisson-blu-hotel.jpg"
-                          alt=""
-                        />
-                      </picture>
-
-                      <div className="projects-info">
-                        <h3 className="projects-block-title">
-                          Radisson Blu Hotel
-                        </h3>
-                        <p className="projects-block-text">kyiv / 2022</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li className="projects-block-item">
-                    <a className="projects-block-link" href="">
-                      <picture>
-                        <source
-                          media="(min-width:1300px)"
-                          width="411"
-                          height="415"
-                          srcSet="
-                            /images/img/projects/projects-desctop/dragonfly.jpg
-                          "
-                        />
-                        <source
-                          media="(min-width:768px)"
-                          width="343"
-                          height="343"
-                          srcSet="
-                            /images/img/projects/projects-mobile/dragonfly.jpg
-                          "
-                        />
-                        <Image
-                          className="projects-block-img"
-                          width="342"
-                          height="342"
-                          src="/images/img/projects/projects-mobile/dragonfly.jpg"
-                          alt=""
-                        />
-                      </picture>
-
-                      <div className="projects-info">
-                        <h3 className="projects-block-title">dragonfly</h3>
-                        <p className="projects-block-text">almaty / 2021</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li className="projects-block-item">
-                    <a className="projects-block-link" href="">
-                      <picture>
-                        <source
-                          media="(min-width:1300px)"
-                          width="411"
-                          height="415"
-                          srcSet="
-                            /images/img/projects/projects-desctop/frou-frou.jpg
-                          "
-                        />
-                        <source
-                          media="(min-width:768px)"
-                          width="343"
-                          height="343"
-                          srcSet="
-                            /images/img/projects/projects-mobile/frou-frou.jpg
-                          "
-                        />
-                        <Image
-                          className="projects-block-img"
-                          width="342"
-                          height="342"
-                          src="/images/img/projects/projects-mobile/frou-frou.jpg"
-                          alt=""
-                        />
-                      </picture>
-
-                      <div className="projects-info">
-                        <h3 className="projects-block-title">frou-frou</h3>
-                        <p className="projects-block-text">kiev / 2021</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li className="projects-block-item">
-                    <a className="projects-block-link" href="">
-                      <picture>
-                        <source
-                          media="(min-width:1300px)"
-                          width="411"
-                          height="415"
-                          srcSet="
-                            /images/img/projects/projects-desctop/mad-coffee.jpg
-                          "
-                        />
-                        <source
-                          media="(min-width:768px)"
-                          width="343"
-                          height="343"
-                          srcSet="
-                            /images/img/projects/projects-mobile/mad-coffee.jpg
-                          "
-                        />
-                        <Image
-                          className="projects-block-img"
-                          width="342"
-                          height="342"
-                          src="/images/img/projects/projects-mobile/mad-coffee.jpg"
-                          alt=""
-                        />
-                      </picture>
-
-                      <div className="projects-info">
-                        <h3 className="projects-block-title">mad coffee</h3>
-                        <p className="projects-block-text">
-                          chornomorsk / 2020
-                        </p>
-                      </div>
-                    </a>
-                  </li>
-                  <li className="projects-block-item">
-                    <a className="projects-block-link" href="">
-                      <picture>
-                        <source
-                          media="(min-width:1300px)"
-                          width="411"
-                          height="415"
-                          srcSet="
-                            /images/img/projects/projects-desctop/dacha.jpg
-                          "
-                        />
-                        <source
-                          media="(min-width:768px)"
-                          width="343"
-                          height="343"
-                          srcSet="
-                            /images/img/projects/projects-mobile/dacha.jpg
-                          "
-                        />
-                        <Image
-                          className="projects-block-img"
-                          width="342"
-                          height="342"
-                          src="/images/img/projects/projects-mobile/dacha.jpg"
-                          alt=""
-                        />
-                      </picture>
-
-                      <div className="projects-info">
-                        <h3 className="projects-block-title">dacha</h3>
-                        <p className="projects-block-text">kamyanske / 2022</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li className="projects-block-item">
-                    <a className="projects-block-link" href="">
-                      <picture>
-                        <source
-                          media="(min-width:1300px)"
-                          width="411"
-                          height="415"
-                          srcSet="
-                            /images/img/projects/projects-desctop/frou-frou2.jpg
-                          "
-                        />
-                        <source
-                          media="(min-width:768px)"
-                          width="343"
-                          height="343"
-                          srcSet="
-                            /images/img/projects/projects-mobile/frou-frou2.jpg
-                          "
-                        />
-                        <Image
-                          className="projects-block-img"
-                          width="342"
-                          height="342"
-                          src="/images/img/projects/projects-mobile/frou-frou2.jpg"
-                          alt=""
-                        />
-                      </picture>
-
-                      <div className="projects-info">
-                        <h3 className="projects-block-title">frou-frou</h3>
-                        <p className="projects-block-text">kiev / 2021</p>
-                      </div>
-                    </a>
-                  </li>
+                        <div className="projects-info">
+                          <h3 className="projects-block-title">{item.name}</h3>
+                          <p className="projects-block-text">{item.place}</p>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -378,6 +150,6 @@ function Projects() {
       </main>
     </>
   );
-}
+};
 
 export default Projects;

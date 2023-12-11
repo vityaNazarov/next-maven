@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function Contacts() {
   return (
     <>
@@ -68,9 +70,9 @@ function Contacts() {
         <section className="projects">
           <div className="container projects-container">
             <div className="container-nav">
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/">
                 Головна
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -84,9 +86,9 @@ function Contacts() {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/contacts">
                 Контакти
-              </a>
+              </Link>
             </div>
 
             <h2 className="title contacts-title">Контакти</h2>

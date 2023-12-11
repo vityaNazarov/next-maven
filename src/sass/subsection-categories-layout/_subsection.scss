@@ -14,12 +14,24 @@
   .subsection-caegories-img {
     width: 278px;
     height: 278px;
+    border-radius: 25px;
+    border: 1px solid #ffffff;
   }
 
   .subsection-caegories-info {
     width: 240px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .subsection-caegories-info.individual {
+    width: 240px;
+    display: flex;
+    justify-content: center;
     align-items: center;
     margin-top: 16px;
     margin-left: auto;
@@ -101,12 +113,24 @@
   .subsection-caegories-img {
     width: 344px;
     height: 347px;
+    border-radius: 25px;
+    border: 1px solid #ffffff;
   }
 
   .subsection-caegories-info {
     width: 300px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .subsection-caegories-info.individual {
+    width: 300px;
+    display: flex;
+    justify-content: center;
     align-items: center;
     margin-top: 12px;
     margin-left: auto;
@@ -192,12 +216,12 @@
 
   .subsection-caegories-info {
     width: 366px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-top: 16px;
-    margin-left: auto;
-    margin-right: auto;
+  }
+
+  .subsection-caegories-info.individual {
+    width: 366px;
+    margin-top: 16px;
   }
 
   .subsection-caegories-infoproduct {

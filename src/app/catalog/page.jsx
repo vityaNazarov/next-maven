@@ -73,9 +73,9 @@ function Catalog() {
             {/* NAV-BAR  */}
 
             <div className="container-nav">
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/">
                 Головна
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -89,9 +89,9 @@ function Catalog() {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/catalog">
                 Каталог
-              </a>
+              </Link>
             </div>
 
             <div>
@@ -133,7 +133,10 @@ function Catalog() {
                     </Link>
                   </li>
                   <li className="catalog-block-item">
-                    <a className="catalog-block-link" href="">
+                    <Link
+                      className="catalog-block-link"
+                      href="/individual-products-section"
+                    >
                       <picture>
                         <source
                           media="(min-width: 1300px)"
@@ -161,7 +164,7 @@ function Catalog() {
                       </picture>
 
                       <p className="catalog-block-text">індивідуальні вироби</p>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

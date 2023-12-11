@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 function AboutUs() {
   return (
@@ -70,9 +71,9 @@ function AboutUs() {
         <section className="company">
           <div className="container container-company">
             <div className="container-nav">
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/">
                 Головна
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -86,9 +87,9 @@ function AboutUs() {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="">
                 Про Нас
-              </a>
+              </Link>
               <svg
                 className="container-nav-link-arrow"
                 width="18"
@@ -102,9 +103,9 @@ function AboutUs() {
                   fill="#232427"
                 />
               </svg>
-              <a className="container-nav-link" href="">
+              <Link className="container-nav-link" href="/about-us">
                 Про компанію
-              </a>
+              </Link>
             </div>
             <h2 className="title">Про компанію</h2>
             <div className="about-company-block">
@@ -150,8 +151,8 @@ function AboutUs() {
                   на українському ринку, також наші меблі експортуються в інші
                   країни світу. Ми пишаємося тим, що за роки нашої роботи змогли
                   зарекомендувати себе, як надійного виробника та партнера. Наша
-                  компанія прагне створювати унікальні предмети інтерʼєру, які
-                  будуть радувати своїх власників довгі роки.
+                  компанія прагне створювати унікальні предмети інтер&#39;єру,
+                  які будуть радувати своїх власників довгі роки.
                 </p>
               </div>
               <div className="about-company-info">
@@ -164,8 +165,8 @@ function AboutUs() {
                   на українському ринку, також наші меблі експортуються в інші
                   країни світу. Ми пишаємося тим, що за роки нашої роботи змогли
                   зарекомендувати себе, як надійного виробника та партнера. Наша
-                  компанія прагне створювати унікальні предмети інтерʼєру, які
-                  будуть радувати своїх власників довгі роки.
+                  компанія прагне створювати унікальні предмети інтер&#39;єру,
+                  які будуть радувати своїх власників довгі роки.
                 </p>
                 <ul className="about-company-gallery-list list">
                   <li className="about-company-gallery-item">

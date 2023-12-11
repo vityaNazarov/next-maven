@@ -50,7 +50,9 @@
 /* ==================================== min-width: 768px ==================================== */
 @media screen and (min-width: 768px) {
   .serial-caegories-list {
+    justify-content: flex-start;
     row-gap: 24px;
+    column-gap: 24px;
   }
 
   .serial-caegories-img {

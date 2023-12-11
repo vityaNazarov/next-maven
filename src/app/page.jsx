@@ -1,7 +1,12 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
 
-export default function Home() {
+import Image from "next/image";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
+
+function Main() {
+  const { t } = useTranslation();
+
   return (
     <>
       <svg
@@ -64,29 +69,25 @@ export default function Home() {
           </filter>
         </defs>
       </svg>
+
       <main>
-        {/* ГОЛОВНИЙ ЕКРАН */}
         <section className="main-hero">
           <div className="container container-hero">
             <div className="hero">
               <h1 className="hero-title">MAVEN GROUP</h1>
-              <p className="hero-text">
-                Виробництво мяких меблів для готелів, ресторанів, кафе та
-                індивідуальних просторів
-              </p>
-              <button className="hero-btn" type="button">
-                КАТАЛОГ
-              </button>
+              <p className="hero-text">{t("Main_title")}</p>
+              <Link href="/catalog" className="hero-btn">
+                <p>{t("Main_catalogue_btn")} </p>
+              </Link>
             </div>
           </div>
         </section>
-        {/* ПЕРЕВАГИ */}
+
         <section className="advantages-section">
           <div className="container">
-            <p className="advantages-suptitle">НАШІ ПЕРЕВАГИ</p>
+            <p className="advantages-suptitle">{t("Our_advantages")}</p>
             <h2 className="advantages-section-title">
-              Які наші основні метрики, завдяки яким ми маємо велику кількість
-              задоволених клієнтів?
+              {t("Advantages_title")}
             </h2>
             <ul className="advantages">
               <li className="advantages-block list">
@@ -104,11 +105,13 @@ export default function Home() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">Надійність продукту</h3>
+                  <h3 className="advantages-title">
+                    {t("Product_reliability")}
+                  </h3>
                 </div>
+
                 <p className="advantages-text">
-                  Наші меблі випробувані тисячами людей та роками вашої довіри.
-                  Надійність продукту є основним правилом нашої компанії
+                  {t("Product_reliability_text")}
                 </p>
               </li>
               <li className="advantages-block list">
@@ -132,13 +135,10 @@ export default function Home() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">Час</h3>
+                  <h3 className="advantages-title">{t("Time")}</h3>
                 </div>
-                <p className="advantages-text">
-                  Для нас є важливим виконання замовлення вчасно та у найкоротші
-                  сроки, задля того, щоб ви скоріше отримали шамточок мистецтва
-                  у ваш інтер’єр
-                </p>
+
+                <p className="advantages-text">{t("Time_text")}</p>
               </li>
               <li className="advantages-block list">
                 <div className="advantages-block-main">
@@ -155,13 +155,10 @@ export default function Home() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">Єдність</h3>
+                  <h3 className="advantages-title">{t("Unity")}</h3>
                 </div>
-                <p className="advantages-text">
-                  Єдність команди - це важливий момент у злагодженій праці та
-                  ідеального виробу на фініші робочого процесу, який буде довго
-                  радувати своїх власників
-                </p>
+
+                <p className="advantages-text">{t("Unity_text")}</p>
               </li>
               <li className="advantages-block list">
                 <div className="advantages-block-main">
@@ -178,14 +175,10 @@ export default function Home() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">
-                    Особистий підхід до кожного клієнта
-                  </h3>
+                  <h3 className="advantages-title">{t("Personal_approach")}</h3>
                 </div>
-                <p className="advantages-text">
-                  Ми працюємо з особистими запитами наших клієнтів, щоб
-                  максимально задовольнити кожну вашу ідею та запит
-                </p>
+
+                <p className="advantages-text">{t("Personal_approach_text")}</p>
               </li>
               <li className="advantages-block list">
                 <div className="advantages-block-main">
@@ -202,13 +195,10 @@ export default function Home() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">Висока якість матеріалів</h3>
+                  <h3 className="advantages-title">{t("High_quality")}</h3>
                 </div>
-                <p className="advantages-text">
-                  Ми обираємо лише найякісніші матеріали у виробництві своїх
-                  виробів, щоб забезпечити високу якість продукції та
-                  задоволення потреб своїх клієнтів
-                </p>
+
+                <p className="advantages-text">{t("High_quality_text")}</p>
               </li>
               <li className="advantages-block list">
                 <div className="advantages-block-main">
@@ -225,12 +215,10 @@ export default function Home() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">Інновації</h3>
+                  <h3 className="advantages-title">{t("Innovation")}</h3>
                 </div>
-                <p className="advantages-text">
-                  Нові технології у нашому виробництві є невідємною частниною
-                  запоруки успіху у досяганні якості та надійності наших виробів
-                </p>
+
+                <p className="advantages-text">{t("Innovation_text")}</p>
               </li>
             </ul>
             <div className="advantages-block-last">
@@ -248,20 +236,20 @@ export default function Home() {
                     fill="#A8A198"
                   />
                 </svg>
-                <h3 className="advantages-title">Професійний колектив</h3>
+                <h3 className="advantages-title">{t("Professional_team")}</h3>
               </div>
-              <p className="advantages-text">
-                В нашій команді працюють професіонали, які здатні втілити
-                будь-яку вашу ідею в життя швидко та якісно
-              </p>
+
+              <p className="advantages-text">{t("Professional_team_text")}</p>
             </div>
           </div>
         </section>
+
         {/* КАРУСЕЛЬ */}
+
         <section className="carousel-section">
           <div className="container">
-            <button className="chevron-btn chevron-btn-carousel" type="button">
-              ДО КАТАЛОГУ
+            <Link href="/catalog" className="chevron-btn chevron-btn-carousel">
+              <p>{t("to_the_catalogue")}</p>
               <svg
                 className="chevron-svg"
                 width="24"
@@ -275,74 +263,221 @@ export default function Home() {
                   fill="#232427"
                 />
               </svg>
-            </button>
-            <ul className="carousel-list list">
-              <li className="carousel-list-item">
-                <img
-                  className="carousel-list-img"
-                  src="/images/img/carusel/carusel-secktop1.jpg"
-                  alt="стілець"
-                  width="302"
-                  height="302"
-                />
-              </li>
-              <li className="carousel-list-item">
-                <img
-                  className="carousel-list-img"
-                  src="/images/img/carusel/carusel-secktop2.jpg"
-                  alt="стілець"
-                  width="302"
-                  height="302"
-                />
-              </li>
-              <li className="carousel-list-item">
-                <img
-                  className="carousel-list-img"
-                  src="/images/img/carusel/carusel-secktop3.jpg"
-                  alt="стілець"
-                  width="302"
-                  height="302"
-                />
-              </li>
-              <li className="carousel-list-item">
-                <img
-                  className="carousel-list-img"
-                  src="/images/img/carusel/carusel-secktop4.jpg"
-                  alt="стілець"
-                  width="302"
-                  height="302"
-                />
-              </li>
-            </ul>
-          </div>
-          <div className="carousel-slider-div">
-            <svg
-              className="carousel-slider"
-              width="96"
-              height="16"
-              viewBox="0 0 96 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="8" cy="8" r="8" fill="#A8A198" />
-              <circle cx="48" cy="8" r="8" fill="#CACACA" />
-              <circle cx="88" cy="8" r="8" fill="#CACACA" />
-            </svg>
+            </Link>
+
+            <div className="slider">
+              <div className="slide-track">
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-armchair1.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-barchair1.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-chair1.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-sofa1.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-armchair2.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-barchair2.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-chair2.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-sofa2.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-armchair3.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-barchair3.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-chair3.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-sofa3.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-armchair4.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-barchair4.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-sofa4.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-sofa5.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+
+                {/* same sliders */}
+
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-armchair1.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-barchair1.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-chair1.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-sofa1.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-armchair2.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
+
         {/* ІНСТА БЛОК */}
+
         <section className="inst-section inst-section-mobile">
           <div className="container inst-section-container">
             <h3 className="inst-title">@maven.furniture.group</h3>
             <div className="inst-block-flex">
-              <img
+              <Image
                 className="inst-img"
                 src="/images/img/inst-section/image-example2.jpg"
                 alt="example"
                 width="167"
                 height="167"
               />
-              <img
+              <Image
                 className="inst-img"
                 src="/images/img/inst-section/image-example6.jpg"
                 alt="example"
@@ -355,16 +490,13 @@ export default function Home() {
               нашої продукції, станете свідком народження нових колекцій меблів
               та зануритесь у атмосферу нашої компанії.
             </p>
-            <img
+            <Image
               width="343"
               height="132"
               src="/images/img/inst-section/inst-img-mobile.jpg"
               alt=""
             />
-            <button
-              className="chevron-btn chevron-btn-inst-mobile"
-              type="button"
-            >
+            <a href="" className="chevron-btn chevron-btn-inst-mobile">
               Перейти до Інстаграм
               <svg
                 className="chevron-svg"
@@ -379,20 +511,21 @@ export default function Home() {
                   fill="#232427"
                 />
               </svg>
-            </button>
+            </a>
           </div>
         </section>
+
         <section className="inst-section inst-section-tablet">
           <div className="container inst-section-container">
             <div className="inst-block-column">
-              <img
+              <Image
                 className="inst-img"
                 src="/images/img/inst-section/image-example1.jpg"
                 alt="example"
                 width="164"
                 height="164"
               />
-              <img
+              <Image
                 className="inst-img"
                 src="/images/img/inst-section/image-example2.jpg"
                 alt="example"
@@ -400,6 +533,7 @@ export default function Home() {
                 height="164"
               />
             </div>
+
             <div className="inst-info">
               <h3 className="inst-title">@maven.furniture.group</h3>
               <p className="inst-text">
@@ -407,12 +541,13 @@ export default function Home() {
                 нашої продукції, станете свідком народження нових колекцій
                 меблів та зануритесь у атмосферу нашої компанії.
               </p>
-              <img
+              <Image
                 width="312"
                 height="132"
                 src="/images/img/inst-section/inst-img-mobile.jpg"
                 alt=""
               />
+
               <button className="chevron-btn chevron-btn-inst" type="button">
                 Перейти до Інстаграм
                 <svg
@@ -430,15 +565,16 @@ export default function Home() {
                 </svg>
               </button>
             </div>
+
             <div className="inst-block-column">
-              <img
+              <Image
                 className="inst-img"
                 src="/images/img/inst-section/image-example5.jpg"
                 alt="example"
                 width="164"
                 height="164"
               />
-              <img
+              <Image
                 className="inst-img"
                 src="/images/img/inst-section/image-example6.jpg"
                 alt="example"
@@ -448,18 +584,19 @@ export default function Home() {
             </div>
           </div>
         </section>
+
         <section className="inst-section inst-section-decktop">
           <div className="container inst-section-container">
             <div className="inst-block">
               <div className="inst-block-column">
-                <img
+                <Image
                   className="inst-img"
                   src="/images/img/inst-section/image-example1.jpg"
                   alt="example"
                   width="193"
                   height="193"
                 />
-                <img
+                <Image
                   className="inst-img"
                   src="/images/img/inst-section/image-example2.jpg"
                   alt="example"
@@ -467,10 +604,11 @@ export default function Home() {
                   height="193"
                 />
               </div>
-              <img
+              <Image
                 className="inst-img"
                 src="/images/img/inst-section/image-example3.jpg"
                 alt="example"
+                priority={true}
                 width="186"
                 height="418"
               />
@@ -482,6 +620,7 @@ export default function Home() {
                 нашої продукції, станете свідком народження нових колекцій
                 меблів та зануритесь у атмосферу нашої компанії.
               </p>
+
               <button className="chevron-btn chevron-btn-inst" type="button">
                 Перейти до Інстаграм
                 <svg
@@ -500,7 +639,7 @@ export default function Home() {
               </button>
             </div>
             <div className="inst-block">
-              <img
+              <Image
                 className="inst-img"
                 src="/images/img/inst-section/image-example4.jpg"
                 alt="example"
@@ -508,14 +647,14 @@ export default function Home() {
                 height="418"
               />
               <div className="inst-block-column">
-                <img
+                <Image
                   className="inst-img"
                   src="/images/img/inst-section/image-example5.jpg"
                   alt="example"
                   width="193"
                   height="193"
                 />
-                <img
+                <Image
                   className="inst-img"
                   src="/images/img/inst-section/image-example6.jpg"
                   alt="example"
@@ -530,3 +669,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Main;
