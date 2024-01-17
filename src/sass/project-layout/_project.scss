@@ -13,6 +13,15 @@
   align-items: center;
 }
 
+.arrow-back {
+  transition: all 250ms ease-in-out;
+}
+
+.arrow-back-link:hover .arrow-back {
+  transform: rotate(180deg) translateX(5px) scale(1.06);
+  transition: all 250ms ease-in-out;
+}
+
 .project-info-about {
   display: flex;
   align-items: center;
@@ -47,9 +56,15 @@
   margin-bottom: 24px;
 }
 
+.project-inst-link:hover .project-link-svg {
+  transform: scale(1.15);
+  transition: all 250ms ease-in-out;
+}
+
 .project-link-svg {
   width: 23px;
   height: 23px;
+  transition: all 250ms ease-in-out;
 }
 
 .project-link {

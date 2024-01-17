@@ -1,28 +1,81 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Spinner from "@/components/spinner/Spinner";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import { useCartStore } from "@/utils/store";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
-async function getData() {
-  const res = await fetch(`http://localhost:3000/api/products`, {
-    mode: "cors",
-    cache: "no-store",
-  });
+const Category = ({ params }) => {
+  const [dataCategory, setDataCategory] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+  const localStorageKey = `addedToCart_${params.id || ""}` === true;
+  const initialAddedToCartMap =
+    JSON.parse(localStorage.getItem(localStorageKey)) || {};
+  const [addedToCartMap, setAddedToCartMap] = useState(initialAddedToCartMap);
+
+  const { t } = useTranslation();
+  const { addToCart } = useCartStore();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/api/products`, {
+          mode: "cors",
+          cache: "no-store",
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await res.json();
+        const { category } = params;
+        const filteredData = data.filter((item) => item.category === category);
+        setDataCategory(filteredData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [params]);
+
+  const handleAddToCart = (item) => {
+    addToCart({
+      id: item._id,
+      title: item.name,
+      code: item.code,
+      img: item.img1,
+      price: item.price,
+    });
+
+    setAddedToCartMap((prevMap) => ({ ...prevMap, [item._id]: true }));
+    localStorage.setItem(
+      localStorageKey,
+      JSON.stringify({ ...addedToCartMap, [item._id]: true })
+    );
+    localStorage.removeItem("addedToCart_undefined", "true");
+
+    toast.success(t("Product_id_btn_added_to_cart"), { autoClose: 1500 });
+  };
+
+  if (loading) {
+    return (
+      <div className="spinner-container">
+        <Spinner loading={loading} />
+      </div>
+    );
   }
 
-  return res.json();
-}
-
-const Category = async ({ params }) => {
-  const data = await getData();
-
-  const { category } = params;
-  const dataCategory = data.filter((item) => item.category == category);
-
   return (
-    <div>
+    <>
       <svg
         className="nonsense-svg"
         width="48"
@@ -83,13 +136,12 @@ const Category = async ({ params }) => {
           </filter>
         </defs>
       </svg>
-
       <main>
         <section className="catalog">
           <div className="container catalog-container">
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -105,7 +157,7 @@ const Category = async ({ params }) => {
                 />
               </svg>
               <Link className="container-nav-link" href="/catalog">
-                Каталог
+                {t("Breadcrumbs_catalog")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -124,7 +176,7 @@ const Category = async ({ params }) => {
                 className="container-nav-link"
                 href="/serial-products-section"
               >
-                Серійні вироби
+                {t("Breadcrumbs_serial_products")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -140,13 +192,18 @@ const Category = async ({ params }) => {
                 />
               </svg>
               <Link className="container-nav-link" href="">
-                {dataCategory[0].categoryname}
+                {i18next.language === "ua"
+                  ? dataCategory[0].categoryname
+                  : dataCategory[0].categorynameEng}
               </Link>
             </div>
 
             <div>
               <h2 className="title serial-products-title">
-                <Link href="/serial-products-section">
+                <Link
+                  href="/serial-products-section"
+                  className="arrow-back-link"
+                >
                   <svg
                     className="arrow-back-products"
                     width="16"
@@ -162,25 +219,29 @@ const Category = async ({ params }) => {
                   </svg>
                 </Link>
 
-                {dataCategory[0].categoryname}
+                {i18next.language === "ua"
+                  ? dataCategory[0].categoryname
+                  : dataCategory[0].categorynameEng}
               </h2>
 
               <div className="subsection-caegories">
                 <ul className="subsection-caegories-list list">
                   {dataCategory.map((item) => (
                     <li className="subsection-caegories-item" key={item._id}>
-                      <Link
-                        className="subsection-caegories-link"
-                        href={`/product-card/${item._id}`}
-                      >
-                        <Image
-                          width={150}
-                          height={150}
-                          className="subsection-caegories-img"
-                          src={item.img1}
-                          alt={item.name}
-                        />
-                      </Link>
+                      <div className="serial-caegories-img-wrapper">
+                        <Link
+                          className="subsection-caegories-link"
+                          href={`/product-card/${item._id}`}
+                        >
+                          <Image
+                            width={150}
+                            height={150}
+                            className="subsection-caegories-img"
+                            src={item.img1}
+                            alt={item.name}
+                          />
+                        </Link>
+                      </div>
                       <div className="subsection-caegories-info">
                         <div className="subsection-caegories-infoproduct">
                           <h3 className="subsection-caegories-nameproduct">
@@ -205,21 +266,47 @@ const Category = async ({ params }) => {
                             </p>
                           </div>
                         </div>
-                        <button className="subsection-caegories-btn">
-                          <svg
-                            className="subsection-caegories-svg"
-                            width="24"
-                            height="22"
-                            viewBox="0 0 24 22"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
+
+                        {!addedToCartMap[item._id] ? (
+                          <button
+                            className="subsection-caegories-btn"
+                            onClick={() => handleAddToCart(item)}
                           >
-                            <path
-                              d="M5.5 22C5.1 22 4.75 21.85 4.45 21.55C4.15 21.25 4 20.9 4 20.5V7.5C4 7.1 4.15 6.75 4.45 6.45C4.75 6.15 5.1 6 5.5 6H8.25V5.75C8.25 4.7 8.6125 3.8125 9.3375 3.0875C10.0625 2.3625 10.95 2 12 2C13.05 2 13.9375 2.3625 14.6625 3.0875C15.3875 3.8125 15.75 4.7 15.75 5.75V6H18.5C18.9 6 19.25 6.15 19.55 6.45C19.85 6.75 20 7.1 20 7.5V20.5C20 20.9 19.85 21.25 19.55 21.55C19.25 21.85 18.9 22 18.5 22H5.5ZM5.5 20.5H18.5V7.5H15.75V9.75C15.75 9.9625 15.6777 10.1406 15.5331 10.2844C15.3885 10.4281 15.2094 10.5 14.9956 10.5C14.7819 10.5 14.6042 10.4281 14.4625 10.2844C14.3208 10.1406 14.25 9.9625 14.25 9.75V7.5H9.75V9.75C9.75 9.9625 9.67771 10.1406 9.53313 10.2844C9.38853 10.4281 9.20936 10.5 8.99563 10.5C8.78188 10.5 8.60417 10.4281 8.4625 10.2844C8.32083 10.1406 8.25 9.9625 8.25 9.75V7.5H5.5V20.5ZM9.75 6H14.25V5.75C14.25 5.11667 14.0333 4.58333 13.6 4.15C13.1667 3.71667 12.6333 3.5 12 3.5C11.3667 3.5 10.8333 3.71667 10.4 4.15C9.96667 4.58333 9.75 5.11667 9.75 5.75V6Z"
-                              fill="#232427"
-                            />
-                          </svg>
-                        </button>
+                            <svg
+                              className="subsection-caegories-svg"
+                              width="24"
+                              height="22"
+                              viewBox="0 0 24 22"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M5.5 22C5.1 22 4.75 21.85 4.45 21.55C4.15 21.25 4 20.9 4 20.5V7.5C4 7.1 4.15 6.75 4.45 6.45C4.75 6.15 5.1 6 5.5 6H8.25V5.75C8.25 4.7 8.6125 3.8125 9.3375 3.0875C10.0625 2.3625 10.95 2 12 2C13.05 2 13.9375 2.3625 14.6625 3.0875C15.3875 3.8125 15.75 4.7 15.75 5.75V6H18.5C18.9 6 19.25 6.15 19.55 6.45C19.85 6.75 20 7.1 20 7.5V20.5C20 20.9 19.85 21.25 19.55 21.55C19.25 21.85 18.9 22 18.5 22H5.5ZM5.5 20.5H18.5V7.5H15.75V9.75C15.75 9.9625 15.6777 10.1406 15.5331 10.2844C15.3885 10.4281 15.2094 10.5 14.9956 10.5C14.7819 10.5 14.6042 10.4281 14.4625 10.2844C14.3208 10.1406 14.25 9.9625 14.25 9.75V7.5H9.75V9.75C9.75 9.9625 9.67771 10.1406 9.53313 10.2844C9.38853 10.4281 9.20936 10.5 8.99563 10.5C8.78188 10.5 8.60417 10.4281 8.4625 10.2844C8.32083 10.1406 8.25 9.9625 8.25 9.75V7.5H5.5V20.5ZM9.75 6H14.25V5.75C14.25 5.11667 14.0333 4.58333 13.6 4.15C13.1667 3.71667 12.6333 3.5 12 3.5C11.3667 3.5 10.8333 3.71667 10.4 4.15C9.96667 4.58333 9.75 5.11667 9.75 5.75V6Z"
+                                fill="#232427"
+                              />
+                            </svg>
+                          </button>
+                        ) : (
+                          <button className="subsection-caegories-btn-done">
+                            <svg
+                              className="subsection-caegories-svg"
+                              width="24"
+                              height="22"
+                              viewBox="0 0 40 40"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M17.55 31L11.85 25.3L13.275 23.875L17.55 28.15L26.725 18.975L28.15 20.4L17.55 31Z"
+                                fill="#232427"
+                              />
+                              <path
+                                d="M9.16663 36.6667C8.49996 36.6667 7.91663 36.4167 7.41663 35.9167C6.91663 35.4167 6.66663 34.8334 6.66663 34.1667V12.5C6.66663 11.8334 6.91663 11.25 7.41663 10.75C7.91663 10.25 8.49996 10 9.16663 10H13.75V9.58337C13.75 7.83337 14.3541 6.35421 15.5625 5.14587C16.7708 3.93754 18.25 3.33337 20 3.33337C21.75 3.33337 23.2291 3.93754 24.4375 5.14587C25.6458 6.35421 26.25 7.83337 26.25 9.58337V10H30.8333C31.5 10 32.0833 10.25 32.5833 10.75C33.0833 11.25 33.3333 11.8334 33.3333 12.5V34.1667C33.3333 34.8334 33.0833 35.4167 32.5833 35.9167C32.0833 36.4167 31.5 36.6667 30.8333 36.6667H9.16663ZM9.16663 34.1667H30.8333V12.5H26.25V16.25C26.25 16.6042 26.1295 16.9011 25.8885 17.1407C25.6475 17.3802 25.3489 17.5 24.9927 17.5C24.6364 17.5 24.3402 17.3802 24.1041 17.1407C23.868 16.9011 23.75 16.6042 23.75 16.25V12.5H16.25V16.25C16.25 16.6042 16.1295 16.9011 15.8885 17.1407C15.6475 17.3802 15.3489 17.5 14.9927 17.5C14.6364 17.5 14.3402 17.3802 14.1041 17.1407C13.868 16.9011 13.75 16.6042 13.75 16.25V12.5H9.16663V34.1667ZM16.25 10H23.75V9.58337C23.75 8.52782 23.3888 7.63893 22.6666 6.91671C21.9444 6.19448 21.0555 5.83337 20 5.83337C18.9444 5.83337 18.0555 6.19448 17.3333 6.91671C16.6111 7.63893 16.25 8.52782 16.25 9.58337V10Z"
+                                fill="#232427"
+                              />
+                            </svg>
+                          </button>
+                        )}
                       </div>
                     </li>
                   ))}
@@ -229,7 +316,7 @@ const Category = async ({ params }) => {
           </div>
         </section>
       </main>
-    </div>
+    </>
   );
 };
 

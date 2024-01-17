@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 function Catalog() {
+  const { t } = useTranslation();
+
   return (
     <>
       <svg
@@ -74,7 +79,7 @@ function Catalog() {
 
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -90,12 +95,12 @@ function Catalog() {
                 />
               </svg>
               <Link className="container-nav-link" href="/catalog">
-                Каталог
+                {t("Breadcrumbs_catalog")}
               </Link>
             </div>
 
             <div>
-              <h2 className="title">Каталог</h2>
+              <h2 className="title">{t("Catalog_title")}</h2>
               <div className="catalog-block">
                 <ul className="catalog-block-list list">
                   <li className="catalog-block-item">
@@ -129,7 +134,9 @@ function Catalog() {
                         />
                       </picture>
 
-                      <p className="catalog-block-text">серійні вироби</p>
+                      <p className="catalog-block-text">
+                        {t("Serial_products")}
+                      </p>
                     </Link>
                   </li>
                   <li className="catalog-block-item">
@@ -163,7 +170,9 @@ function Catalog() {
                         />
                       </picture>
 
-                      <p className="catalog-block-text">індивідуальні вироби</p>
+                      <p className="catalog-block-text">
+                        {t("Individual_products")}
+                      </p>
                     </Link>
                   </li>
                 </ul>

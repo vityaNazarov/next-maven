@@ -8,28 +8,37 @@ import TranslateBlock from "../translateBlock/translateBlock";
 import "../../app/i18n";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import { useCartStore } from "@/utils/store";
 
 function Header() {
   const [menuActive, setMenuActive] = useState(false);
   const [dropdownActive, setDropdownActive] = useState(false);
   const [translate, setTranslate] = useState(false);
 
+  const { totalItems } = useCartStore();
+
   const { t } = useTranslation();
 
-  const listRef = useRef(null);
-
-  const handleClick = (event) => {
-    if (listRef.current && !listRef.current.contains(event.target)) {
-      setDropdownActive(false);
-    }
-  };
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
-    document.addEventListener("mouseup", handleClick);
-    return () => {
-      document.removeEventListener("mouseup", handleClick);
+    if (!dropdownActive && !translate) {
+      return;
+    }
+
+    const handleClick = (e) => {
+      if (!dropdownRef.current) return;
+      if (!dropdownRef.current.contains(e.target)) {
+        setDropdownActive(false);
+        setTranslate(false);
+      }
     };
-  }, []);
+
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, [dropdownActive, translate]);
 
   return (
     <header className="page-header">
@@ -50,6 +59,7 @@ function Header() {
               <div
                 className="dropdown"
                 onClick={() => setDropdownActive(!dropdownActive)}
+                ref={dropdownRef}
               >
                 <span className="menu-link link">{t("About_us")} </span>
                 <svg
@@ -72,8 +82,6 @@ function Header() {
                 className={`desktop-dropdown-block ${
                   dropdownActive ? "active" : ""
                 }`}
-                onClick={() => setDropdownActive(false)}
-                ref={listRef}
               >
                 <ul className="desktop-dropdown list">
                   <li className="desktop-dropdown-item">
@@ -87,28 +95,29 @@ function Header() {
             </li>
             <li className="menu-item">
               <Link className="menu-link link" href="/projects">
-                {t("Projects")}
+                <span className="menu-link-text">{t("Projects")}</span>
               </Link>
             </li>
             <li className="menu-item">
               <Link className="menu-link link" href="/catalog">
-                {t("Catalogue")}
+                <span className="menu-link-text">{t("Catalogue")}</span>
               </Link>
             </li>
             <li className="menu-item">
               <Link className="menu-link link" href="/individual-projects">
-                {t("Individual_projects")}
+                <span className="menu-link-text">
+                  {t("Individual_projects")}
+                </span>
               </Link>
             </li>
             <li className="menu-item">
               <Link className="menu-link link" href="/business">
-                В2В
+                <span className="menu-link-text">В2В</span>
               </Link>
             </li>
             <li className="menu-item">
               <Link className="menu-link link" href="/contacts">
-                {t("Contacts")}
-                {/* Контакти */}
+                <span className="menu-link-text">{t("Contacts")}</span>
               </Link>
             </li>
           </ul>
@@ -129,17 +138,34 @@ function Header() {
                 fill="#232427"
               />
             </svg>
+
+            {totalItems ? (
+              <div className="header-total-items-circle">
+                <span className="header-total-items-count">{totalItems}</span>
+              </div>
+            ) : (
+              ""
+            )}
           </Link>
+
           <button
             onClick={() => {
               setTranslate(!translate);
             }}
+            ref={dropdownRef}
             type="button"
             className="translate-btn"
           >
             {i18next.language}
           </button>
-          {translate ? <TranslateBlock setTranslate={setTranslate} /> : ""}
+          <div
+            className={
+              !translate ? " dropdown-translate" : " dropdown-translate active"
+            }
+          >
+            <TranslateBlock setTranslate={setTranslate} />
+          </div>
+
           <button
             type="button"
             className="mobile-menu-open"

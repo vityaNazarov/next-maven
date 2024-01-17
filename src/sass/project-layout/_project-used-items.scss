@@ -47,6 +47,24 @@
   letter-spacing: 0.017px;
 }
 
+.project-used-furniture {
+  transition: all 250ms ease-in-out;
+}
+
+.project-used-item:hover .project-used-furniture {
+  transform: scale(1.05);
+  transition: transform 250ms ease-in-out;
+}
+
+.used_items_text {
+  color: var(--text-dark);
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5; /* 30px */
+  letter-spacing: 0.017px;
+}
+
 //
 //
 //
@@ -96,6 +114,11 @@
     font-size: 16px;
     letter-spacing: 0.019px;
   }
+
+  .used_items_text {
+    font-size: 16px;
+    letter-spacing: 0.019px;
+  }
 }
 
 //
@@ -136,6 +159,11 @@
   }
 
   .project-used-text {
+    font-size: 20px;
+    letter-spacing: 0.024px;
+  }
+
+  .used_items_text {
     font-size: 20px;
     letter-spacing: 0.024px;
   }

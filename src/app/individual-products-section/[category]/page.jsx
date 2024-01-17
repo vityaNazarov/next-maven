@@ -1,25 +1,50 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Spinner from "@/components/spinner/Spinner";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
-async function getData() {
-  const res = await fetch(`http://localhost:3000/api/products`, {
-    mode: "cors",
-    cache: "no-store",
-  });
+const Category = ({ params }) => {
+  const [dataCategory, setDataCategory] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/api/products`, {
+          mode: "cors",
+          cache: "no-store",
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await res.json();
+        const { category } = params;
+        const filteredData = data.filter((item) => item.category === category);
+        setDataCategory(filteredData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [params]);
+
+  if (loading) {
+    return (
+      <div className="spinner-container">
+        <Spinner loading={loading} />
+      </div>
+    );
   }
-
-  return res.json();
-}
-
-const Category = async ({ params }) => {
-  const data = await getData();
-
-  const { category } = params;
-  const dataCategory = data.filter((item) => item.category == category);
 
   return (
     <div>
@@ -89,7 +114,7 @@ const Category = async ({ params }) => {
           <div className="container catalog-container">
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -105,7 +130,7 @@ const Category = async ({ params }) => {
                 />
               </svg>
               <Link className="container-nav-link" href="/catalog">
-                Каталог
+                {t("Breadcrumbs_catalog")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -124,7 +149,7 @@ const Category = async ({ params }) => {
                 className="container-nav-link"
                 href="/individual-products-section"
               >
-                Індивідуальні вироби
+                {t("Breadcrumbs_individual_products")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -140,13 +165,18 @@ const Category = async ({ params }) => {
                 />
               </svg>
               <Link className="container-nav-link" href="">
-                {dataCategory[0].categoryname}
+                {i18next.language === "ua"
+                  ? dataCategory[0].categoryname
+                  : dataCategory[0].categorynameEng}
               </Link>
             </div>
 
             <div>
               <h2 className="title serial-products-title">
-                <Link href="/individual-products-section">
+                <Link
+                  href="/individual-products-section"
+                  className="arrow-back-link"
+                >
                   <svg
                     className="arrow-back-products"
                     width="16"
@@ -162,7 +192,9 @@ const Category = async ({ params }) => {
                   </svg>
                 </Link>
 
-                {dataCategory[0].categoryname}
+                {i18next.language === "ua"
+                  ? dataCategory[0].categoryname
+                  : dataCategory[0].categorynameEng}
               </h2>
 
               <div className="subsection-caegories">
@@ -186,40 +218,7 @@ const Category = async ({ params }) => {
                           <h3 className="subsection-caegories-nameproduct">
                             {item.name}
                           </h3>
-                          {/* <div className="priceproduct">
-                            <svg
-                              className="subsection-caegories-priceproduct-svg"
-                              width="16"
-                              height="20"
-                              viewBox="0 0 16 20"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M7.88 19.24C6.568 19.24 5.44 19.048 4.496 18.664C3.568 18.264 2.856 17.696 2.36 16.96C1.864 16.208 1.616 15.32 1.616 14.296C1.616 13.576 1.8 12.904 2.168 12.28C2.536 11.64 3.072 11.112 3.776 10.696C4.496 10.28 5.368 10.048 6.392 10L7.76 8.968C8.64 8.968 9.352 8.848 9.896 8.608C10.456 8.368 10.888 8.056 11.192 7.672C11.512 7.288 11.728 6.864 11.84 6.4C11.968 5.936 12.032 5.488 12.032 5.056C12.032 4.112 11.68 3.416 10.976 2.968C10.272 2.504 9.392 2.28 8.336 2.296C7.6 2.296 6.952 2.392 6.392 2.584C5.832 2.76 5.344 3.008 4.928 3.328C4.528 3.648 4.176 4.04 3.872 4.504C3.696 4.808 3.432 5.016 3.08 5.128C2.728 5.24 2.4 5.2 2.096 5.008C1.824 4.832 1.664 4.592 1.616 4.288C1.584 3.968 1.68 3.632 1.904 3.28C2.352 2.624 2.864 2.056 3.44 1.576C4.032 1.096 4.72 0.719999 5.504 0.447999C6.304 0.175999 7.224 0.0399995 8.264 0.0399995C9.432 0.0399995 10.48 0.231999 11.408 0.615999C12.352 0.999999 13.096 1.56 13.64 2.296C14.2 3.032 14.48 3.928 14.48 4.984C14.48 5.496 14.384 6.04 14.192 6.616C14.016 7.176 13.736 7.704 13.352 8.2C12.968 8.696 12.48 9.096 11.888 9.4C11.296 9.704 10.592 9.856 9.776 9.856L8.672 11.2C7.584 11.2 6.696 11.352 6.008 11.656C5.336 11.96 4.84 12.36 4.52 12.856C4.216 13.336 4.064 13.84 4.064 14.368C4.064 15.2 4.4 15.848 5.072 16.312C5.744 16.76 6.68 16.984 7.88 16.984C8.616 16.984 9.32 16.888 9.992 16.696C10.68 16.488 11.28 16.216 11.792 15.88C12.32 15.528 12.68 15.152 12.872 14.752C13.016 14.448 13.224 14.224 13.496 14.08C13.784 13.92 14.072 13.872 14.36 13.936C14.776 14.016 15.056 14.2 15.2 14.488C15.36 14.776 15.368 15.088 15.224 15.424C14.888 16.192 14.336 16.864 13.568 17.44C12.816 18.016 11.944 18.464 10.952 18.784C9.96 19.088 8.936 19.24 7.88 19.24ZM1.232 11.2C0.896 11.2 0.616 11.096 0.392 10.888C0.184 10.664 0.08 10.384 0.08 10.048C0.08 9.712 0.184 9.44 0.392 9.232C0.616 9.008 0.896 8.896 1.232 8.896H14.792C15.128 8.896 15.4 9.008 15.608 9.232C15.832 9.44 15.944 9.712 15.944 10.048C15.944 10.384 15.832 10.664 15.608 10.888C15.4 11.096 15.128 11.2 14.792 11.2H1.232Z"
-                                fill="#979797"
-                              />
-                            </svg>
-                            <p className="subsection-caegories-priceproduct">
-                              {item.price}
-                            </p>
-                          </div> */}
                         </div>
-                        {/* <button className="subsection-caegories-btn">
-                          <svg
-                            className="subsection-caegories-svg"
-                            width="24"
-                            height="22"
-                            viewBox="0 0 24 22"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M5.5 22C5.1 22 4.75 21.85 4.45 21.55C4.15 21.25 4 20.9 4 20.5V7.5C4 7.1 4.15 6.75 4.45 6.45C4.75 6.15 5.1 6 5.5 6H8.25V5.75C8.25 4.7 8.6125 3.8125 9.3375 3.0875C10.0625 2.3625 10.95 2 12 2C13.05 2 13.9375 2.3625 14.6625 3.0875C15.3875 3.8125 15.75 4.7 15.75 5.75V6H18.5C18.9 6 19.25 6.15 19.55 6.45C19.85 6.75 20 7.1 20 7.5V20.5C20 20.9 19.85 21.25 19.55 21.55C19.25 21.85 18.9 22 18.5 22H5.5ZM5.5 20.5H18.5V7.5H15.75V9.75C15.75 9.9625 15.6777 10.1406 15.5331 10.2844C15.3885 10.4281 15.2094 10.5 14.9956 10.5C14.7819 10.5 14.6042 10.4281 14.4625 10.2844C14.3208 10.1406 14.25 9.9625 14.25 9.75V7.5H9.75V9.75C9.75 9.9625 9.67771 10.1406 9.53313 10.2844C9.38853 10.4281 9.20936 10.5 8.99563 10.5C8.78188 10.5 8.60417 10.4281 8.4625 10.2844C8.32083 10.1406 8.25 9.9625 8.25 9.75V7.5H5.5V20.5ZM9.75 6H14.25V5.75C14.25 5.11667 14.0333 4.58333 13.6 4.15C13.1667 3.71667 12.6333 3.5 12 3.5C11.3667 3.5 10.8333 3.71667 10.4 4.15C9.96667 4.58333 9.75 5.11667 9.75 5.75V6Z"
-                              fill="#232427"
-                            />
-                          </svg>
-                        </button> */}
                       </div>
                     </li>
                   ))}

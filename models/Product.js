@@ -47,7 +47,15 @@ const ProductSchema = new Schema(
       type: String,
       required: true,
     },
+    frameEng: {
+      type: String,
+      required: true,
+    },
     legs: {
+      type: String,
+      required: true,
+    },
+    legsEng: {
       type: String,
       required: true,
     },
@@ -55,7 +63,15 @@ const ProductSchema = new Schema(
       type: String,
       required: true,
     },
+    upholsteryEng: {
+      type: String,
+      required: true,
+    },
     categoryname: {
+      type: String,
+      required: true,
+    },
+    categorynameEng: {
       type: String,
       required: true,
     },

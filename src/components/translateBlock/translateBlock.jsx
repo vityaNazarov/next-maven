@@ -4,12 +4,16 @@ import React from "react";
 import i18next from "i18next";
 
 export default function TranslateBlock({ setTranslate }) {
+  const handleChangeLng = (lng) => {
+    i18next.changeLanguage(lng);
+    localStorage.setItem("lng", lng);
+  };
+
   return (
     <div className="translate-block">
       <button
-        disabled={i18next.language === "ua"}
         onClick={() => {
-          i18next.changeLanguage("ua");
+          handleChangeLng("ua");
           setTranslate(false);
         }}
         className={
@@ -22,7 +26,7 @@ export default function TranslateBlock({ setTranslate }) {
       </button>
       <button
         onClick={() => {
-          i18next.changeLanguage("eng");
+          handleChangeLng("eng");
           setTranslate(false);
         }}
         className={

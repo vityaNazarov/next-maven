@@ -1,5 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+import dynamic from "next/dynamic";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import Spinner from "@/components/spinner/Spinner";
+import i18next from "i18next";
+
+// Динамический импорт для использования на клиентской стороне
+const Image = dynamic(() => import("next/image"));
+const Link = dynamic(() => import("next/link"));
 
 async function GetFetch(id) {
   const res = await fetch(`http://localhost:3000/api/projects/${id}`, {
@@ -13,8 +21,38 @@ async function GetFetch(id) {
   return res.json();
 }
 
-const ProjectId = async ({ params }) => {
-  const data = await GetFetch(params.id);
+const ProjectId = ({ params }) => {
+  const [data, setData] = React.useState({});
+  const [loading, setLoading] = React.useState(true); // Состояние загрузки данных
+
+  const { t } = useTranslation();
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await GetFetch(params.id);
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        // После завершения запроса устанавливаем loading в false
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [params.id]);
+
+  if (loading) {
+    // Если данные загружаются, отображаем спиннер
+    return (
+      <div className="spinner-container">
+        <Spinner loading={loading} />
+      </div>
+    );
+  }
+
+  // Когда данные загружены, отображаем контент
 
   return (
     <>
@@ -84,7 +122,7 @@ const ProjectId = async ({ params }) => {
           <div className="container container-project">
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -100,7 +138,7 @@ const ProjectId = async ({ params }) => {
                 />
               </svg>
               <Link className="container-nav-link" href="/projects">
-                Проекти
+                {t("Breadcrumbs_projects")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -122,7 +160,7 @@ const ProjectId = async ({ params }) => {
 
             <div>
               <div className="project-info">
-                <Link href="/projects">
+                <Link href="/projects" className="arrow-back-link">
                   <svg
                     className="arrow-back"
                     width="16"
@@ -173,12 +211,14 @@ const ProjectId = async ({ params }) => {
                     />
                   </svg>
                   <a href={data.inst} target="_blank" className="project-link">
-                    Інстаграм закладу
+                    {t("Project_id_inst")}
                   </a>
                 </div>
               </div>
 
-              <p className="project-text-about">{data.text}</p>
+              <p className="project-text-about">
+                {i18next.language === "ua" ? data.text : data.textEng}
+              </p>
 
               <div className="project-gallery">
                 <ul className="project-gallery-list list">
@@ -257,31 +297,37 @@ const ProjectId = async ({ params }) => {
 
             <div>
               <h2 className="project-title-used-items">
-                Вироби, які були використані у цьому проєкті :
+                {t("Project_id_used_items")}
               </h2>
               <ul className="project-used list">
-                {data.usedItems.map((item, ind) => (
-                  <li className="project-used-item" key={ind}>
-                    <Link
-                      className="project-used-link"
-                      href={`/serial-products-section/${item.link}`}
-                    >
-                      <Image
-                        className="project-used-furniture"
-                        width="167"
-                        height="167"
-                        src={item.img}
-                        alt={item.name}
-                      />
-                      <div className="project-used-info">
-                        <h3 className="project-used-title">{item.name}</h3>
-                        <p className="project-used-text">
-                          Код продукту: {item.code}
-                        </p>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
+                {data.usedItems && data.usedItems[0]?.img ? (
+                  data.usedItems.map((item, ind) => (
+                    <li className="project-used-item" key={ind}>
+                      <Link
+                        className="project-used-link"
+                        href={`/serial-products-section/${item.link}`}
+                      >
+                        <Image
+                          className="project-used-furniture"
+                          width="167"
+                          height="167"
+                          src={item.img}
+                          alt={item.name}
+                        />
+                        <div className="project-used-info">
+                          <h3 className="project-used-title">{item.name}</h3>
+                          <p className="project-used-text">
+                            {t("Project_id_code")} {item.code}
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
+                  ))
+                ) : (
+                  <p className="used_items_text">
+                    {t("Project_used_items_text")}
+                  </p>
+                )}
               </ul>
             </div>
           </div>

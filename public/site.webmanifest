@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "MAVEN_GROUP",
+  "short_name": "Maven",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

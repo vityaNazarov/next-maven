@@ -485,11 +485,7 @@ function Main() {
                 height="167"
               />
             </div>
-            <p className="inst-text">
-              У нашому Інстаграм ви можете слідкувати за процесом виготовлення
-              нашої продукції, станете свідком народження нових колекцій меблів
-              та зануритесь у атмосферу нашої компанії.
-            </p>
+            <p className="inst-text">{t("Main_inst_text")}</p>
             <Image
               width="343"
               height="132"
@@ -497,7 +493,7 @@ function Main() {
               alt=""
             />
             <a href="" className="chevron-btn chevron-btn-inst-mobile">
-              Перейти до Інстаграм
+              {t("Main_inst_btn")}
               <svg
                 className="chevron-svg"
                 width="32"
@@ -536,11 +532,7 @@ function Main() {
 
             <div className="inst-info">
               <h3 className="inst-title">@maven.furniture.group</h3>
-              <p className="inst-text">
-                У нашому Інстаграм ви можете слідкувати за процесом виготовлення
-                нашої продукції, станете свідком народження нових колекцій
-                меблів та зануритесь у атмосферу нашої компанії.
-              </p>
+              <p className="inst-text">{t("Main_inst_text")}</p>
               <Image
                 width="312"
                 height="132"
@@ -549,7 +541,7 @@ function Main() {
               />
 
               <button className="chevron-btn chevron-btn-inst" type="button">
-                Перейти до Інстаграм
+                {t("Main_inst_btn")}
                 <svg
                   className="chevron-svg"
                   width="32"
@@ -615,14 +607,10 @@ function Main() {
             </div>
             <div className="inst-info">
               <h3 className="inst-title">@maven.furniture.group</h3>
-              <p className="inst-text">
-                У нашому Інстаграм ви можете слідкувати за процесом виготовлення
-                нашої продукції, станете свідком народження нових колекцій
-                меблів та зануритесь у атмосферу нашої компанії.
-              </p>
+              <p className="inst-text">{t("Main_inst_text")}</p>
 
               <button className="chevron-btn chevron-btn-inst" type="button">
-                Перейти до Інстаграм
+                {t("Main_inst_btn")}
                 <svg
                   className="chevron-svg"
                   width="24"

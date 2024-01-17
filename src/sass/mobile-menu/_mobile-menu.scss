@@ -4,32 +4,38 @@
   height: 100vh;
   opacity: 0;
   visibility: hidden;
-  transition: all 500ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
 .mobile-menu.active {
   opacity: 1;
   visibility: visible;
-  transition: opacity 500ms ease-in-out;
+  transition: opacity 250ms ease-in-out;
 }
 
 .backdrop {
+  background: rgba(28, 28, 28, 0.847);
   position: fixed;
+  z-index: 1001;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.881);
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mobile-section {
   position: fixed;
+  z-index: 1002;
   top: 50%;
   left: 50%;
   transform: translate(-50%);
   width: 265px;
   background-color: var(--background);
   border-radius: 16px;
+  overflow-y: scroll;
 }
 
 .mobile-section-list {
@@ -69,6 +75,12 @@
   width: 20px;
   height: 20px;
   transform: rotate(90deg);
+  transition: all 250ms ease-in-out;
+}
+
+.mobile-menu-chevron.active {
+  transform: rotate(-90deg);
+  transition: all 250ms ease-in-out;
 }
 
 .mobile-section-list-secondary {

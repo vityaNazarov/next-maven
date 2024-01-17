@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const SerialProductsSection = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <svg
@@ -70,7 +75,7 @@ const SerialProductsSection = () => {
           <div className="container catalog-container">
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -86,7 +91,7 @@ const SerialProductsSection = () => {
                 />
               </svg>
               <Link className="container-nav-link" href="/catalog">
-                Каталог
+                {t("Breadcrumbs_catalog")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -105,13 +110,13 @@ const SerialProductsSection = () => {
                 className="container-nav-link"
                 href="/serial-products-section"
               >
-                Серійні вироби
+                {t("Breadcrumbs_serial_products")}
               </Link>
             </div>
 
             <div>
               <h2 className="title serial-products-title">
-                <Link href="/catalog">
+                <Link href="/catalog" className="arrow-back-link">
                   <svg
                     className="arrow-back-products"
                     width="16"
@@ -126,161 +131,197 @@ const SerialProductsSection = () => {
                     />
                   </svg>
                 </Link>
-                серійні вироби
+                {t("Serial_products_section_title")}
               </h2>
               <div className="serial-caegories">
                 <ul className="serial-caegories-list list">
                   <li className="serial-caegories-item">
                     <div>
-                      <Link
-                        className="serial-caegories-link"
-                        href="serial-products-section/chairs"
-                      >
-                        <Image
-                          className="serial-caegories-img"
-                          width={167}
-                          height={169}
-                          src="/images/img/serial-products/categories/chairs.jpg"
-                          alt=""
-                        />
-                      </Link>
-                      <p className="serial-caegories-text">Стільці</p>
+                      <div className="serial-caegories-img-wrapper">
+                        <Link
+                          className="serial-caegories-link"
+                          href="serial-products-section/chairs"
+                        >
+                          <Image
+                            className="serial-caegories-img"
+                            width={167}
+                            height={169}
+                            src="/images/img/serial-products/categories/chairs.jpg"
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                      <p className="serial-caegories-text">
+                        {t("Serial_products_section_chairs")}
+                      </p>
                     </div>
                   </li>
                   <li className="serial-caegories-item">
                     <div>
-                      <Link
-                        className="serial-caegories-link"
-                        href="serial-products-section/sofas"
-                      >
-                        <Image
-                          className="serial-caegories-img"
-                          width={167}
-                          height={169}
-                          src="/images/img/serial-products/categories/sofas.jpg"
-                          alt=""
-                        />
-                      </Link>
-                      <p className="serial-caegories-text">Дивани</p>
+                      <div className="serial-caegories-img-wrapper">
+                        <Link
+                          className="serial-caegories-link"
+                          href="serial-products-section/sofas"
+                        >
+                          <Image
+                            className="serial-caegories-img"
+                            width={167}
+                            height={169}
+                            src="/images/img/serial-products/categories/sofas.jpg"
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                      <p className="serial-caegories-text">
+                        {t("Serial_products_section_sofas")}
+                      </p>
                     </div>
                   </li>
                   <li className="serial-caegories-item">
                     <div>
-                      <Link
-                        className="serial-caegories-link"
-                        href="serial-products-section/armchairs"
-                      >
-                        <Image
-                          className="serial-caegories-img"
-                          width={167}
-                          height={169}
-                          src="/images/img/serial-products/categories/armchairs.jpg"
-                          alt=""
-                        />
-                      </Link>
-                      <p className="serial-caegories-text">Крісла</p>
+                      <div className="serial-caegories-img-wrapper">
+                        <Link
+                          className="serial-caegories-link"
+                          href="serial-products-section/armchairs"
+                        >
+                          <Image
+                            className="serial-caegories-img"
+                            width={167}
+                            height={169}
+                            src="/images/img/serial-products/categories/armchairs.jpg"
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                      <p className="serial-caegories-text">
+                        {t("Serial_products_section_armchairs")}
+                      </p>
                     </div>
                   </li>
                   <li className="serial-caegories-item">
                     <div>
-                      <Link
-                        className="serial-caegories-link"
-                        href="serial-products-section/bar-chairs"
-                      >
-                        <Image
-                          className="serial-caegories-img"
-                          width={167}
-                          height={169}
-                          src="/images/img/serial-products/categories/bar-stools.jpg"
-                          alt=""
-                        />
-                      </Link>
-                      <p className="serial-caegories-text">Барні стільці</p>
+                      <div className="serial-caegories-img-wrapper">
+                        <Link
+                          className="serial-caegories-link"
+                          href="serial-products-section/bar-chairs"
+                        >
+                          <Image
+                            className="serial-caegories-img"
+                            width={167}
+                            height={169}
+                            src="/images/img/serial-products/categories/bar-stools.jpg"
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                      <p className="serial-caegories-text">
+                        {t("Serial_products_section_bar_stools")}
+                      </p>
                     </div>
                   </li>
                   <li className="serial-caegories-item">
                     <div>
-                      <Link
-                        className="serial-caegories-link"
-                        href="serial-products-section/table-tops"
-                      >
-                        <Image
-                          className="serial-caegories-img"
-                          width={167}
-                          height={169}
-                          src="/images/img/serial-products/categories/tables.jpg"
-                          alt=""
-                        />
-                      </Link>
-                      <p className="serial-caegories-text">Стільниці</p>
+                      <div className="serial-caegories-img-wrapper">
+                        <Link
+                          className="serial-caegories-link"
+                          href="serial-products-section/table-tops"
+                        >
+                          <Image
+                            className="serial-caegories-img"
+                            width={167}
+                            height={169}
+                            src="/images/img/serial-products/categories/tables.jpg"
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                      <p className="serial-caegories-text">
+                        {t("Serial_products_section_countertops")}
+                      </p>
                     </div>
                   </li>
                   <li className="serial-caegories-item">
                     <div>
-                      <Link
-                        className="serial-caegories-link"
-                        href="serial-products-section/metal-supports"
-                      >
-                        <Image
-                          className="serial-caegories-img"
-                          width={167}
-                          height={169}
-                          src="/images/img/serial-products/categories/metal-supports.jpg"
-                          alt=""
-                        />
-                      </Link>
-                      <p className="serial-caegories-text">Металеві опори</p>
+                      <div className="serial-caegories-img-wrapper">
+                        <Link
+                          className="serial-caegories-link"
+                          href="serial-products-section/metal-supports"
+                        >
+                          <Image
+                            className="serial-caegories-img"
+                            width={167}
+                            height={169}
+                            src="/images/img/serial-products/categories/metal-supports.jpg"
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                      <p className="serial-caegories-text">
+                        {t("Serial_products_section_metal_supports")}
+                      </p>
                     </div>
                   </li>
                   <li className="serial-caegories-item">
                     <div>
-                      <Link
-                        className="serial-caegories-link"
-                        href="serial-products-section/ottomans"
-                      >
-                        <Image
-                          className="serial-caegories-img"
-                          width={167}
-                          height={169}
-                          src="/images/img/serial-products/categories/poufs.jpg"
-                          alt=""
-                        />
-                      </Link>
-                      <p className="serial-caegories-text">Пуфи / тахти</p>
+                      <div className="serial-caegories-img-wrapper">
+                        <Link
+                          className="serial-caegories-link"
+                          href="serial-products-section/ottomans"
+                        >
+                          <Image
+                            className="serial-caegories-img"
+                            width={167}
+                            height={169}
+                            src="/images/img/serial-products/categories/poufs.jpg"
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                      <p className="serial-caegories-text">
+                        {t("Serial_products_section_poufs_ottomans")}
+                      </p>
                     </div>
                   </li>
                   <li className="serial-caegories-item">
                     <div>
-                      <Link
-                        className="serial-caegories-link"
-                        href="serial-products-section/decor"
-                      >
-                        <Image
-                          className="serial-caegories-img"
-                          width={167}
-                          height={169}
-                          src="/images/img/serial-products/categories/decor.jpg"
-                          alt=""
-                        />
-                      </Link>
-                      <p className="serial-caegories-text">декор</p>
+                      <div className="serial-caegories-img-wrapper">
+                        <Link
+                          className="serial-caegories-link"
+                          href="serial-products-section/decor"
+                        >
+                          <Image
+                            className="serial-caegories-img"
+                            width={167}
+                            height={169}
+                            src="/images/img/serial-products/categories/decor.jpg"
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                      <p className="serial-caegories-text">
+                        {t("Serial_products_section_title_decor")}
+                      </p>
                     </div>
                   </li>
                   <li className="serial-caegories-item">
                     <div>
-                      <Link
-                        className="serial-caegories-link"
-                        href="serial-products-section/promotions"
-                      >
-                        <Image
-                          className="serial-caegories-img"
-                          width={167}
-                          height={169}
-                          src="/images/img/serial-products/categories/discounts.jpg"
-                          alt=""
-                        />
-                      </Link>
-                      <p className="serial-caegories-text">Акційні товари</p>
+                      <div className="serial-caegories-img-wrapper">
+                        <Link
+                          className="serial-caegories-link"
+                          href="serial-products-section/promotions"
+                        >
+                          <Image
+                            className="serial-caegories-img"
+                            width={167}
+                            height={169}
+                            src="/images/img/serial-products/categories/discounts.jpg"
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                      <p className="serial-caegories-text">
+                        {t("Serial_products_section_promotional_items")}
+                      </p>
                     </div>
                   </li>
                 </ul>

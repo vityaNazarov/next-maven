@@ -57,6 +57,14 @@
   border: none;
   border-radius: 16px;
   background: var(--accent-blue);
+  transition: all 250ms ease-in-out;
+}
+
+.hero-btn:hover {
+  transform: scale(1.02);
+  // background: var(--text-secondary-3);
+  background: var(--accent-blue-accent-dark);
+  transition: all 250ms ease-in-out;
 }
 
 //

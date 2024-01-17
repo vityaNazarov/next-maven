@@ -1,5 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+import dynamic from "next/dynamic";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import Spinner from "@/components/spinner/Spinner";
+
+// Динамический импорт для использования на клиентской стороне
+const Image = dynamic(() => import("next/image"));
+const Link = dynamic(() => import("next/link"));
 
 async function GetFetch() {
   const res = await fetch("http://localhost:3000/api/projects", {
@@ -13,8 +20,36 @@ async function GetFetch() {
   return res.json();
 }
 
-const Projects = async () => {
-  const data = await GetFetch();
+const Projects = () => {
+  const [data, setData] = React.useState([]);
+  const [loading, setLoading] = React.useState(true); // Состояние загрузки данных
+
+  const { t } = useTranslation();
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await GetFetch();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        // После завершения запроса устанавливаем loading в false
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    // Если данные загружаются, отображаем спиннер
+    return (
+      <div className="spinner-container">
+        <Spinner loading={loading} />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -78,13 +113,12 @@ const Projects = async () => {
           </filter>
         </defs>
       </svg>
-
       <main>
         <section className="projects">
           <div className="container projects-container">
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -100,11 +134,12 @@ const Projects = async () => {
                 />
               </svg>
               <Link className="container-nav-link" href="/projects">
-                Проекти
+                {t("Breadcrumbs_projects")}
               </Link>
             </div>
             <div>
-              <h2 className="title">Проекти</h2>
+              <h2 className="title">{t("Projects_title")}</h2>
+
               <div className="projects-block">
                 <ul className="projects-block-list list">
                   {data.map((item) => (
@@ -113,27 +148,29 @@ const Projects = async () => {
                         className="projects-block-link"
                         href={`projects/${item._id}`}
                       >
-                        <picture>
-                          <source
-                            media="(min-width:1300px)"
-                            width="411"
-                            height="415"
-                            srcSet={item.imgMainDesk}
-                          />
-                          <source
-                            media="(min-width:768px)"
-                            width="343"
-                            height="343"
-                            srcSet={item.imgMainMob}
-                          />
-                          <Image
-                            className="projects-block-img"
-                            width="342"
-                            height="342"
-                            src={item.imgMainMob}
-                            alt=""
-                          />
-                        </picture>
+                        <div className="projects-block-img-wrapper">
+                          <picture>
+                            <source
+                              media="(min-width:1300px)"
+                              width="411"
+                              height="415"
+                              srcSet={item.imgMainDesk}
+                            />
+                            <source
+                              media="(min-width:768px)"
+                              width="343"
+                              height="343"
+                              srcSet={item.imgMainMob}
+                            />
+                            <Image
+                              className="projects-block-img"
+                              width="342"
+                              height="342"
+                              src={item.imgMainMob}
+                              alt=""
+                            />
+                          </picture>
+                        </div>
 
                         <div className="projects-info">
                           <h3 className="projects-block-title">{item.name}</h3>

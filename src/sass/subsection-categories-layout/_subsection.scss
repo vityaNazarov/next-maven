@@ -110,11 +110,17 @@
     row-gap: 24px;
   }
 
+  .subsection-caegories-link:hover .subsection-caegories-img {
+    transform: scale(1.06);
+    transition: transform 250ms ease-in-out;
+  }
+
   .subsection-caegories-img {
     width: 344px;
     height: 347px;
     border-radius: 25px;
     border: 1px solid #ffffff;
+    transition: all 250ms ease-in-out;
   }
 
   .subsection-caegories-info {
@@ -176,11 +182,22 @@
   .subsection-caegories-btn {
     background-color: transparent;
     border: none;
+
+    &:hover .subsection-caegories-svg {
+      transform: scale(1.2);
+      transition: all 250ms ease-in-out;
+    }
+  }
+
+  .subsection-caegories-btn-done {
+    background-color: transparent;
+    border: none;
   }
 
   .subsection-caegories-svg {
     width: 40px;
     height: 40px;
+    transition: all 250ms ease-in-out;
   }
 }
 

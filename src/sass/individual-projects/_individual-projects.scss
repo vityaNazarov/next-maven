@@ -272,7 +272,7 @@
   .individual-projects-one-text-block {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 
   .individual-projects-one-img {
@@ -298,6 +298,7 @@
 
   .individual-projects-two {
     flex-direction: row;
+    align-items: center;
     gap: 24px;
     margin-bottom: 64px;
   }

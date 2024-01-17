@@ -3,10 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 function IndividualProjects() {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No selected file");
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -76,7 +79,7 @@ function IndividualProjects() {
           <div className="container projects-container">
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -92,40 +95,37 @@ function IndividualProjects() {
                 />
               </svg>
               <Link className="container-nav-link" href="/individual-projects">
-                Індивідуальні проекти
+                {t("Breadcrumbs_individual_projects")}
               </Link>
             </div>
             <div>
-              <h2 className="title">індивідуальні проекти</h2>
+              <h2 className="title">{t("Indidvidual_projects_title")}</h2>
               <p className="individual-suptitle">
-                Яким шляхом ми можемо здійснити Ваш індивідуальний проект?
+                {t("Indidvidual_projects_subtitle")}
               </p>
               <div className="steps-block">
                 <div className="steps-section">
                   <span className="steps-section-num">01</span>
                   <p className="steps-section-text steps-section-text-first">
-                    Ви залишаєте нам заявку для зворотнього зв’язку
+                    {t("Indidvidual_projects_stepOne")}
                   </p>
                 </div>
                 <div className="steps-section">
                   <span className="steps-section-num">02</span>
                   <p className="steps-section-text">
-                    Ми зв’язуємся з вами та обговорюємо всі деталі вашого
-                    індивідуального проекта
+                    {t("Indidvidual_projects_stepTwo")}
                   </p>
                 </div>
                 <div className="steps-section">
                   <span className="steps-section-num">03</span>
                   <p className="steps-section-text">
-                    Надішліть проект, або фото з розмірами, ми підготуєм
-                    комерційну пропозицію
+                    {t("Indidvidual_projects_stepThree")}
                   </p>
                 </div>
                 <div className="steps-section">
                   <span className="steps-section-num">04</span>
                   <p className="steps-section-text">
-                    Узгоджений проект запускається в роботу і Ви отримуєте саме
-                    той результат, який ви хотіли
+                    {t("Indidvidual_projects_stepFour")}
                   </p>
                 </div>
               </div>
@@ -133,12 +133,10 @@ function IndividualProjects() {
                 <div className="individual-projects-one">
                   <div className="individual-projects-one-text-block">
                     <p className="individual-projects-one-text">
-                      Наша компанія може виготовити меблі за індивідуальним
-                      дизайном та розмірами, щоб створити ваш унікальний
-                      простір.
+                      {t("Indidvidual_projects_produce_furniture")}
                     </p>
                     <p className="individual-projects-one-text individual-projects-one-text-secondary">
-                      Надсилайте запит ми обов’язково втілимо Вашу мрію в життя!
+                      {t("Indidvidual_projects_send_us_request")}
                     </p>
                   </div>
                   <picture>
@@ -195,72 +193,62 @@ function IndividualProjects() {
                   </picture>
                   <div className="individual-projects-two-text-block">
                     <p className="individual-projects-two-text">
-                      Виготовлення меблів за індивідуальними проектами гарантує
-                      якісний підхід до кожного замовлення. Ви можете самостійно
-                      обрати дизайн, конструкцію та матеріали, наші фахівці
-                      завжди готові надати професійну консультацію щодо вибору
-                      оптимального варіанту. Замовлення меблів за індивідуальним
-                      проектом - це вдале капіталовкладення, оскільки вони
-                      будуть служити вам на протязі багатьох років, не лише
-                      прикрашати ваш інтер&#39;єр, а й максимально ефективно
-                      використовувати кожен сантиметр простору. Наша компанія
-                      використовує тільки якісні та сучасні матеріали, які
-                      гарантують довговічність та ефективність використання.
+                      {t("Indidvidual_projects_production_of_furniture")}
                     </p>
                   </div>
                 </div>
               </div>
               <div className="individual-projects-form-block">
-                <h2 className="individual-form-title">зв’яжіться з нами</h2>
+                <h2 className="individual-form-title">{t("Form_title")}</h2>
                 <form className="career-form">
                   <label htmlFor="" className="career-form-label">
-                    Ім‘я
+                    {t("Form_name")}
                   </label>
                   <input
                     className="career-form-input individual-career-form-input"
                     type="text"
-                    placeholder="Введіть ім‘я*"
+                    placeholder={t("Form_name_placeholder")}
                     name="user_name"
                     required
                   />
                   <label htmlFor="" className="career-form-label">
-                    Електронна пошта
+                    {t("Form_email")}
                   </label>
                   <input
                     className="career-form-input individual-career-form-input"
                     type="email"
-                    placeholder="Введіть електронну пошту*"
+                    placeholder={t("Form_email_placeholder")}
                     name="user_email"
                     required
                   />
                   <label htmlFor="" className="career-form-label">
-                    Телефон
+                    {t("Form_tel")}
                   </label>
                   <input
                     className="career-form-input individual-career-form-input"
                     type="tel"
-                    placeholder="Введіть телефон*"
+                    placeholder={t("Form_tel_placeholder")}
                     name="user_phone"
                     required
                   />
                   <label htmlFor="" className="career-form-label">
-                    Місто
+                    {t("Form_city")}
                   </label>
                   <input
                     className="career-form-input individual-career-form-input"
                     type="text"
-                    placeholder="Введіть місто*"
+                    placeholder={t("Form_city_placeholder")}
                     name="user_city"
                     required
                   />
                   <div className="textarea-input-block">
                     <label htmlFor="" className="career-form-label-textarea">
-                      Повідомлення
+                      {t("Form_message")}
                     </label>
                     <textarea
                       className="career-form-input-textarea individual-career-form-input"
                       name="user_message"
-                      placeholder="Введіть повідомлення"
+                      placeholder={t("Form_message_placeholder")}
                     ></textarea>
                     <label className="custom-file">
                       <input
@@ -340,11 +328,10 @@ function IndividualProjects() {
                     </svg>
                   </span>
                   <p className="career-textarea-text individual-textarea-text">
-                    *Нажавши кнопку “Відправити” Ви погоджуєтесь на обробку
-                    персональних даних
+                    {t("Form_undertext")}
                   </p>
                   <button className="career-form-btn" type="submit">
-                    Відправити
+                    {t("Form_btn_submit")}
                   </button>
                 </form>
               </div>

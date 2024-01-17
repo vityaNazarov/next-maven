@@ -3,10 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 function Business() {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No selected file");
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -78,7 +81,7 @@ function Business() {
           <div className="container projects-container">
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -99,225 +102,251 @@ function Business() {
             </div>
             <div>
               <h2 className="title">В2В</h2>
-              <p className="buisness-text">
-                Наша компанія спеціалізується на виробництві меблів для кафе,
-                ресторанів, готелів тощо. Ми вже виконали понад 550 вдалих
-                проєктів для різних закладів в більше ніж п&#39;яти країнах
-                світу. До кожного проєкту ми ставимося максимально індивідуально
-                та прискіпливо, бо для нас надважливим є результат та
-                задовільнення від нього нашими замовниками. Ми працюємо з вашими
-                дизайнерами чи архітекторами, або, якщо ви не співпрацюєте з
-                цими спеціалістами, ми пропонуємо наших висококваліфікованих
-                дизайнерів. Разом ми створюємо індивідуальний проєкт, в якому
-                все повинно бути ідеально, а насамперед інтер&#39;єр вашого
-                закладу, адже це перше, що зустрічає Вашого гостя. Ми гарантуємо
-                Вам якісне виконання та неперевершений результат. Пропонуємо
-                співпрацю з нашим товаром на умовах дилерства. Ви зможете
-                розвинути свій асортимент завдяки новій серії меблів які
-                створені для міст відпочинку.
-              </p>
+              <p className="buisness-text">{t("Business_main_text")}</p>
 
               <div className="ready-examles">
                 <h2 className="ready-examles-title">
-                  приклади готових проєктів
+                  {t("Business_examples_projects_title")}
                 </h2>
                 <div className="ready-examles-gallery-full-block">
                   <div className="first-and-second">
                     <div className="ready-examles-first-gallery">
-                      <Link href="/projects">
-                        <picture>
-                          <source
-                            width="411"
-                            height="411"
-                            media="(min-width: 1300px)"
-                            srcSet="/images/img/b2b/b2b-desktop/b2b-img1.jpg"
-                          />
-                          <source
-                            width="226"
-                            height="226"
-                            media="(min-width: 768px)"
-                            srcSet="/images/img/b2b/b2b-tablet/b2b-img1.jpg"
-                          />
-                          <Image
-                            width="167"
-                            height="226"
-                            src="/images/img/b2b/b2b-mobile/b2b-img1.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </Link>
+                      <div className="projects-block-img-wrapper">
+                        <Link
+                          href="/projects"
+                          className="business-projects-img"
+                        >
+                          <picture>
+                            <source
+                              width="411"
+                              height="411"
+                              media="(min-width: 1300px)"
+                              srcSet="/images/img/b2b/b2b-desktop/b2b-img1.jpg"
+                            />
+                            <source
+                              width="226"
+                              height="226"
+                              media="(min-width: 768px)"
+                              srcSet="/images/img/b2b/b2b-tablet/b2b-img1.jpg"
+                            />
+                            <Image
+                              className="business-img"
+                              width="167"
+                              height="226"
+                              src="/images/img/b2b/b2b-mobile/b2b-img1.jpg"
+                              alt=""
+                            />
+                          </picture>
+                        </Link>
+                      </div>
                       <div className="ready-examles-first-gallery-secondary">
-                        <Link href="/projects">
-                          <picture>
-                            <source
-                              width="302"
-                              height="194"
-                              media="(min-width: 1300px)"
-                              srcSet="/images/img/b2b/b2b-desktop/b2b-img4.jpg"
-                            />
-                            <source
-                              width="166"
-                              height="106"
-                              media="(min-width: 768px)"
-                              srcSet="/images/img/b2b/b2b-tablet/b2b-img4.jpg"
-                            />
-                            <Image
-                              width="166"
-                              height="107"
-                              src="/images/img/b2b/b2b-mobile/b2b-img4.jpg"
-                              alt=""
-                            />
-                          </picture>
-                        </Link>
-                        <Link href="/projects">
-                          <picture>
-                            <source
-                              width="302"
-                              height="194"
-                              media="(min-width: 1300px)"
-                              srcSet="/images/img/b2b/b2b-desktop/b2b-img5.jpg"
-                            />
-                            <source
-                              width="166"
-                              height="106"
-                              media="(min-width: 768px)"
-                              srcSet="/images/img/b2b/b2b-tablet/b2b-img5.jpg"
-                            />
-                            <Image
-                              width="166"
-                              height="107"
-                              src="/images/img/b2b/b2b-mobile/b2b-img5.jpg"
-                              alt=""
-                            />
-                          </picture>
-                        </Link>
+                        <div className="projects-block-img-wrapper">
+                          <Link
+                            href="/projects"
+                            className="business-projects-img"
+                          >
+                            <picture>
+                              <source
+                                width="302"
+                                height="194"
+                                media="(min-width: 1300px)"
+                                srcSet="/images/img/b2b/b2b-desktop/b2b-img4.jpg"
+                              />
+                              <source
+                                width="166"
+                                height="106"
+                                media="(min-width: 768px)"
+                                srcSet="/images/img/b2b/b2b-tablet/b2b-img4.jpg"
+                              />
+                              <Image
+                                className="business-img"
+                                width="166"
+                                height="107"
+                                src="/images/img/b2b/b2b-mobile/b2b-img4.jpg"
+                                alt=""
+                              />
+                            </picture>
+                          </Link>
+                        </div>
+                        <div className="projects-block-img-wrapper">
+                          <Link
+                            href="/projects"
+                            className="business-projects-img"
+                          >
+                            <picture>
+                              <source
+                                width="302"
+                                height="194"
+                                media="(min-width: 1300px)"
+                                srcSet="/images/img/b2b/b2b-desktop/b2b-img5.jpg"
+                              />
+                              <source
+                                width="166"
+                                height="106"
+                                media="(min-width: 768px)"
+                                srcSet="/images/img/b2b/b2b-tablet/b2b-img5.jpg"
+                              />
+                              <Image
+                                className="business-img"
+                                width="166"
+                                height="107"
+                                src="/images/img/b2b/b2b-mobile/b2b-img5.jpg"
+                                alt=""
+                              />
+                            </picture>
+                          </Link>
+                        </div>
                       </div>
                     </div>
 
                     <div className="ready-examles-second-gallery">
                       <div className="ready-examles-second-gallery-secondary">
-                        <Link href="/projects">
+                        <div className="projects-block-img-wrapper">
+                          <Link
+                            href="/projects"
+                            className="business-projects-img"
+                          >
+                            <picture>
+                              <source
+                                width="411"
+                                height="193"
+                                media="(min-width: 1300px)"
+                                srcSet="/images/img/b2b/b2b-desktop/b2b-img2.jpg"
+                              />
+                              <source
+                                width="226"
+                                height="105"
+                                media="(min-width: 768px)"
+                                srcSet="/images/img/b2b/b2b-tablet/b2b-img2.jpg"
+                              />
+                              <Image
+                                className="business-img"
+                                width="166"
+                                height="107"
+                                src="/images/img/b2b/b2b-mobile/b2b-img2.jpg"
+                                alt=""
+                              />
+                            </picture>
+                          </Link>
+                        </div>
+                        <div className="projects-block-img-wrapper">
+                          <Link
+                            href="/projects"
+                            className="business-projects-img"
+                          >
+                            <picture>
+                              <source
+                                width="411"
+                                height="193"
+                                media="(min-width: 1300px)"
+                                srcSet="/images/img/b2b/b2b-desktop/b2b-img3.jpg"
+                              />
+                              <source
+                                width="226"
+                                height="105"
+                                media="(min-width: 768px)"
+                                srcSet="/images/img/b2b/b2b-tablet/b2b-img3.jpg"
+                              />
+                              <Image
+                                className="business-img"
+                                width="166"
+                                height="107"
+                                src="/images/img/b2b/b2b-mobile/b2b-img3.jpg"
+                                alt=""
+                              />
+                            </picture>
+                          </Link>
+                        </div>
+                      </div>
+
+                      <div className="projects-block-img-wrapper">
+                        <Link
+                          href="/projects"
+                          className="business-projects-img"
+                        >
                           <picture>
                             <source
-                              width="411"
-                              height="193"
+                              width="302"
+                              height="411"
                               media="(min-width: 1300px)"
-                              srcSet="/images/img/b2b/b2b-desktop/b2b-img2.jpg"
+                              srcSet="/images/img/b2b/b2b-desktop/b2b-img6.jpg"
                             />
                             <source
-                              width="226"
-                              height="105"
+                              width="166"
+                              height="225"
                               media="(min-width: 768px)"
-                              srcSet="/images/img/b2b/b2b-tablet/b2b-img2.jpg"
+                              srcSet="/images/img/b2b/b2b-tablet/b2b-img6.jpg"
                             />
                             <Image
-                              width="166"
-                              height="107"
-                              src="/images/img/b2b/b2b-mobile/b2b-img2.jpg"
-                              alt=""
-                            />
-                          </picture>
-                        </Link>
-                        <Link href="/projects">
-                          <picture>
-                            <source
-                              width="411"
-                              height="193"
-                              media="(min-width: 1300px)"
-                              srcSet="/images/img/b2b/b2b-desktop/b2b-img3.jpg"
-                            />
-                            <source
-                              width="226"
-                              height="105"
-                              media="(min-width: 768px)"
-                              srcSet="/images/img/b2b/b2b-tablet/b2b-img3.jpg"
-                            />
-                            <Image
-                              width="166"
-                              height="107"
-                              src="/images/img/b2b/b2b-mobile/b2b-img3.jpg"
+                              className="business-img"
+                              width="167"
+                              height="226"
+                              src="/images/img/b2b/b2b-mobile/b2b-img6.jpg"
                               alt=""
                             />
                           </picture>
                         </Link>
                       </div>
-
-                      <Link href="/projects">
+                    </div>
+                  </div>
+                  <div className="ready-examles-third-gallery">
+                    <div className="projects-block-img-wrapper">
+                      <Link href="/projects" className="business-projects-img">
                         <picture>
                           <source
-                            width="302"
+                            width="519"
                             height="411"
                             media="(min-width: 1300px)"
-                            srcSet="/images/img/b2b/b2b-desktop/b2b-img6.jpg"
+                            srcSet="/images/img/b2b/b2b-desktop/b2b-img7.jpg"
                           />
                           <source
-                            width="166"
-                            height="225"
+                            width="285"
+                            height="226"
                             media="(min-width: 768px)"
-                            srcSet="/images/img/b2b/b2b-tablet/b2b-img6.jpg"
+                            srcSet="/images/img/b2b/b2b-tablet/b2b-img7.jpg"
                           />
                           <Image
+                            className="business-img"
                             width="167"
                             height="226"
-                            src="/images/img/b2b/b2b-mobile/b2b-img6.jpg"
+                            src="/images/img/b2b/b2b-mobile/b2b-img7.jpg"
                             alt=""
                           />
                         </picture>
                       </Link>
                     </div>
-                  </div>
-                  <div className="ready-examles-third-gallery">
-                    <Link href="/projects">
-                      <picture>
-                        <source
-                          width="519"
-                          height="411"
-                          media="(min-width: 1300px)"
-                          srcSet="/images/img/b2b/b2b-desktop/b2b-img7.jpg"
-                        />
-                        <source
-                          width="285"
-                          height="226"
-                          media="(min-width: 768px)"
-                          srcSet="/images/img/b2b/b2b-tablet/b2b-img7.jpg"
-                        />
-                        <Image
-                          width="167"
-                          height="226"
-                          src="/images/img/b2b/b2b-mobile/b2b-img7.jpg"
-                          alt=""
-                        />
-                      </picture>
-                    </Link>
-                    <Link href="/projects">
-                      <picture>
-                        <source
-                          width="519"
-                          height="411"
-                          media="(min-width: 1300px)"
-                          srcSet="/images/img/b2b/b2b-desktop/b2b-img8.jpg"
-                        />
-                        <source
-                          width="285"
-                          height="226"
-                          media="(min-width: 768px)"
-                          srcSet="/images/img/b2b/b2b-tablet/b2b-img8.jpg"
-                        />
-                        <Image
-                          width="167"
-                          height="226"
-                          src="/images/img/b2b/b2b-mobile/b2b-img8.jpg"
-                          alt=""
-                        />
-                      </picture>
-                    </Link>
+                    <div className="projects-block-img-wrapper">
+                      <Link href="/projects" className="business-projects-img">
+                        <picture>
+                          <source
+                            width="519"
+                            height="411"
+                            media="(min-width: 1300px)"
+                            srcSet="/images/img/b2b/b2b-desktop/b2b-img8.jpg"
+                          />
+                          <source
+                            width="285"
+                            height="226"
+                            media="(min-width: 768px)"
+                            srcSet="/images/img/b2b/b2b-tablet/b2b-img8.jpg"
+                          />
+                          <Image
+                            className="business-img"
+                            width="167"
+                            height="226"
+                            src="/images/img/b2b/b2b-mobile/b2b-img8.jpg"
+                            alt=""
+                          />
+                        </picture>
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
                 <div className="more-projects">
                   <Link href="projects" className="more-projects-link">
                     <span className="more-projects-link-text">
-                      більше наших проектів
+                      {t("Business_more_projects_btn")}
                     </span>
 
                     <svg
@@ -338,60 +367,60 @@ function Business() {
               </div>
 
               <div className="individual-projects-form-block">
-                <h2 className="individual-form-title">зв’яжіться з нами</h2>
+                <h2 className="individual-form-title">{t("Form_title")}</h2>
                 <form className="career-form">
                   <label htmlFor="" className="career-form-label">
-                    Ім‘я
+                    {t("Form_name")}
                   </label>
                   <input
                     className="career-form-input individual-career-form-input"
                     type="text"
-                    placeholder="Введіть ім‘я*"
+                    placeholder={t("Form_name_placeholder")}
                     name="user_name"
                     required
                   />
 
                   <label htmlFor="" className="career-form-label">
-                    Електронна пошта
+                    {t("Form_email")}
                   </label>
                   <input
                     className="career-form-input individual-career-form-input"
                     type="email"
-                    placeholder="Введіть електронну пошту*"
+                    placeholder={t("Form_email_placeholder")}
                     name="user_email"
                     required
                   />
 
                   <label htmlFor="" className="career-form-label">
-                    Телефон
+                    {t("Form_tel")}
                   </label>
                   <input
                     className="career-form-input individual-career-form-input"
                     type="tel"
-                    placeholder="Введіть телефон*"
+                    placeholder={t("Form_tel_placeholder")}
                     name="user_phone"
                     required
                   />
 
                   <label htmlFor="" className="career-form-label">
-                    Місто
+                    {t("Form_city")}
                   </label>
                   <input
                     className="career-form-input individual-career-form-input"
                     type="text"
-                    placeholder="Введіть місто*"
+                    placeholder={t("Form_city_placeholder")}
                     name="user_city"
                     required
                   />
 
                   <div className="textarea-input-block">
                     <label htmlFor="" className="career-form-label-textarea">
-                      Повідомлення
+                      {t("Form_message")}
                     </label>
                     <textarea
                       className="career-form-input-textarea individual-career-form-input"
                       name="user_message"
-                      placeholder="Введіть повідомлення"
+                      placeholder={t("Form_message_placeholder")}
                     ></textarea>
                     <label className="custom-file">
                       <input
@@ -471,11 +500,10 @@ function Business() {
                     </svg>
                   </span>
                   <p className="career-textarea-text individual-textarea-text">
-                    *Нажавши кнопку “Відправити” Ви погоджуєтесь на обробку
-                    персональних даних
+                    {t("Form_undertext")}
                   </p>
                   <button className="career-form-btn" type="submit">
-                    Відправити
+                    {t("Form_btn_submit")}
                   </button>
                 </form>
               </div>

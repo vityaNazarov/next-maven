@@ -112,6 +112,12 @@
   right: 20px;
   width: 18px;
   height: 18px;
+  transition: all 250ms ease-in-out;
+}
+
+.input-file-svg:hover {
+  transform: scale(1.2);
+  transition: transform 250ms ease-in-out;
 }
 
 .custom-file input[type="file"] {
@@ -146,6 +152,14 @@
   line-height: normal;
   letter-spacing: 0.7px;
   text-transform: uppercase;
+  transition: all 250ms ease-in-out;
+}
+
+.career-form-btn:hover {
+  transform: scale(1.02);
+  // background: var(--text-secondary-3);
+  background: var(--accent-blue-accent-dark);
+  transition: all 250ms ease-in-out;
 }
 
 .uploaded {

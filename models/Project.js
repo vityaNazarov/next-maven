@@ -15,6 +15,10 @@ const ProjectSchema = new Schema(
       type: String,
       required: true,
     },
+    textEng: {
+      type: String,
+      required: true,
+    },
     inst: {
       type: String,
       required: true,

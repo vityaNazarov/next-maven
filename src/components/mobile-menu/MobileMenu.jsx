@@ -1,19 +1,25 @@
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 
 function MobileMenu({ active, setActive }) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div
-      className={active ? "mobile-menu active" : "mobile-menu"}
-      onClick={() => setActive(false)}
-    >
-      <div className="backdrop"></div>
+    <div className={active ? "mobile-menu active" : "mobile-menu"}>
+      <div className="backdrop" onClick={() => setActive(false)}></div>
       <div className="mobile-section">
         <ul className="mobile-section-list list">
           <li className="mobile-section-item mobile-section-item-about">
-            <div className="mobile-section-item-about-chevron">
+            <div
+              className="mobile-section-item-about-chevron"
+              onClick={() => setOpen(!open)}
+            >
               Про нас
               <svg
-                className="mobile-menu-chevron"
+                className={
+                  !open ? "mobile-menu-chevron" : "mobile-menu-chevron active"
+                }
                 width="32"
                 height="32"
                 viewBox="0 0 32 32"
@@ -27,28 +33,38 @@ function MobileMenu({ active, setActive }) {
               </svg>
             </div>
 
-            <ul className="mobile-section-list-secondary list">
-              <li className="mobile-section-item-secondary">
-                <Link href="/about-us">Про компанію</Link>
-              </li>
-              <li className="mobile-section-item-secondary">
-                <Link href="/career">Кар’єра</Link>
-              </li>
-            </ul>
+            {open ? (
+              <ul className="mobile-section-list-secondary list">
+                <li
+                  className="mobile-section-item-secondary"
+                  onClick={() => setActive(false)}
+                >
+                  <Link href="/about-us">Про компанію</Link>
+                </li>
+                <li
+                  className="mobile-section-item-secondary"
+                  onClick={() => setActive(false)}
+                >
+                  <Link href="/career">Кар’єра</Link>
+                </li>
+              </ul>
+            ) : (
+              ""
+            )}
           </li>
-          <li className="mobile-section-item">
+          <li className="mobile-section-item" onClick={() => setActive(false)}>
             <Link href="/projects">Проєкти</Link>
           </li>
-          <li className="mobile-section-item">
+          <li className="mobile-section-item" onClick={() => setActive(false)}>
             <Link href="/catalog">Каталог</Link>
           </li>
-          <li className="mobile-section-item">
+          <li className="mobile-section-item" onClick={() => setActive(false)}>
             <Link href="/individual-projects">Індивідуальні проекти</Link>
           </li>
-          <li className="mobile-section-item">
+          <li className="mobile-section-item" onClick={() => setActive(false)}>
             <Link href="/business">В2В</Link>
           </li>
-          <li className="mobile-section-item">
+          <li className="mobile-section-item" onClick={() => setActive(false)}>
             <Link href="/contacts">Контакти</Link>
           </li>
         </ul>

@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 function AboutUs() {
+  const { t } = useTranslation();
+
   return (
     <>
       <svg
@@ -72,7 +77,7 @@ function AboutUs() {
           <div className="container container-company">
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -88,7 +93,7 @@ function AboutUs() {
                 />
               </svg>
               <Link className="container-nav-link" href="">
-                Про Нас
+                {t("Breadcrumbs_about_us")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -104,10 +109,10 @@ function AboutUs() {
                 />
               </svg>
               <Link className="container-nav-link" href="/about-us">
-                Про компанію
+                {t("Breadcrumbs_about_company")}
               </Link>
             </div>
-            <h2 className="title">Про компанію</h2>
+            <h2 className="title">{t("About_company_title")}</h2>
             <div className="about-company-block">
               <div className="about-company-main">
                 <picture>
@@ -143,125 +148,107 @@ function AboutUs() {
                   />
                 </picture>
                 <p className="about-company-text about-company-main-none">
-                  Компанія Maven Group - це український виробник сучаних меблів
-                  для гостинних та гастрономічних просторів - ресторанів,
-                  готелів, кафе, зон очікування, терас для відпочинку,
-                  концерт-холів. Серійна лінійка меблів спеціально створена для
-                  домашньої гостинності та відпочинку. Ми працюємо з 2016 року
-                  на українському ринку, також наші меблі експортуються в інші
-                  країни світу. Ми пишаємося тим, що за роки нашої роботи змогли
-                  зарекомендувати себе, як надійного виробника та партнера. Наша
-                  компанія прагне створювати унікальні предмети інтер&#39;єру,
-                  які будуть радувати своїх власників довгі роки.
+                  {t("About_company_text")}
                 </p>
               </div>
               <div className="about-company-info">
                 <p className="about-company-text about-company-text-none">
-                  Компанія Maven Group - це український виробник сучаних меблів
-                  для гостинних та гастрономічних просторів - ресторанів,
-                  готелів, кафе, зон очікування, терас для відпочинку,
-                  концерт-холів. Серійна лінійка меблів спеціально створена для
-                  домашньої гостинності та відпочинку. Ми працюємо з 2016 року
-                  на українському ринку, також наші меблі експортуються в інші
-                  країни світу. Ми пишаємося тим, що за роки нашої роботи змогли
-                  зарекомендувати себе, як надійного виробника та партнера. Наша
-                  компанія прагне створювати унікальні предмети інтер&#39;єру,
-                  які будуть радувати своїх власників довгі роки.
+                  {t("About_company_text")}
                 </p>
-                <ul className="about-company-gallery-list list">
-                  <li className="about-company-gallery-item">
-                    <picture>
-                      <source
-                        width="357"
-                        height="215"
-                        srcSet="
+                <div>
+                  <ul className="about-company-gallery-list list">
+                    <li className="about-company-gallery-item">
+                      <picture>
+                        <source
+                          width="357"
+                          height="215"
+                          srcSet="
                           /images/img/about-company/about-company-desctop/company-img2.jpg
                         "
-                        media="(min-width:1300px)"
-                      />
-                      <source
-                        width="344"
-                        height="207"
-                        srcSet="
+                          media="(min-width:1300px)"
+                        />
+                        <source
+                          width="344"
+                          height="207"
+                          srcSet="
                           /images/img/about-company/about-company-tablet/photo-1.jpg
                         "
-                        media="(min-width:768px)"
-                      />
-                      <source
-                        width="167"
-                        height="100"
-                        srcSet="
+                          media="(min-width:768px)"
+                        />
+                        <source
+                          width="167"
+                          height="100"
+                          srcSet="
                           /images/img/about-company/about-company-mobile/photo-1.jpg
                         "
-                        media="(min-width:320px)"
-                      />
-                      <Image
-                        width="167"
-                        height="100"
-                        src="/images/img/about-company/about-company-mobile/photo-1.jpg"
-                        alt=""
-                      />
-                    </picture>
-                  </li>
-                  <li className="about-company-gallery-item">
-                    <picture>
-                      <source
-                        width="357"
-                        height="215"
-                        srcSet="
+                          media="(min-width:320px)"
+                        />
+                        <Image
+                          width="167"
+                          height="100"
+                          src="/images/img/about-company/about-company-mobile/photo-1.jpg"
+                          alt=""
+                        />
+                      </picture>
+                    </li>
+                    <li className="about-company-gallery-item">
+                      <picture>
+                        <source
+                          width="357"
+                          height="215"
+                          srcSet="
                           /images/img/about-company/about-company-desctop/company-img3.jpg
                         "
-                        media="(min-width:1300px)"
-                      />
-                      <source
-                        width="344"
-                        height="207"
-                        srcSet="
+                          media="(min-width:1300px)"
+                        />
+                        <source
+                          width="344"
+                          height="207"
+                          srcSet="
                           /images/img/about-company/about-company-tablet/photo-2.jpg
                         "
-                        media="(min-width:768px)"
-                      />
-                      <source
-                        width="167"
-                        height="100"
-                        srcSet="
+                          media="(min-width:768px)"
+                        />
+                        <source
+                          width="167"
+                          height="100"
+                          srcSet="
                           /images/img/about-company/about-company-mobile/photo-2.jpg
                         "
-                        media="(min-width:320px)"
-                      />
-                      <Image
-                        width="167"
-                        height="100"
-                        src="/images/img/about-company/about-company-mobile/photo-2.jpg"
-                        alt="работник"
-                      />
-                    </picture>
-                  </li>
-                </ul>
+                          media="(min-width:320px)"
+                        />
+                        <Image
+                          width="167"
+                          height="100"
+                          src="/images/img/about-company/about-company-mobile/photo-2.jpg"
+                          alt="работник"
+                        />
+                      </picture>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
           <div className="container about-company-info-secondary">
             <p className="about-company-info-text">
-              Maven Group компанія орієнтована на сталий розвиток, кожного дня
-              ми робим маленькі кроки:
+              {t("About_company_list_title")}
             </p>
             <ul className="about-company-info-list">
               <li className="about-company-info-item">
-                сертифікати екологічності та ланцюгів постачання (FSC)
+                {t("About_company_list_first")}
               </li>
               <li className="about-company-info-item">
-                відповідальне виробництво та споживання, принципи LEAN
+                {t("About_company_list_second")}
               </li>
               <li className="about-company-info-item">
-                гідна праця та економічне зростання, кожного року створюються
-                нові робочі місця
+                {t("About_company_list_third")}
               </li>
               <li className="about-company-info-item">
-                партнерство в користь сталого розвитку
+                {t("About_company_list_forth")}
               </li>
               <li className="about-company-info-item">
-                застосовуєм принципи етики репутаційного бізнесу
+                {t("About_company_list_fifth")}
               </li>
             </ul>
             <picture className="about-company-collective-img">
@@ -303,7 +290,7 @@ function AboutUs() {
 
         <section className="produce">
           <div className="container container-produce">
-            <h2 className="title">Виробництво</h2>
+            <h2 className="title">{t("Manufacture")}</h2>
             <ul className="produce-img-list list">
               <li className="produce-img-item">
                 <picture>
@@ -446,16 +433,8 @@ function AboutUs() {
                 </picture>
               </li>
             </ul>
-            <p className="produce-text">
-              Maven у перекладі англ. «знавець своєї справи». Maven Group - це
-              міцна команда, яка складається з фахівців кожен у своєму напрямі.
-              З кожним роком ми стаємо більш кваліфіковані у своїй галузі.
-              Професійність для нас - прояв любові та заботи.
-            </p>
-            <p className="produce-text">
-              Наша спільна мрія - побачити Україні в рейтингу ТОП-10 туристичних
-              країн Світу!
-            </p>
+            <p className="produce-text">{t("Manufacture_text_first")}</p>
+            <p className="produce-text">{t("Manufacture_text_second")}</p>
           </div>
         </section>
 
@@ -463,11 +442,8 @@ function AboutUs() {
 
         <section className="advantages-section">
           <div className="container container-advantages-section">
-            <p className="suptitle">НАШІ ПЕРЕВАГИ</p>
-            <h2 className="title about-us-title">
-              Які наші основні метрики, завдяки яким ми маємо велику кількість
-              задоволених клієнтів?
-            </h2>
+            <p className="suptitle">{t("Our_advantages")}</p>
+            <h2 className="title about-us-title">{t("Advantages_title")}</h2>
             <ul className="advantages">
               <li className="advantages-block list">
                 <div className="advantages-block-main">
@@ -484,12 +460,13 @@ function AboutUs() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">Надійність продукту</h3>
+                  <h3 className="advantages-title">
+                    {t("Product_reliability")}
+                  </h3>
                 </div>
 
                 <p className="advantages-text">
-                  Наші меблі випробувані тисячами людей та роками вашої довіри.
-                  Надійність продукту є основним правилом нашої компанії
+                  {t("Product_reliability_text")}
                 </p>
               </li>
               <li className="advantages-block list">
@@ -513,14 +490,10 @@ function AboutUs() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">Час</h3>
+                  <h3 className="advantages-title">{t("Time")}</h3>
                 </div>
 
-                <p className="advantages-text">
-                  Для нас є важливим виконання замовлення вчасно та у найкоротші
-                  сроки, задля того, щоб ви скоріше отримали шамточок мистецтва
-                  у ваш інтер’єр
-                </p>
+                <p className="advantages-text">{t("Time_text")}</p>
               </li>
               <li className="advantages-block list">
                 <div className="advantages-block-main">
@@ -537,14 +510,10 @@ function AboutUs() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">Єдність</h3>
+                  <h3 className="advantages-title">{t("Unity")}</h3>
                 </div>
 
-                <p className="advantages-text">
-                  Єдність команди - це важливий момент у злагодженій праці та
-                  ідеального виробу на фініші робочого процесу, який буде довго
-                  радувати своїх власників
-                </p>
+                <p className="advantages-text">{t("Unity_text")}</p>
               </li>
               <li className="advantages-block list">
                 <div className="advantages-block-main">
@@ -561,15 +530,10 @@ function AboutUs() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">
-                    Особистий підхід до кожного клієнта
-                  </h3>
+                  <h3 className="advantages-title">{t("Personal_approach")}</h3>
                 </div>
 
-                <p className="advantages-text">
-                  Ми працюємо з особистими запитами наших клієнтів, щоб
-                  максимально задовольнити кожну вашу ідею та запит
-                </p>
+                <p className="advantages-text">{t("Personal_approach_text")}</p>
               </li>
               <li className="advantages-block list">
                 <div className="advantages-block-main">
@@ -586,14 +550,10 @@ function AboutUs() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">Висока якість матеріалів</h3>
+                  <h3 className="advantages-title">{t("High_quality")}</h3>
                 </div>
 
-                <p className="advantages-text">
-                  Ми обираємо лише найякісніші матеріали у виробництві своїх
-                  виробів, щоб забезпечити високу якість продукції та
-                  задоволення потреб своїх клієнтів
-                </p>
+                <p className="advantages-text">{t("High_quality_text")}</p>
               </li>
               <li className="advantages-block list">
                 <div className="advantages-block-main">
@@ -610,13 +570,10 @@ function AboutUs() {
                       fill="#A8A198"
                     />
                   </svg>
-                  <h3 className="advantages-title">Інновації</h3>
+                  <h3 className="advantages-title">{t("Innovation")}</h3>
                 </div>
 
-                <p className="advantages-text">
-                  Нові технології у нашому виробництві є невідємною частниною
-                  запоруки успіху у досяганні якості та надійності наших виробів
-                </p>
+                <p className="advantages-text">{t("Innovation_text")}</p>
               </li>
             </ul>
             <div className="advantages-block-last">
@@ -634,13 +591,10 @@ function AboutUs() {
                     fill="#A8A198"
                   />
                 </svg>
-                <h3 className="advantages-title">Професійний колектив</h3>
+                <h3 className="advantages-title">{t("Professional_team")}</h3>
               </div>
 
-              <p className="advantages-text">
-                В нашій команді працюють професіонали, які здатні втілити
-                будь-яку вашу ідею в життя швидко та якісно
-              </p>
+              <p className="advantages-text">{t("Professional_team_text")}</p>
             </div>
           </div>
         </section>

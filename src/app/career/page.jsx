@@ -2,10 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function Career() {
+  const { t } = useTranslation();
+
   const [file, setFile] = useState(null);
-  const [fileName, setFileName] = useState("No selected file");
+  const [fileName, setFileName] = useState("No selected file!");
 
   return (
     <>
@@ -77,7 +80,7 @@ function Career() {
           <div className="container container-career">
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -93,7 +96,7 @@ function Career() {
                 />
               </svg>
               <Link className="container-nav-link" href="">
-                Про Нас
+                {t("Breadcrumbs_about_us")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -109,81 +112,70 @@ function Career() {
                 />
               </svg>
               <Link className="container-nav-link" href="/career">
-                Кар’єра
+                {t("Breadcrumbs_career")}
               </Link>
             </div>
             <div className="career-block">
               <div className="career-info">
-                <h2 className="title">Кар’єра</h2>
-                <p className="career-text">
-                  Ми завжди раді амбітним, захопленим своєю справою людям. Ви
-                  зможете максимально використовувати свої таланти в різних
-                  напрямках нашої діяльності. Від створення меблів до їх
-                  реалізації.
-                </p>
-                <p className="career-text">
-                  Зв&#39;яжіться з нами якщо Ви хочете потрапити в дружній
-                  колектив, працювати з якісною продукцією та стати частиною
-                  Maven Group.
-                </p>
+                <h2 className="title">{t("Career_title")}</h2>
+                <p className="career-text">{t("Career_text_first")}</p>
+                <p className="career-text">{t("Career_text_second")}</p>
               </div>
               <div className="career-form-block">
-                <h2 className="career-form-title">
-                  Ви би хотіли працювати у нас?
-                </h2>
+                <h2 className="career-form-title">{t("Career_form_title")}</h2>
                 <form className="career-form">
                   <label htmlFor="" className="career-form-label">
-                    Ім‘я
+                    {t("Form_name")}
                   </label>
                   <input
                     className="career-form-input"
                     type="text"
-                    placeholder="Введіть ім‘я*"
+                    placeholder={t("Form_name_placeholder")}
                     name="user_name"
                     required
                   />
 
                   <label htmlFor="" className="career-form-label">
-                    Електронна пошта
+                    {t("Form_email")}
                   </label>
                   <input
                     className="career-form-input"
                     type="email"
-                    placeholder="Введіть електронну пошту*"
+                    placeholder={t("Form_email_placeholder")}
                     name="user_email"
                     required
                   />
 
                   <label htmlFor="" className="career-form-label">
-                    Телефон
+                    {t("Form_tel")}
                   </label>
                   <input
                     className="career-form-input"
                     type="tel"
-                    placeholder="Введіть телефон*"
+                    placeholder={t("Form_tel_placeholder")}
                     name="user_phone"
                     required
                   />
 
                   <label htmlFor="" className="career-form-label">
-                    Місто
+                    {t("Form_city")}
                   </label>
                   <input
                     className="career-form-input"
                     type="text"
-                    placeholder="Введіть місто*"
+                    placeholder={t("Form_city_placeholder")}
                     name="user_city"
                     required
                   />
 
                   <div className="textarea-input-block">
                     <label htmlFor="" className="career-form-label-textarea">
-                      Повідомлення
+                      {t("Form_message")}
                     </label>
                     <textarea
                       className="career-form-input-textarea"
                       name="user_message"
-                      placeholder="Введіть повідомлення"
+                      placeholder={t("Form_message_placeholder")}
                     ></textarea>
                     <label className="custom-file">
                       <input
@@ -228,7 +220,7 @@ function Career() {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       onClick={() => {
-                        setFileName("No selected file");
+                        setFileName("No selected file!");
                         setFile(null);
                       }}
                     >
@@ -263,12 +255,9 @@ function Career() {
                     </svg>
                   </span>
 
-                  <p className="career-textarea-text">
-                    *Нажавши кнопку “Відправити” Ви погоджуєтесь на обробку
-                    персональних даних
-                  </p>
+                  <p className="career-textarea-text">{t("Form_undertext")}</p>
                   <button className="career-form-btn" type="submit">
-                    Відправити
+                    {t("Form_btn_submit")}
                   </button>
                 </form>
               </div>

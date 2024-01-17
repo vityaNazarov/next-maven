@@ -3,9 +3,8 @@
 //
 
 .chevron-btn {
-  width: 180px;
   color: var(--text-dark);
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   gap: 8px;
   padding: 8px 12px;
@@ -22,10 +21,11 @@
 
 .chevron-btn:hover .chevron-svg {
   transform: translatex(5px);
+  transition: transform 250ms ease-in-out;
 }
 
 .chevron-svg {
-  transition: transform 100ms ease-in-out;
+  transition: all 250ms ease-in-out;
   width: 24px;
   height: 24px;
 }
@@ -48,7 +48,6 @@
 /* ==================================== min-width: 768px ==================================== */
 @media screen and (min-width: 768px) {
   .chevron-btn {
-    width: 235px;
     gap: 16px;
     padding: 12px 16px;
     font-size: 16px;
@@ -81,7 +80,6 @@
 /* ==================================== min-width: 1300px ==================================== */
 @media screen and (min-width: 1300px) {
   .chevron-btn {
-    width: 280px;
     gap: 24px;
     border-radius: 16px;
     font-size: 24px;

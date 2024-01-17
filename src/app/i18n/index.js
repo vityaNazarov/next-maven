@@ -12,7 +12,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "ua",
+  lng: localStorage.getItem("lng") || "ua",
 
   interpolation: {
     escapeValue: false,

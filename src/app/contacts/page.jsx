@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 function Contacts() {
+  const { t } = useTranslation();
+
   return (
     <>
       <svg
@@ -71,7 +76,7 @@ function Contacts() {
           <div className="container projects-container">
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -87,36 +92,42 @@ function Contacts() {
                 />
               </svg>
               <Link className="container-nav-link" href="/contacts">
-                Контакти
+                {t("Breadcrumbs_contacts")}
               </Link>
             </div>
 
-            <h2 className="title contacts-title">Контакти</h2>
+            <h2 className="title contacts-title">{t("Contacts_title")}</h2>
 
             <div className="contacts-block">
               <div className="contacts">
                 <div className="contacts-section">
-                  <h3 className="contacts-section-title">Адреса виробництва</h3>
+                  <h3 className="contacts-section-title">
+                    {t("Contacts_production_address")}
+                  </h3>
                   <a
                     href="https://maps.app.goo.gl/U9Y8wB2YKvuxLfnu8"
                     target="_blank"
                     className="contacts-section-link"
                   >
-                    Україна, м.Чорноморськ, вул. Промислова, 1
+                    {t("Contacts_production_address_street")}
                   </a>
                 </div>
                 <div className="contacts-section">
-                  <h3 className="contacts-section-title">телефон</h3>
+                  <h3 className="contacts-section-title">
+                    {t("Contacts_phone_number")}
+                  </h3>
                   <a
                     className="contacts-section-link"
                     href="tel:+380677108100"
                     target="_blank"
                   >
-                    +38 (067) 710 81 00
+                    +38 &#40;067&#41; 710 81 00
                   </a>
                 </div>
                 <div className="contacts-section">
-                  <h3 className="contacts-section-title">Електронна пошта</h3>
+                  <h3 className="contacts-section-title">
+                    {t("Contacts_Email")}
+                  </h3>
                   <a
                     className="contacts-section-link"
                     href="mailto:maven.furniture.group@gmail.com"
@@ -126,21 +137,24 @@ function Contacts() {
                   </a>
                 </div>
                 <div className="contacts-section">
-                  <h3 className="contacts-section-title">соціальні мережі</h3>
+                  <h3 className="contacts-section-title">
+                    {t("Contacts_social_media")}
+                  </h3>
                   <div className="contacts-section-social-links">
                     <a
                       className="contacts-section-link"
                       href="https://www.instagram.com/katalog.mebeli_maven.group"
                       target="_blank"
                     >
-                      серійні моделі: @maven.furniture.group
+                      {t("Contacts_social_media_inst")} @maven.furniture.group
                     </a>
                     <a
                       className="contacts-section-link"
                       href="https://www.instagram.com/maven.furniture.group"
                       target="_blank"
                     >
-                      проекти: @maven.furniture.group
+                      {t("Contacts_social_media_projects")}{" "}
+                      @maven.furniture.group
                     </a>
                     <a
                       className="contacts-section-link"

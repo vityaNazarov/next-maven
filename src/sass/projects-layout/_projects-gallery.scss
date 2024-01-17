@@ -41,8 +41,19 @@
   text-transform: uppercase;
 }
 
+.projects-block-img-wrapper {
+  border-radius: 24px;
+  overflow: hidden;
+}
+
 .projects-block-img {
   border-radius: 24px;
+  transition: all 500ms ease-in-out;
+}
+
+.projects-block-img:hover {
+  transform: scale(1.1);
+  transition: transform 500ms ease-in-out;
 }
 
 //
@@ -129,6 +140,7 @@
 
   .projects-block-item {
     flex-basis: calc((100% - 46px) / 3);
+    overflow: hidden;
   }
 
   .projects-info {

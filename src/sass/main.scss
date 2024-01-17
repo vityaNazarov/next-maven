@@ -3,6 +3,7 @@
 @import "./utils/variables";
 @import "./utils/visually-hidden";
 
+@import "./components/spinner";
 @import "./components/header";
 @import "./components/footer";
 @import "./components/container";
@@ -86,6 +87,7 @@
 
 @import "./product-card/product-card-gallery";
 @import "./product-card/product-card-info";
+@import "./individual-product-card/individual-product-card";
 
 //
 //

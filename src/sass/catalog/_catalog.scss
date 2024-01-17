@@ -95,5 +95,11 @@
     font-size: 32px;
     line-height: 1.2;
     letter-spacing: 0.038px;
+    transition: all 250ms ease-in-out;
+  }
+
+  .catalog-block-item:hover .catalog-block-text {
+    transform: scale(1.1) translate(-45%, -45%);
+    transition: all 250ms ease-in-out;
   }
 }

@@ -1,9 +1,15 @@
+"use client";
+import { useEffect, useState } from "react";
 import ImageViewer from "@/components/imageViewer/ImageViewer";
-
 import Link from "next/link";
-import React from "react";
+import Spinner from "@/components/spinner/Spinner";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import { useCartStore } from "@/utils/store";
+import "react-toastify/dist/ReactToastify.min.css";
+import { toast } from "react-toastify";
 
-async function getData(id) {
+const getData = async (id) => {
   const res = await fetch(`http://localhost:3000/api/products/${id}`, {
     mode: "cors",
     cache: "no-store",
@@ -14,10 +20,61 @@ async function getData(id) {
   }
 
   return res.json();
-}
+};
 
-const ProductId = async ({ params }) => {
-  const data = await getData(params.id);
+const ProductId = ({ params }) => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const localStorageKey = `addedToCart_${params.id || ""}` === true;
+  const initialAddedToCartMap =
+    JSON.parse(localStorage.getItem(localStorageKey)) || {};
+  const [addedToCartMap, setAddedToCartMap] = useState(initialAddedToCartMap);
+
+  const { addToCart, removeFromCart } = useCartStore();
+
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await getData(params.id);
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [params.id]);
+
+  const handleCart = () => {
+    addToCart({
+      id: data._id,
+      title: data.name,
+      code: data.code,
+      price: data.price,
+      img: data.img1,
+    });
+
+    setAddedToCartMap((prevMap) => ({ ...prevMap, [data._id]: true }));
+    localStorage.setItem(
+      localStorageKey,
+      JSON.stringify({ ...addedToCartMap, [data._id]: true })
+    );
+
+    toast.success(t("Product_id_btn_added_to_cart"), { autoClose: 1500 });
+  };
+
+  if (loading) {
+    return (
+      <div className="spinner-container">
+        <Spinner loading={loading} />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -87,7 +144,7 @@ const ProductId = async ({ params }) => {
           <div className="container catalog-container">
             <div className="container-nav">
               <Link className="container-nav-link" href="/">
-                Головна
+                {t("Breadcrumbs_main_page")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -103,7 +160,7 @@ const ProductId = async ({ params }) => {
                 />
               </svg>
               <Link className="container-nav-link" href="/catalog">
-                Каталог
+                {t("Breadcrumbs_catalog")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -122,7 +179,7 @@ const ProductId = async ({ params }) => {
                 className="container-nav-link"
                 href="/serial-products-section"
               >
-                Серійні вироби
+                {t("Breadcrumbs_serial_products")}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -141,7 +198,9 @@ const ProductId = async ({ params }) => {
                 className="container-nav-link"
                 href={`/serial-products-section/${data.category}`}
               >
-                {data.categoryname}
+                {i18next.language === "ua"
+                  ? data.categoryname
+                  : data.categorynameEng}
               </Link>
               <svg
                 className="container-nav-link-arrow"
@@ -162,7 +221,10 @@ const ProductId = async ({ params }) => {
             </div>
 
             <div>
-              <Link href={`/serial-products-section/${data.category}`}>
+              <Link
+                href={`/serial-products-section/${data.category}`}
+                className="arrow-back-link"
+              >
                 <svg
                   className="arrow-back-products"
                   width="16"
@@ -181,50 +243,19 @@ const ProductId = async ({ params }) => {
               <div className="product-card-block">
                 <div className="product-card-img">
                   <ImageViewer imgs={data.images} />
-                  {/* <div className="product-card-gallery">
-                    <Image
-                      className="product-card-gallery-img"
-                      width="520"
-                      height="520"
-                      src={data.images[0]}
-                      alt={data.name}
-                    />
-                    <div className="product-card-gallery-secondary">
-                      <Image
-                        className="product-card-gallery-secondary-img"
-                        width="137"
-                        height="137"
-                        src={data.images[1]}
-                        alt={data.name}
-                      />
-                      <Image
-                        className="product-card-gallery-secondary-img"
-                        width="137"
-                        height="137"
-                        src={data.images[2]}
-                        alt={data.name}
-                      />
-                      <Image
-                        className="product-card-gallery-secondary-img"
-                        width="137"
-                        height="137"
-                        src={data.images[3]}
-                        alt={data.name}
-                      />
-                    </div>
-                  </div> */}
+
                   <div className="product-card-gallery-info">
                     <a
                       className="product-card-gallery-link product-card-gallery-link-none"
                       href=""
                     >
-                      Кольори виробу
+                      {t("Product_id_product_colors")}
                     </a>
                     <div className="product-card-gallery-price-block">
                       <div className="product-card-price-none">
                         <h2 className="product-card-info-title">{data.name}</h2>
                         <p className="product-card-info-number">
-                          Код продукту: {data.code}
+                          {t("Product_id_code")} {data.code}
                         </p>
                       </div>
                       <div className="product-card-price-info">
@@ -247,7 +278,7 @@ const ProductId = async ({ params }) => {
                           </span>
                         </p>
                         <p className="product-card-gallery-pricetext">
-                          *У кожний виріб можна вносити індивідуальні зміни
+                          {t("Product_id_individual_changes")}
                         </p>
                       </div>
                     </div>
@@ -257,49 +288,61 @@ const ProductId = async ({ params }) => {
                   <div className="product-card-info-none">
                     <h2 className="product-card-info-title">{data.name}</h2>
                     <p className="product-card-info-number">
-                      Код продукту: {data.code}
+                      {t("Product_id_code")} {data.code}
                     </p>
                   </div>
 
                   <table className="product-card-info-table">
                     <tbody>
                       <tr>
-                        <td className="product-card-info-sizes">розміри</td>
+                        <td className="product-card-info-sizes">
+                          {t("Product_id_sizes")}
+                        </td>
                       </tr>
                       <tr className="product-card-info-table-tr">
-                        <td className="product-card-info-table-th1">Довжина</td>
+                        <td className="product-card-info-table-th1">
+                          {t("Product_id_length")}
+                        </td>
                         <td className="product-card-info-table-th2">
                           {data.length} mm
                         </td>
                       </tr>
                       <tr className="product-card-info-table-tr">
-                        <td className="product-card-info-table-th1">Ширина</td>
+                        <td className="product-card-info-table-th1">
+                          {t("Product_id_width")}
+                        </td>
                         <td className="product-card-info-table-th2">
                           {data.width} mm
                         </td>
                       </tr>
                       <tr className="product-card-info-table-tr">
-                        <td className="product-card-info-table-th1">Висота</td>
+                        <td className="product-card-info-table-th1">
+                          {t("Product_id_height")}
+                        </td>
                         <td className="product-card-info-table-th2">
                           {data.height} mm
                         </td>
                       </tr>
                       <tr className="product-card-info-table-tr">
                         <td className="product-card-info-table-th1">
-                          Висота сидіння
+                          {t("Product_id_seatheight")}
                         </td>
                         <td className="product-card-info-table-th2">
                           {data.seatheight} mm
                         </td>
                       </tr>
                       <tr className="product-card-info-table-tr">
-                        <td className="product-card-info-table-th1">Вага</td>
+                        <td className="product-card-info-table-th1">
+                          {t("Product_id_weight")}
+                        </td>
                         <td className="product-card-info-table-th2">
                           {data.weight} kg
                         </td>
                       </tr>
                       <tr className="product-card-info-table-tr">
-                        <td className="product-card-info-table-th1">Об’єм</td>
+                        <td className="product-card-info-table-th1">
+                          {t("Product_id_volume")}
+                        </td>
                         <td className="product-card-info-table-th2">
                           {data.volume} m3
                         </td>
@@ -307,38 +350,58 @@ const ProductId = async ({ params }) => {
                     </tbody>
                   </table>
                   <div className="product-materials">
-                    <p className="product-card-info-materials">Матеріали</p>
+                    <p className="product-card-info-materials">
+                      {t("Product_id_materials")}
+                    </p>
                     <ul className="product-card-info-materials-list">
                       <li className="product-card-info-materials-item">
-                        Ніжки - {data.legs}
+                        {t("Product_id_materials_legs")}{" "}
+                        {i18next.language === "ua" ? data.legs : data.legsEng}
                       </li>
                       <li className="product-card-info-materials-item">
-                        Оббивка - {data.upholstery}
+                        {t("Product_id_materials_upholstery")}{" "}
+                        {i18next.language === "ua"
+                          ? data.upholstery
+                          : data.upholsteryEng}
                       </li>
                       <li className="product-card-info-materials-item">
-                        Каркас - {data.frame}
+                        {t("Product_id_materials_frame")}
+                        {i18next.language === "ua" ? data.frame : data.frameEng}
                       </li>
                     </ul>
                     <p className="product-card-info-materials-text">
-                      *Усі матеріали мають сертифікати якості та походження
+                      {t("Product_id_certificates_of_quality")}
                     </p>
 
-                    <button className="product-card-gallery-btn">
-                      <svg
-                        className="product-card-gallery-btn-svg"
-                        width="24"
-                        height="22"
-                        viewBox="0 0 24 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M5.5 22C5.1 22 4.75 21.85 4.45 21.55C4.15 21.25 4 20.9 4 20.5V7.5C4 7.1 4.15 6.75 4.45 6.45C4.75 6.15 5.1 6 5.5 6H8.25V5.75C8.25 4.7 8.6125 3.8125 9.3375 3.0875C10.0625 2.3625 10.95 2 12 2C13.05 2 13.9375 2.3625 14.6625 3.0875C15.3875 3.8125 15.75 4.7 15.75 5.75V6H18.5C18.9 6 19.25 6.15 19.55 6.45C19.85 6.75 20 7.1 20 7.5V20.5C20 20.9 19.85 21.25 19.55 21.55C19.25 21.85 18.9 22 18.5 22H5.5ZM5.5 20.5H18.5V7.5H15.75V9.75C15.75 9.9625 15.6777 10.1406 15.5331 10.2844C15.3885 10.4281 15.2094 10.5 14.9956 10.5C14.7819 10.5 14.6042 10.4281 14.4625 10.2844C14.3208 10.1406 14.25 9.9625 14.25 9.75V7.5H9.75V9.75C9.75 9.9625 9.67771 10.1406 9.53313 10.2844C9.38853 10.4281 9.20936 10.5 8.99563 10.5C8.78188 10.5 8.60417 10.4281 8.4625 10.2844C8.32083 10.1406 8.25 9.9625 8.25 9.75V7.5H5.5V20.5ZM9.75 6H14.25V5.75C14.25 5.11667 14.0333 4.58333 13.6 4.15C13.1667 3.71667 12.6333 3.5 12 3.5C11.3667 3.5 10.8333 3.71667 10.4 4.15C9.96667 4.58333 9.75 5.11667 9.75 5.75V6Z"
-                          fill="#232427"
-                        />
-                      </svg>
-                      до кошика
-                    </button>
+                    {addedToCartMap[data._id] ? (
+                      <Link href="/cart">
+                        <button className=" product-card-gallery-btn-added">
+                          {t("Product_id_btn_goto_cart")}
+                        </button>
+                      </Link>
+                    ) : (
+                      <>
+                        <button
+                          className="product-card-gallery-btn"
+                          onClick={handleCart}
+                        >
+                          <svg
+                            className="product-card-gallery-btn-svg"
+                            width="24"
+                            height="22"
+                            viewBox="0 0 24 22"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M5.5 22C5.1 22 4.75 21.85 4.45 21.55C4.15 21.25 4 20.9 4 20.5V7.5C4 7.1 4.15 6.75 4.45 6.45C4.75 6.15 5.1 6 5.5 6H8.25V5.75C8.25 4.7 8.6125 3.8125 9.3375 3.0875C10.0625 2.3625 10.95 2 12 2C13.05 2 13.9375 2.3625 14.6625 3.0875C15.3875 3.8125 15.75 4.7 15.75 5.75V6H18.5C18.9 6 19.25 6.15 19.55 6.45C19.85 6.75 20 7.1 20 7.5V20.5C20 20.9 19.85 21.25 19.55 21.55C19.25 21.85 18.9 22 18.5 22H5.5ZM5.5 20.5H18.5V7.5H15.75V9.75C15.75 9.9625 15.6777 10.1406 15.5331 10.2844C15.3885 10.4281 15.2094 10.5 14.9956 10.5C14.7819 10.5 14.6042 10.4281 14.4625 10.2844C14.3208 10.1406 14.25 9.9625 14.25 9.75V7.5H9.75V9.75C9.75 9.9625 9.67771 10.1406 9.53313 10.2844C9.38853 10.4281 9.20936 10.5 8.99563 10.5C8.78188 10.5 8.60417 10.4281 8.4625 10.2844C8.32083 10.1406 8.25 9.9625 8.25 9.75V7.5H5.5V20.5ZM9.75 6H14.25V5.75C14.25 5.11667 14.0333 4.58333 13.6 4.15C13.1667 3.71667 12.6333 3.5 12 3.5C11.3667 3.5 10.8333 3.71667 10.4 4.15C9.96667 4.58333 9.75 5.11667 9.75 5.75V6Z"
+                              fill="#232427"
+                            />
+                          </svg>
+                          {t("Product_id_btn_add_to_cart")}
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
