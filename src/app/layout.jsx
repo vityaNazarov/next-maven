@@ -10,6 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ua">
       <head>
+        <title>Maven Group</title>
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="icon"

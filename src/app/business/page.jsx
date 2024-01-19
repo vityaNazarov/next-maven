@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import axios from "axios";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
@@ -8,8 +10,88 @@ import { useTranslation } from "react-i18next";
 function Business() {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No selected file");
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    user_phone: "",
+    user_city: "",
+    user_message: "",
+  });
 
   const { t } = useTranslation();
+
+  const sendMessageToTelegram = async () => {
+    const telegramToken = "6647104359:AAFnou6kdnQ4uNo2npcjBxsXKVAmW1rIPVo";
+    const telegramChatId = "-1002107177880";
+
+    try {
+      const response = await axios.post(
+        `https://api.telegram.org/bot${telegramToken}/sendMessage`,
+        {
+          chat_id: telegramChatId,
+          text: `Новая заявка:\n${JSON.stringify(formData, null, 2)}`,
+        }
+      );
+
+      console.log("Telegram API response:", response.data);
+
+      if (response.data.ok) {
+        console.log("Сообщение успешно отправлено в Telegram!");
+      } else {
+        console.error("Ошибка отправки в Telegram:", response.data.description);
+      }
+    } catch (error) {
+      console.error("Ошибка при отправке в Telegram:", error.message);
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const telegramChatId = "-1002107177880";
+
+    const data = new FormData();
+    data.append("chat_id", telegramChatId);
+    data.append("document", file);
+
+    console.log("FormData:", formData);
+
+    // // Добавим текстовые данные в FormData
+    Object.keys(formData).forEach((key) => {
+      data.append(key, formData[key]);
+    });
+
+    // Отправка файла в Telegram
+    try {
+      const response = await axios.post(
+        `https://api.telegram.org/bot6647104359:AAFnou6kdnQ4uNo2npcjBxsXKVAmW1rIPVo/sendDocument`,
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log("Telegram API response:", response.data);
+
+      if (response.data.ok) {
+        console.log("Файл успешно отправлен в Telegram!");
+      } else {
+        console.error(
+          "Ошибка отправки файла в Telegram:",
+          response.data.description
+        );
+      }
+    } catch (error) {
+      console.error("Ошибка при отправке файла в Telegram:", error.message);
+    }
+
+    // Отправка текстового сообщения в Telegram
+    sendMessageToTelegram();
+
+    // Дополнительная логика обработки формы, если необходимо
+  };
 
   return (
     <>
@@ -368,7 +450,12 @@ function Business() {
 
               <div className="individual-projects-form-block">
                 <h2 className="individual-form-title">{t("Form_title")}</h2>
-                <form className="career-form">
+                <form
+                  className="career-form"
+                  onSubmit={handleSubmit}
+                  method="post"
+                  encType="multipart/form-data"
+                >
                   <label htmlFor="" className="career-form-label">
                     {t("Form_name")}
                   </label>
@@ -377,9 +464,12 @@ function Business() {
                     type="text"
                     placeholder={t("Form_name_placeholder")}
                     name="user_name"
+                    value={formData.user_name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, user_name: e.target.value })
+                    }
                     required
                   />
-
                   <label htmlFor="" className="career-form-label">
                     {t("Form_email")}
                   </label>
@@ -388,9 +478,12 @@ function Business() {
                     type="email"
                     placeholder={t("Form_email_placeholder")}
                     name="user_email"
+                    value={formData.user_email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, user_email: e.target.value })
+                    }
                     required
                   />
-
                   <label htmlFor="" className="career-form-label">
                     {t("Form_tel")}
                   </label>
@@ -399,9 +492,12 @@ function Business() {
                     type="tel"
                     placeholder={t("Form_tel_placeholder")}
                     name="user_phone"
+                    value={formData.user_phone}
+                    onChange={(e) =>
+                      setFormData({ ...formData, user_phone: e.target.value })
+                    }
                     required
                   />
-
                   <label htmlFor="" className="career-form-label">
                     {t("Form_city")}
                   </label>
@@ -410,6 +506,10 @@ function Business() {
                     type="text"
                     placeholder={t("Form_city_placeholder")}
                     name="user_city"
+                    value={formData.user_city}
+                    onChange={(e) =>
+                      setFormData({ ...formData, user_city: e.target.value })
+                    }
                     required
                   />
 
@@ -420,6 +520,13 @@ function Business() {
                     <textarea
                       className="career-form-input-textarea individual-career-form-input"
                       name="user_message"
+                      value={formData.user_message}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          user_message: e.target.value,
+                        })
+                      }
                       placeholder={t("Form_message_placeholder")}
                     ></textarea>
                     <label className="custom-file">
@@ -427,9 +534,7 @@ function Business() {
                         type="file"
                         onChange={({ target: { files } }) => {
                           files[0] && setFileName(files[0].name);
-                          if (files) {
-                            setFile("null");
-                          }
+                          files[0] && setFile(files[0]);
                         }}
                       />
                       <span className="input-file-span">
