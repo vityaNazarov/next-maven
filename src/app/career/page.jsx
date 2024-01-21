@@ -2,13 +2,109 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import axios from "axios";
 import { useTranslation } from "react-i18next";
 
 function Career() {
-  const { t } = useTranslation();
-
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No selected file!");
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    user_phone: "",
+    user_city: "",
+    user_message: "",
+  });
+  const [successMessage, setSuccessMessage] = useState(false); // Новое состояние
+
+  const { t } = useTranslation();
+
+  const sendMessageToTelegram = async () => {
+    const telegramToken = "6647104359:AAFnou6kdnQ4uNo2npcjBxsXKVAmW1rIPVo";
+    const telegramChatId = "-1002107177880";
+
+    try {
+      const response = await axios.post(
+        `https://api.telegram.org/bot${telegramToken}/sendMessage`,
+        {
+          chat_id: telegramChatId,
+          text: `Новая заявка (Карьера):\n${JSON.stringify(formData, null, 2)}`,
+        }
+      );
+
+      console.log("Telegram API response:", response.data);
+
+      if (response.data.ok) {
+        console.log("Сообщение успешно отправлено в Telegram!");
+      } else {
+        console.error("Ошибка отправки в Telegram:", response.data.description);
+      }
+    } catch (error) {
+      console.error("Ошибка при отправке в Telegram:", error.message);
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const telegramChatId = "-1002107177880";
+
+    const data = new FormData();
+    data.append("chat_id", telegramChatId);
+
+    // Добавьте файл в FormData, если он существует
+    if (file) {
+      data.append("document", file);
+    }
+
+    // Добавьте текстовые данные в FormData
+    Object.keys(formData).forEach((key) => {
+      data.append(key, formData[key]);
+    });
+
+    // Отправьте файл в Telegram, если он существует
+    try {
+      if (file) {
+        const fileResponse = await axios.post(
+          `https://api.telegram.org/bot6647104359:AAFnou6kdnQ4uNo2npcjBxsXKVAmW1rIPVo/sendDocument`,
+          data,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        console.log("Ответ API Telegram (файл):", fileResponse.data);
+
+        if (!fileResponse.data.ok) {
+          console.error(
+            "Ошибка отправки файла в Telegram:",
+            fileResponse.data.description
+          );
+        }
+      }
+    } catch (fileError) {
+      console.error("Ошибка отправки файла в Telegram:", fileError.message);
+    }
+
+    // Отправьте текстовые данные в Telegram
+    sendMessageToTelegram();
+
+    // Сбросьте значения инпутов и отобразите сообщение об успешной отправке
+    setFormData({
+      user_name: "",
+      user_email: "",
+      user_phone: "",
+      user_city: "",
+      user_message: "",
+    });
+    setFile(null);
+    setFileName("No selected file");
+    setSuccessMessage(true);
+
+    // Дополнительная логика обработки формы, если необходимо
+  };
 
   return (
     <>
@@ -73,6 +169,49 @@ function Career() {
         </defs>
       </svg>
 
+      <div
+        className={
+          !successMessage ? "ind-modal-backdrop" : "ind-modal-backdrop active"
+        }
+        onClick={() => setSuccessMessage(false)}
+      >
+        <div
+          className="success-block"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <button
+            onClick={() => setSuccessMessage(false)}
+            className="success-block-close-btn"
+          >
+            <svg
+              className="success-block-close-svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M18.6067 6.20659C18.8312 5.98204 18.8312 5.61797 18.6067 5.39342C18.3821 5.16887 18.0181 5.16887 17.7935 5.39342L12.0001 11.1868L6.20668 5.39342C5.98213 5.16887 5.61806 5.16887 5.39351 5.39342C5.16896 5.61797 5.16896 5.98204 5.39351 6.20659L11.1869 12L5.39351 17.7934C5.16896 18.018 5.16896 18.382 5.39351 18.6066C5.61806 18.8311 5.98213 18.8311 6.20668 18.6066L12.0001 12.8132L17.7935 18.6066C18.0181 18.8311 18.3821 18.8311 18.6067 18.6066C18.8312 18.382 18.8312 18.018 18.6067 17.7934L12.8133 12L18.6067 6.20659Z"
+                fill="#232427"
+              />
+            </svg>
+          </button>
+          <h2 className="success-block-title">{t("Success_block_title")}</h2>
+          <p className="success-block-text">{t("Success_block_text")}</p>
+          <p className="success-block-text-thanks">
+            {t("Success_block_text_thanks")}
+          </p>
+          <Link href="/" className="success-block-btn">
+            {t("Success_block_btn")}
+          </Link>
+        </div>
+      </div>
+
       <main>
         {/* КАР’ЄРА */}
 
@@ -123,7 +262,12 @@ function Career() {
               </div>
               <div className="career-form-block">
                 <h2 className="career-form-title">{t("Career_form_title")}</h2>
-                <form className="career-form">
+                <form
+                  className="career-form"
+                  onSubmit={handleSubmit}
+                  method="post"
+                  encType="multipart/form-data"
+                >
                   <label htmlFor="" className="career-form-label">
                     {t("Form_name")}
                   </label>
@@ -132,6 +276,10 @@ function Career() {
                     type="text"
                     placeholder={t("Form_name_placeholder")}
                     name="user_name"
+                    value={formData.user_name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, user_name: e.target.value })
+                    }
                     required
                   />
 
@@ -143,6 +291,10 @@ function Career() {
                     type="email"
                     placeholder={t("Form_email_placeholder")}
                     name="user_email"
+                    value={formData.user_email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, user_email: e.target.value })
+                    }
                     required
                   />
 
@@ -154,9 +306,12 @@ function Career() {
                     type="tel"
                     placeholder={t("Form_tel_placeholder")}
                     name="user_phone"
+                    value={formData.user_phone}
+                    onChange={(e) =>
+                      setFormData({ ...formData, user_phone: e.target.value })
+                    }
                     required
                   />
-
                   <label htmlFor="" className="career-form-label">
                     {t("Form_city")}
                   </label>
@@ -165,6 +320,10 @@ function Career() {
                     type="text"
                     placeholder={t("Form_city_placeholder")}
                     name="user_city"
+                    value={formData.user_city}
+                    onChange={(e) =>
+                      setFormData({ ...formData, user_city: e.target.value })
+                    }
                     required
                   />
 
@@ -175,15 +334,22 @@ function Career() {
                     <textarea
                       className="career-form-input-textarea"
                       name="user_message"
+                      value={formData.user_message}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          user_message: e.target.value,
+                        })
+                      }
                       placeholder={t("Form_message_placeholder")}
                     ></textarea>
                     <label className="custom-file">
                       <input
                         type="file"
                         onChange={({ target: { files } }) => {
-                          files[0] && setFileName(files[0].name);
-                          if (files) {
-                            setFile("null");
+                          if (files[0]) {
+                            setFileName(files[0].name);
+                            setFile(files[0]);
                           }
                         }}
                       />
@@ -220,7 +386,7 @@ function Career() {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       onClick={() => {
-                        setFileName("No selected file!");
+                        setFileName("No selected file");
                         setFile(null);
                       }}
                     >

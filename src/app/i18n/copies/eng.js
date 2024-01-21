@@ -170,7 +170,7 @@ export const eng = {
   Serial_products_section_title_decor: "decor",
   Serial_products_section_promotional_items: "promotional items",
 
-  //INDIVIDUAL PRODUCTS SECTION
+  // INDIVIDUAL PRODUCTS SECTION
 
   Individual_products_section_title: "Individual products",
   Individual_products_section_chairs: "chairs",
@@ -180,7 +180,7 @@ export const eng = {
   Individual_products_section_poufs_ottomans: "poufs / ottomans",
   Individual_products_section_title_decor: "decor",
 
-  //PRODUCT ID
+  // PRODUCT ID
 
   Product_id_product_colors: "product colors",
   Product_id_code: "Product code:",
@@ -202,12 +202,12 @@ export const eng = {
   Product_id_btn_add_to_cart: "add to cart",
   Product_id_btn_add_to_cart_clicked: "go to the cart",
 
-  //INDIVIDUAL PRODUCT ID
+  // INDIVIDUAL PRODUCT ID
 
   Individual_product_all_details:
     "*All details of the product (materials, color) are discussed with the manager individually after filling out the feedback form",
 
-  //INDIVIDUAL PRODUCT ID FORM
+  // INDIVIDUAL PRODUCT ID FORM
 
   Individual_product_form_title: "feedback form",
   Individual_product_form_btn: "order",
@@ -215,7 +215,7 @@ export const eng = {
     "For detailed consultation on the selected furniture and all possible details of the order, fill out and send the feedback form.",
   Individual_product_form_call_us: "Got questions? Call us:",
 
-  //CART
+  // CART
 
   Cart_title: "cart",
   Cart_product: "Product",
@@ -242,7 +242,7 @@ export const eng = {
   Product_id_btn_added_to_cart: "Product successfuly added!",
   Cart_page_empty: "Unfortunately, there are no products in your cart yet.",
 
-  //CART FORM
+  // CART FORM
 
   Cart_form_contact_person: "Name of the contact person",
   Cart_form_contact_person_placeholder: "Enter name of the contact person",
@@ -256,4 +256,11 @@ export const eng = {
   Cart_form_city_placeholder: "Enter city",
   Cart_form_Email: "E-mail",
   Cart_form_Email_placeholder: "Enter e-mail",
+
+  // SUCCESS BLOCK
+
+  Success_block_title: "your application has been successfully sent!",
+  Success_block_text: "Our manager will contact you shortly.",
+  Success_block_text_thanks: "Thank you for your trust!",
+  Success_block_btn: "to the main page",
 };

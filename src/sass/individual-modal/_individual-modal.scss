@@ -1,6 +1,5 @@
 .ind-modal-backdrop {
   background: rgba(28, 28, 28, 0.847);
-  // background: var(--background-header);
   position: fixed;
   z-index: 1001;
   top: 0;
@@ -33,7 +32,6 @@
   justify-content: center;
   align-items: center;
   background: var(--coffee, #a8a198);
-  // width: 45%;
   border-radius: 16px 16px 0px 0px;
 }
 
@@ -80,10 +78,6 @@
   letter-spacing: 0.012px;
 }
 
-//
-//
-//
-
 .modal-form {
   height: 433px;
   background: var(--background);
@@ -92,7 +86,6 @@
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(50px);
-  // width: 55%;
   border-radius: 0px 0px 16px 16px;
 }
 
@@ -184,9 +177,6 @@
   transition: all 250ms ease-in-out;
 }
 
-//
-//
-
 .modal-close {
   background-color: transparent;
   border: none;
@@ -255,10 +245,6 @@
     width: 220px;
   }
 
-  // //
-  // //
-  // //
-
   .modal-form {
     height: 100%;
     width: 60%;
@@ -302,9 +288,6 @@
   .modal-form-btn-sbmt {
     margin-top: 32px;
   }
-
-  // //
-  // //
 
   .modal-close {
     top: 24px;
@@ -368,10 +351,6 @@
     letter-spacing: 0.017px;
     width: 100%;
   }
-
-  // //
-  // //
-  // //
 
   .modal-form {
     width: 55%;

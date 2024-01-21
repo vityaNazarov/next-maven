@@ -93,13 +93,13 @@
 @media screen and (min-width: 768px) {
   .footer-info {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     margin-bottom: 32px;
   }
 
   .footer-privacy {
     margin-bottom: 0;
-    margin-right: 115px;
+    margin-right: 160px;
   }
 
   .footer-contacts {
@@ -175,14 +175,28 @@
     margin-right: 0;
   }
 
+  .subscription-link:hover {
+    .subscription-link-instagram {
+      transform: scale(1.2);
+      transition: all 250ms ease-in-out;
+    }
+
+    .subscription-link-tiktok {
+      transform: scale(1.2);
+      transition: all 250ms ease-in-out;
+    }
+  }
+
   .subscription-link-instagram {
     width: 37px;
     height: 37px;
+    transition: all 250ms ease-in-out;
   }
 
   .subscription-link-tiktok {
     width: 33px;
     height: 37px;
+    transition: all 250ms ease-in-out;
   }
 
   .footer-title {

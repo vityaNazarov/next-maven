@@ -3,12 +3,13 @@ import { useCartStore } from "@/utils/store";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import axios from "axios";
 import { useTranslation } from "react-i18next";
 
 function CartItem() {
   const [urIsOpen, setUrIsOpen] = useState(false);
   const [fizIsOpen, setFizIsOpen] = useState(false);
-  const { products, totalItems, removeFromCart } = useCartStore();
+  const { products, totalItems, removeFromCart, clearCart } = useCartStore();
   const { t } = useTranslation();
   const [quantities, setQuantities] = useState(() => {
     // Используйте localStorage для получения количества из предыдущей сессии
@@ -20,6 +21,21 @@ function CartItem() {
       return acc;
     }, {});
   });
+  const [formData, setFormData] = useState({
+    legal_entity_name: "",
+    legal_entity_phone: "",
+    legal_entity_company_name: "",
+    legal_entity_city: "",
+    legal_entity_register_code: "",
+    fiz_person_name: "",
+    fiz_person_phone: "",
+    fiz_person_email: "",
+    fiz_person_city: "",
+    // Добавьте другие поля формы по необходимости
+  });
+  const [deliveryMethod, setDeliveryMethod] = useState("Нова пошта"); // установите значение по умолчанию
+  const [paymentMethod, setPaymentMethod] = useState("Передоплата"); // установите значение по умолчанию
+  const [successMessage, setSuccessMessage] = useState(false); // Новое состояние
 
   // Обработчик изменения quantity для конкретного товара
   const handleQuantityChange = (productId, newQuantity) => {
@@ -44,6 +60,73 @@ function CartItem() {
     let formattedNumber = number.toLocaleString();
     return formattedNumber;
   }
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    if (!fizIsOpen) {
+      setFizIsOpen(true);
+    } else {
+      try {
+        const response = await axios.post(
+          "https://api.telegram.org/bot6647104359:AAFnou6kdnQ4uNo2npcjBxsXKVAmW1rIPVo/sendMessage",
+          {
+            chat_id: "-1002107177880",
+            text: `Новая заявка (Товар из корзины)!\n\n${products.map(
+              (item) =>
+                `Товар: ${item.title} (Код: ${item.code}), Количество: ${
+                  quantities[item.id]
+                }, Цена: ${item.price} * ${quantities[item.id]}\n`
+            )}
+            \nИмя ЮР лица: ${formData.legal_entity_name}
+            \nТелефон ЮР лица: ${formData.legal_entity_phone}
+            \nНазвание компании ЮР лица: ${formData.legal_entity_company_name}
+            \nГород ЮР лица: ${formData.legal_entity_city}
+            \nКод ЕДРПОУ ЮР лица: ${formData.legal_entity_register_code}
+            \n
+            \nИмя ФИЗ лица: ${formData.fiz_person_name}
+            \nТелефон ФИЗ лица: ${formData.fiz_person_phone}
+            \nПочта ФИЗ лица: ${formData.fiz_person_email}
+            \nГород ФИЗ лица: ${formData.fiz_person_city}
+            \n
+            \nВыбранный метод доставки: ${deliveryMethod}
+            \nВыбранный метод оплаты: ${paymentMethod}
+            \n\n`,
+          }
+        );
+
+        if (!response.data.ok) {
+          throw new Error("Failed to send message");
+        }
+
+        // Очистить форму
+        setFormData({
+          legal_entity_name: "",
+          legal_entity_phone: "",
+          legal_entity_company_name: "",
+          legal_entity_city: "",
+          legal_entity_register_code: "",
+          fiz_person_name: "",
+          fiz_person_phone: "",
+          fiz_person_email: "",
+          fiz_person_city: "",
+          // Очистите другие поля формы по необходимости
+        });
+
+        clearCart();
+        localStorage.removeItem("cartQuantities");
+        localStorage.removeItem("false");
+        localStorage.removeItem("cart");
+
+        setUrIsOpen(false);
+        setFizIsOpen(false);
+        setDeliveryMethod("Нова пошта");
+        setPaymentMethod("Передоплата");
+        setSuccessMessage(true);
+      } catch (error) {
+        console.error("Error sending message:", error);
+      }
+    }
+  };
 
   return (
     <>
@@ -107,6 +190,49 @@ function CartItem() {
           </filter>
         </defs>
       </svg>
+
+      <div
+        className={
+          !successMessage ? "ind-modal-backdrop" : "ind-modal-backdrop active"
+        }
+        onClick={() => setSuccessMessage(false)}
+      >
+        <div
+          className="success-block"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <button
+            onClick={() => setSuccessMessage(false)}
+            className="success-block-close-btn"
+          >
+            <svg
+              className="success-block-close-svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M18.6067 6.20659C18.8312 5.98204 18.8312 5.61797 18.6067 5.39342C18.3821 5.16887 18.0181 5.16887 17.7935 5.39342L12.0001 11.1868L6.20668 5.39342C5.98213 5.16887 5.61806 5.16887 5.39351 5.39342C5.16896 5.61797 5.16896 5.98204 5.39351 6.20659L11.1869 12L5.39351 17.7934C5.16896 18.018 5.16896 18.382 5.39351 18.6066C5.61806 18.8311 5.98213 18.8311 6.20668 18.6066L12.0001 12.8132L17.7935 18.6066C18.0181 18.8311 18.3821 18.8311 18.6067 18.6066C18.8312 18.382 18.8312 18.018 18.6067 17.7934L12.8133 12L18.6067 6.20659Z"
+                fill="#232427"
+              />
+            </svg>
+          </button>
+          <h2 className="success-block-title">{t("Success_block_title")}</h2>
+          <p className="success-block-text">{t("Success_block_text")}</p>
+          <p className="success-block-text-thanks">
+            {t("Success_block_text_thanks")}
+          </p>
+          <Link href="/" className="success-block-btn">
+            {t("Success_block_btn")}
+          </Link>
+        </div>
+      </div>
 
       <main>
         {/* КАТАЛОГ */}
@@ -190,11 +316,9 @@ function CartItem() {
                           <div className="cart-product-title-info-block">
                             <h3 className="cart-product-name-title">
                               {item.title}
-                              {/* Fort chair */}
                             </h3>
                             <p className="cart-product-name-subtitle">
                               {item.code}
-                              {/* A00001 */}
                             </p>
                           </div>
                         </div>
@@ -297,8 +421,6 @@ function CartItem() {
                               </svg>
                               <p className="cart-product-price-title">
                                 {parcedNumber(item.price, quantities[item.id])}
-
-                                {/* 50000 */}
                               </p>
                             </div>
                           </div>
@@ -354,7 +476,7 @@ function CartItem() {
                   <p className="cart-undertable-text cart-undertable-text-mobile">
                     {t("Cart_individual_changes")}
                   </p>
-                  <div className="cart-form-order">
+                  <form className="cart-form-order" onSubmit={handleFormSubmit}>
                     <h2 className="title">{t("Cart_placing_an_order")}</h2>
                     <div>
                       <div>
@@ -416,7 +538,7 @@ function CartItem() {
                       </div>
                       <div>
                         {urIsOpen ? (
-                          <form action="" className="cart-person-info">
+                          <div className="cart-person-info">
                             <div className="cart-person-fieldsblock">
                               <label
                                 htmlFor="name"
@@ -431,6 +553,14 @@ function CartItem() {
                                 )}
                                 type="text"
                                 className="cart-person-input"
+                                name="legal_entity_name"
+                                value={formData.legal_entity_name}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    legal_entity_name: e.target.value,
+                                  })
+                                }
                               />
                               <label
                                 htmlFor="tel"
@@ -445,6 +575,14 @@ function CartItem() {
                                 )}
                                 type="text"
                                 className="cart-person-input"
+                                name="legal_entity_phone"
+                                value={formData.legal_entity_phone}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    legal_entity_phone: e.target.value,
+                                  })
+                                }
                               />
                             </div>
                             <div className="cart-person-fieldsblock">
@@ -461,6 +599,14 @@ function CartItem() {
                                 )}
                                 type="text"
                                 className="cart-person-input"
+                                name="legal_entity_company_name"
+                                value={formData.legal_entity_company_name}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    legal_entity_company_name: e.target.value,
+                                  })
+                                }
                               />
                               <label
                                 htmlFor="town"
@@ -473,6 +619,14 @@ function CartItem() {
                                 placeholder={t("Cart_form_city_placeholder")}
                                 type="text"
                                 className="cart-person-input"
+                                name="legal_entity_city"
+                                value={formData.legal_entity_city}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    legal_entity_city: e.target.value,
+                                  })
+                                }
                               />
                             </div>
                             <div className="cart-person-fieldsblock">
@@ -489,16 +643,24 @@ function CartItem() {
                                 )}
                                 type="text"
                                 className="cart-person-input last"
+                                name="legal_entity_register_code"
+                                value={formData.legal_entity_register_code}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    legal_entity_register_code: e.target.value,
+                                  })
+                                }
                               />
                             </div>
-                          </form>
+                          </div>
                         ) : (
                           ""
                         )}
                       </div>
                       <div>
                         {fizIsOpen ? (
-                          <form action="" className="cart-person-info-fiz">
+                          <div className="cart-person-info-fiz">
                             <div className="cart-person-fieldsblock cart-person-fieldsblock-fiz ">
                               <label
                                 htmlFor="name"
@@ -511,6 +673,15 @@ function CartItem() {
                                 placeholder={t("Form_name_placeholder")}
                                 type="text"
                                 className="cart-person-input"
+                                name="fiz_person_name"
+                                value={formData.fiz_person_name}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    fiz_person_name: e.target.value,
+                                  })
+                                }
+                                required
                               />
                               <label
                                 htmlFor="tel"
@@ -523,6 +694,15 @@ function CartItem() {
                                 placeholder={t("Form_tel_placeholder")}
                                 type="text"
                                 className="cart-person-input"
+                                name="fiz_person_phone"
+                                value={formData.fiz_person_phone}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    fiz_person_phone: e.target.value,
+                                  })
+                                }
+                                required
                               />
                             </div>
                             <div className="cart-person-fieldsblock">
@@ -537,6 +717,15 @@ function CartItem() {
                                 placeholder={t("Form_email_placeholder")}
                                 type="text"
                                 className="cart-person-input"
+                                name="fiz_person_email"
+                                value={formData.fiz_person_email}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    fiz_person_email: e.target.value,
+                                  })
+                                }
+                                required
                               />
                               <label
                                 htmlFor="town"
@@ -549,9 +738,18 @@ function CartItem() {
                                 placeholder={t("Form_city_placeholder")}
                                 type="text"
                                 className="cart-person-input last"
+                                name="fiz_person_city"
+                                value={formData.fiz_person_city}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    fiz_person_city: e.target.value,
+                                  })
+                                }
+                                required
                               />
                             </div>
-                          </form>
+                          </div>
                         ) : (
                           ""
                         )}
@@ -563,14 +761,15 @@ function CartItem() {
                           <span className="order-title-num">2</span>
                           {t("Cart_delivery")}
                         </p>
-                        <form action="#" className="type-of-ordery-form">
+                        <div className="type-of-ordery-form">
                           <input
-                            defaultChecked
+                            checked={deliveryMethod === "Нова пошта"}
                             className="order-info-input"
                             type="radio"
-                            name="posht"
+                            name="Нова пошта"
                             id="new-posht"
                             value="Нова пошта"
+                            onChange={() => setDeliveryMethod("Нова пошта")}
                           />
                           <label
                             htmlFor="new-posht"
@@ -581,11 +780,13 @@ function CartItem() {
                             </span>
                           </label>
                           <input
+                            checked={deliveryMethod === "Meest Express"}
                             className="order-info-input"
                             type="radio"
-                            name="posht"
+                            name="Meest Express"
                             id="meest-posht"
                             value="Meest Express"
+                            onChange={() => setDeliveryMethod("Meest Express")}
                           />
                           <label
                             htmlFor="meest-posht"
@@ -596,11 +797,13 @@ function CartItem() {
                             </span>
                           </label>
                           <input
+                            checked={deliveryMethod === "Delivery"}
                             className="order-info-input"
                             type="radio"
-                            name="posht"
+                            name="Delivery"
                             id="delivery-posht"
                             value="Delivery"
+                            onChange={() => setDeliveryMethod("Delivery")}
                           />
                           <label
                             htmlFor="delivery-posht"
@@ -611,11 +814,13 @@ function CartItem() {
                             </span>
                           </label>
                           <input
+                            checked={deliveryMethod === "Самовивіз"}
                             className="order-info-input"
                             type="radio"
-                            name="posht"
+                            name="Самовивіз"
                             id="by-myself"
                             value="Самовивіз"
+                            onChange={() => setDeliveryMethod("Самовивіз")}
                           />
                           <label
                             htmlFor="by-myself"
@@ -625,21 +830,22 @@ function CartItem() {
                               {t("Cart_pickup")}
                             </span>
                           </label>
-                        </form>
+                        </div>
                       </div>
                       <div className="type-of-payment">
                         <p className="order-title">
                           <span className="order-title-num">3</span>
                           {t("Cart_payment")}
                         </p>
-                        <form action="#" className="type-of-payment-form">
+                        <div className="type-of-payment-form">
                           <input
-                            defaultChecked
+                            checked={paymentMethod === "Передоплата"}
                             className="order-info-input"
                             type="radio"
-                            name="payment"
+                            name="Передоплата"
                             id="advance-payment"
                             value="Передоплата"
+                            onChange={() => setPaymentMethod("Передоплата")}
                           />
                           <label
                             htmlFor="advance-payment"
@@ -651,11 +857,13 @@ function CartItem() {
                           </label>
 
                           <input
+                            checked={paymentMethod === "Повна оплата"}
                             className="order-info-input"
                             type="radio"
-                            name="payment"
+                            name="Повна оплата"
                             id="full-payment"
                             value="Повна оплата"
+                            onChange={() => setPaymentMethod("Повна оплата")}
                           />
                           <label
                             htmlFor="full-payment"
@@ -665,7 +873,7 @@ function CartItem() {
                               {t("Cart_full_payment")}
                             </span>
                           </label>
-                        </form>
+                        </div>
                       </div>
                     </div>
                     <div className="order-submit-reverse">
@@ -676,7 +884,7 @@ function CartItem() {
                         {t("Cart_text_under_btn")}
                       </p>
                     </div>
-                  </div>
+                  </form>
                 </>
               ) : (
                 <>

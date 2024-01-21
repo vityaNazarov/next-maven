@@ -19,7 +19,6 @@ function Footer() {
             <div className="footer-privacy">
               <h3 className="footer-title privacy-title">PRIVACY</h3>
               <p className="footer-text privacy-text">Privacy Policy</p>
-              <p className="footer-text privacy-text">Terms & Conditions</p>
             </div>
             <div className="footer-contacts">
               <h3 className="footer-title contacts-title">Contact us</h3>
@@ -39,7 +38,12 @@ function Footer() {
             <div className="subscription">
               <h3 className="footer-title subscription-title">Follow us</h3>
               <div className="footer-socials-links">
-                <a className="subscription-link" href="">
+                <a
+                  className="subscription-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.instagram.com/katalog.mebeli_maven.group?igshid=MzRlODBiNWFlZA%3D%3D"
+                >
                   <Image
                     width="24"
                     height="24"
@@ -48,7 +52,12 @@ function Footer() {
                     alt="icon_instagram"
                   />
                 </a>
-                <a className="subscription-link" href="">
+                <a
+                  className="subscription-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.tiktok.com/@maven.furniture.group"
+                >
                   <Image
                     width="23"
                     height="24"

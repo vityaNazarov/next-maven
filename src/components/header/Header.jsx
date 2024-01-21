@@ -61,7 +61,7 @@ function Header() {
                 onClick={() => setDropdownActive(!dropdownActive)}
                 ref={dropdownRef}
               >
-                <span className="menu-link link">{t("About_us")} </span>
+                <span className="menu-link link">{t("About_us")}</span>
                 <svg
                   className={`dropdown-chevron ${
                     dropdownActive ? "active" : ""

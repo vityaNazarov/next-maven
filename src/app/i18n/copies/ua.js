@@ -171,7 +171,7 @@ export const ua = {
   Serial_products_section_title_decor: "декор",
   Serial_products_section_promotional_items: "Акційні товари",
 
-  //INDIVIDUAL PRODUCTS SECTION
+  // INDIVIDUAL PRODUCTS SECTION
 
   Individual_products_section_title: "Індивідуальні вироби",
   Individual_products_section_chairs: "Стільці",
@@ -181,7 +181,7 @@ export const ua = {
   Individual_products_section_poufs_ottomans: "Пуфи / тахти",
   Individual_products_section_title_decor: "декор",
 
-  //PRODUCT ID
+  // PRODUCT ID
 
   Product_id_product_colors: "Кольори виробу",
   Product_id_code: "Код продукту:",
@@ -203,12 +203,12 @@ export const ua = {
   Product_id_btn_add_to_cart: "до кошика",
   Product_id_btn_add_to_cart_clicked: "перейти у кошик",
 
-  //INDIVIDUAL PRODUCT ID
+  // INDIVIDUAL PRODUCT ID
 
   Individual_product_all_details:
     "*Всі деталі виробу (матеріли, колір) обговорюються з менеджером індивідуально після заповнення форми зворотнього зв’язку",
 
-  //INDIVIDUAL PRODUCT ID FORM
+  // INDIVIDUAL PRODUCT ID FORM
 
   Individual_product_form_title: "Форма зворотнього зв'язку",
   Individual_product_form_btn: "замовити",
@@ -216,7 +216,7 @@ export const ua = {
     "Для детального консультування щодо обраних меблів та всіх можливих деталей замовлення заповніть та відправте форму зворотнього зв'язку.",
   Individual_product_form_call_us: "Винкли питання? Зателефонуйте нам:",
 
-  //CART
+  // CART
 
   Cart_title: "кошик",
   Cart_product: "Продукт",
@@ -240,10 +240,10 @@ export const ua = {
   Cart_text_under_btn:
     "*Нажавши кнопку “Оформити замовлення” Ви погоджуєтесь на обробку персональних даних",
   Product_id_btn_goto_cart: "перейти у кошик",
-  Product_id_btn_added_to_cart: "Продукт успешно добавлен!",
+  Product_id_btn_added_to_cart: "Продукт успішно додано!",
   Cart_page_empty: "Нажаль, у вашому кошику ще немає товарів.",
 
-  //CART FORM
+  // CART FORM
 
   Cart_form_contact_person: "Ім‘я контактної особи",
   Cart_form_contact_person_placeholder: "Введіть ім‘я контактної особи ",
@@ -257,4 +257,11 @@ export const ua = {
   Cart_form_city_placeholder: "Введіть місто",
   Cart_form_Email: "Електронна пошта",
   Cart_form_Email_placeholder: "Введіть електронну пошту",
+
+  // SUCCESS BLOCK
+
+  Success_block_title: "ваша заявка успішно відправлена!",
+  Success_block_text: "У найближчий час з вами зв’яжеться наш менеджер.",
+  Success_block_text_thanks: "Дякуємо за довіру!",
+  Success_block_btn: "на головну",
 };

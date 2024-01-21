@@ -492,7 +492,11 @@ function Main() {
               src="/images/img/inst-section/inst-img-mobile.jpg"
               alt=""
             />
-            <a href="" className="chevron-btn chevron-btn-inst-mobile">
+            <a
+              href="https://www.instagram.com/katalog.mebeli_maven.group?igshid=MzRlODBiNWFlZA%3D%3D"
+              target="_blank"
+              className="chevron-btn chevron-btn-inst-mobile"
+            >
               {t("Main_inst_btn")}
               <svg
                 className="chevron-svg"
@@ -540,7 +544,11 @@ function Main() {
                 alt=""
               />
 
-              <button className="chevron-btn chevron-btn-inst" type="button">
+              <a
+                className="chevron-btn chevron-btn-inst"
+                target="_blank"
+                href="https://www.instagram.com/katalog.mebeli_maven.group?igshid=MzRlODBiNWFlZA%3D%3D"
+              >
                 {t("Main_inst_btn")}
                 <svg
                   className="chevron-svg"
@@ -555,7 +563,7 @@ function Main() {
                     fill="#232427"
                   />
                 </svg>
-              </button>
+              </a>
             </div>
 
             <div className="inst-block-column">
@@ -609,7 +617,11 @@ function Main() {
               <h3 className="inst-title">@maven.furniture.group</h3>
               <p className="inst-text">{t("Main_inst_text")}</p>
 
-              <button className="chevron-btn chevron-btn-inst" type="button">
+              <a
+                className="chevron-btn chevron-btn-inst"
+                target="_blank"
+                href="https://www.instagram.com/katalog.mebeli_maven.group?igshid=MzRlODBiNWFlZA%3D%3D"
+              >
                 {t("Main_inst_btn")}
                 <svg
                   className="chevron-svg"
@@ -624,7 +636,7 @@ function Main() {
                     fill="#232427"
                   />
                 </svg>
-              </button>
+              </a>
             </div>
             <div className="inst-block">
               <Image

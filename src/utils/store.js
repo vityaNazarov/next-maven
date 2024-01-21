@@ -45,10 +45,40 @@ export const useCartStore = create(
 
         toast.error(
           i18next.language === "ua"
-            ? "Продукт удален из карзины!"
+            ? "Продукт видалено з кошика!"
             : "Product removed from cart!",
           { autoClose: 1500 }
         );
+      },
+      removeProductLocaleStorage(itemId) {
+        set((state) => ({
+          products: state.products.filter((product) => product.id !== itemId),
+          totalItems: state.totalItems - 1,
+        }));
+
+        // Получаем текущее значение из localStorage
+        const currentLocalStorageValue = localStorage.getItem("false");
+
+        // Разбираем текущее значение (если оно JSON)
+        const currentValueObject = JSON.parse(currentLocalStorageValue);
+
+        // Фильтруем объект, удаляя элемент по ключу itemId
+        const updatedValueObject = Object.fromEntries(
+          Object.entries(currentValueObject).filter(
+            ([key, value]) => key !== itemId
+          )
+        );
+
+        // Записываем обновленное значение в localStorage
+        localStorage.setItem("false", JSON.stringify(updatedValueObject));
+        localStorage.removeItem(`addedToCart_${itemId}`);
+      },
+      clearCart() {
+        const storedProducts = JSON.parse(localStorage.getItem("cart")) || [];
+        storedProducts.state.products.forEach((product) => {
+          useCartStore.getState().removeProductLocaleStorage(product.id);
+        });
+        localStorage.removeItem("cart");
       },
     }),
     {

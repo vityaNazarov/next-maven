@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import axios from "axios";
-
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
@@ -17,6 +16,7 @@ function Business() {
     user_city: "",
     user_message: "",
   });
+  const [successMessage, setSuccessMessage] = useState(false); // Новое состояние
 
   const { t } = useTranslation();
 
@@ -29,7 +29,7 @@ function Business() {
         `https://api.telegram.org/bot${telegramToken}/sendMessage`,
         {
           chat_id: telegramChatId,
-          text: `Новая заявка:\n${JSON.stringify(formData, null, 2)}`,
+          text: `Новая заявка (B2B):\n${JSON.stringify(formData, null, 2)}`,
         }
       );
 
@@ -52,43 +52,57 @@ function Business() {
 
     const data = new FormData();
     data.append("chat_id", telegramChatId);
-    data.append("document", file);
 
-    console.log("FormData:", formData);
+    // Добавьте файл в FormData, если он существует
+    if (file) {
+      data.append("document", file);
+    }
 
-    // // Добавим текстовые данные в FormData
+    // Добавьте текстовые данные в FormData
     Object.keys(formData).forEach((key) => {
       data.append(key, formData[key]);
     });
 
-    // Отправка файла в Telegram
+    // Отправьте файл в Telegram, если он существует
     try {
-      const response = await axios.post(
-        `https://api.telegram.org/bot6647104359:AAFnou6kdnQ4uNo2npcjBxsXKVAmW1rIPVo/sendDocument`,
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      console.log("Telegram API response:", response.data);
-
-      if (response.data.ok) {
-        console.log("Файл успешно отправлен в Telegram!");
-      } else {
-        console.error(
-          "Ошибка отправки файла в Telegram:",
-          response.data.description
+      if (file) {
+        const fileResponse = await axios.post(
+          `https://api.telegram.org/bot6647104359:AAFnou6kdnQ4uNo2npcjBxsXKVAmW1rIPVo/sendDocument`,
+          data,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
         );
+
+        console.log("Ответ API Telegram (файл):", fileResponse.data);
+
+        if (!fileResponse.data.ok) {
+          console.error(
+            "Ошибка отправки файла в Telegram:",
+            fileResponse.data.description
+          );
+        }
       }
-    } catch (error) {
-      console.error("Ошибка при отправке файла в Telegram:", error.message);
+    } catch (fileError) {
+      console.error("Ошибка отправки файла в Telegram:", fileError.message);
     }
 
-    // Отправка текстового сообщения в Telegram
+    // Отправьте текстовые данные в Telegram
     sendMessageToTelegram();
+
+    // Сбросьте значения инпутов и отобразите сообщение об успешной отправке
+    setFormData({
+      user_name: "",
+      user_email: "",
+      user_phone: "",
+      user_city: "",
+      user_message: "",
+    });
+    setFile(null);
+    setFileName("No selected file");
+    setSuccessMessage(true);
 
     // Дополнительная логика обработки формы, если необходимо
   };
@@ -155,6 +169,49 @@ function Business() {
           </filter>
         </defs>
       </svg>
+
+      <div
+        className={
+          !successMessage ? "ind-modal-backdrop" : "ind-modal-backdrop active"
+        }
+        onClick={() => setSuccessMessage(false)}
+      >
+        <div
+          className="success-block"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <button
+            onClick={() => setSuccessMessage(false)}
+            className="success-block-close-btn"
+          >
+            <svg
+              className="success-block-close-svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M18.6067 6.20659C18.8312 5.98204 18.8312 5.61797 18.6067 5.39342C18.3821 5.16887 18.0181 5.16887 17.7935 5.39342L12.0001 11.1868L6.20668 5.39342C5.98213 5.16887 5.61806 5.16887 5.39351 5.39342C5.16896 5.61797 5.16896 5.98204 5.39351 6.20659L11.1869 12L5.39351 17.7934C5.16896 18.018 5.16896 18.382 5.39351 18.6066C5.61806 18.8311 5.98213 18.8311 6.20668 18.6066L12.0001 12.8132L17.7935 18.6066C18.0181 18.8311 18.3821 18.8311 18.6067 18.6066C18.8312 18.382 18.8312 18.018 18.6067 17.7934L12.8133 12L18.6067 6.20659Z"
+                fill="#232427"
+              />
+            </svg>
+          </button>
+          <h2 className="success-block-title">{t("Success_block_title")}</h2>
+          <p className="success-block-text">{t("Success_block_text")}</p>
+          <p className="success-block-text-thanks">
+            {t("Success_block_text_thanks")}
+          </p>
+          <Link href="/" className="success-block-btn">
+            {t("Success_block_btn")}
+          </Link>
+        </div>
+      </div>
 
       <main>
         {/* В2В */}
@@ -533,8 +590,10 @@ function Business() {
                       <input
                         type="file"
                         onChange={({ target: { files } }) => {
-                          files[0] && setFileName(files[0].name);
-                          files[0] && setFile(files[0]);
+                          if (files[0]) {
+                            setFileName(files[0].name);
+                            setFile(files[0]);
+                          }
                         }}
                       />
                       <span className="input-file-span">
