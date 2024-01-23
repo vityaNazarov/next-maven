@@ -14,8 +14,8 @@ function CartItem() {
 
   const [quantities, setQuantities] = useState(() => {
     // Используйте localStorage для получения количества из предыдущей сессии
-    const storedQuantities =
-      JSON.parse(localStorage.getItem("cartQuantities")) || {};
+    const storedQuantities = 1 || {};
+    // JSON.parse(localStorage.getItem("cartQuantities")) || {};
 
     return products.reduce((acc, item) => {
       acc[item.id] = storedQuantities[item.id] || 1;
@@ -48,7 +48,7 @@ function CartItem() {
       };
 
       // Сохраняем обновленные количества в localStorage
-      localStorage.setItem("cartQuantities", JSON.stringify(updatedQuantities));
+      // localStorage.setItem("cartQuantities", JSON.stringify(updatedQuantities));
 
       return updatedQuantities;
     });
