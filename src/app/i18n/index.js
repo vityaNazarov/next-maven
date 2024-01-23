@@ -12,10 +12,9 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: localStorage.getItem("lng") || "ua",
+  lng: "ua" || localStorage.getItem("lng"),
 
   fallbackLng: "ua",
-
   interpolation: {
     escapeValue: false,
   },

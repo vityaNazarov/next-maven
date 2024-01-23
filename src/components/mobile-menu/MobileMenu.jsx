@@ -1,9 +1,13 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 function MobileMenu({ active, setActive }) {
   const [open, setOpen] = useState(false);
+
+  const { t } = useTranslation();
 
   return (
     <div className={active ? "mobile-menu active" : "mobile-menu"}>
@@ -15,7 +19,7 @@ function MobileMenu({ active, setActive }) {
               className="mobile-section-item-about-chevron"
               onClick={() => setOpen(!open)}
             >
-              Про нас
+              {t("About_us")}
               <svg
                 className={
                   !open ? "mobile-menu-chevron" : "mobile-menu-chevron active"
@@ -39,13 +43,13 @@ function MobileMenu({ active, setActive }) {
                   className="mobile-section-item-secondary"
                   onClick={() => setActive(false)}
                 >
-                  <Link href="/about-us">Про компанію</Link>
+                  <Link href="/about-us">{t("About_the_company")}</Link>
                 </li>
                 <li
                   className="mobile-section-item-secondary"
                   onClick={() => setActive(false)}
                 >
-                  <Link href="/career">Кар’єра</Link>
+                  <Link href="/career">{t("Career")}</Link>
                 </li>
               </ul>
             ) : (
@@ -53,19 +57,19 @@ function MobileMenu({ active, setActive }) {
             )}
           </li>
           <li className="mobile-section-item" onClick={() => setActive(false)}>
-            <Link href="/projects">Проєкти</Link>
+            <Link href="/projects">{t("Projects")}</Link>
           </li>
           <li className="mobile-section-item" onClick={() => setActive(false)}>
-            <Link href="/catalog">Каталог</Link>
+            <Link href="/catalog">{t("Catalogue")}</Link>
           </li>
           <li className="mobile-section-item" onClick={() => setActive(false)}>
-            <Link href="/individual-projects">Індивідуальні проекти</Link>
+            <Link href="/individual-projects">{t("Individual_projects")}</Link>
           </li>
           <li className="mobile-section-item" onClick={() => setActive(false)}>
             <Link href="/business">В2В</Link>
           </li>
           <li className="mobile-section-item" onClick={() => setActive(false)}>
-            <Link href="/contacts">Контакти</Link>
+            <Link href="/contacts">{t("Contacts")}</Link>
           </li>
         </ul>
       </div>

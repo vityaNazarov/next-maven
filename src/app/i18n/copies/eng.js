@@ -263,4 +263,11 @@ export const eng = {
   Success_block_text: "Our manager will contact you shortly.",
   Success_block_text_thanks: "Thank you for your trust!",
   Success_block_btn: "to the main page",
+
+  // 404
+
+  Not_found_title: "Oops, something went wrong...",
+  Not_found_text:
+    "We are currently rummaging through our inventory in search of the necessary details for our website. Please allow our craftsmen some time.",
+  Not_found_btn: "homepage",
 };

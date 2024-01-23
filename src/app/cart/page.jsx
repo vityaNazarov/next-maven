@@ -21,6 +21,7 @@ function CartItem() {
       return acc;
     }, {});
   });
+
   const [formData, setFormData] = useState({
     legal_entity_name: "",
     legal_entity_phone: "",

@@ -1,7 +1,6 @@
 "use client";
 
 import "@/sass/main.scss";
-import "./i18n";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ToastContainer } from "react-toastify";
