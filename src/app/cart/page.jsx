@@ -11,30 +11,16 @@ function CartItem() {
   const [fizIsOpen, setFizIsOpen] = useState(false);
   const { products, totalItems, removeFromCart, clearCart } = useCartStore();
   const { t } = useTranslation();
-  // const [quantities, setQuantities] = useState(() => {
-  //   // Используйте localStorage для получения количества из предыдущей сессии
-  //   const storedQuantities =
-  //     JSON.parse(localStorage.getItem("cartQuantities")) || {};
 
-  //   return products.reduce((acc, item) => {
-  //     acc[item.id] = storedQuantities[item.id] || 1;
-  //     return acc;
-  //   }, {});
-  // });
   const [quantities, setQuantities] = useState(() => {
-    if (typeof localStorage !== "undefined") {
-      // Используйте localStorage для получения количества из предыдущей сессии
-      const storedQuantities =
-        JSON.parse(localStorage.getItem("cartQuantities")) || {};
+    // Используйте localStorage для получения количества из предыдущей сессии
+    const storedQuantities =
+      JSON.parse(localStorage.getItem("cartQuantities")) || {};
 
-      return products.reduce((acc, item) => {
-        acc[item.id] = storedQuantities[item.id] || 1;
-        return acc;
-      }, {});
-    } else {
-      // Если localStorage недоступен (например, на сервере), верните начальное значение
-      return {};
-    }
+    return products.reduce((acc, item) => {
+      acc[item.id] = storedQuantities[item.id] || 1;
+      return acc;
+    }, {});
   });
 
   const [formData, setFormData] = useState({
