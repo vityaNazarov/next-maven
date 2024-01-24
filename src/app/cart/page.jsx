@@ -9,35 +9,17 @@ import { useTranslation } from "react-i18next";
 function CartItem() {
   const [urIsOpen, setUrIsOpen] = useState(false);
   const [fizIsOpen, setFizIsOpen] = useState(false);
-  // const [urIsOpen, setUrIsOpen] =
-  //   typeof window !== "undefined" ? useState(false) : [false, () => {}];
-  // const [fizIsOpen, setFizIsOpen] =
-  //   typeof window !== "undefined" ? useState(false) : [false, () => {}];
 
-  const { products, totalItems, removeFromCart, clearCart } = useCartStore();
+  const { products, removeFromCart } = useCartStore();
   const { t } = useTranslation();
 
-  // const [quantities, setQuantities] = useState(() => {
-  //   // Используйте localStorage для получения количества из предыдущей сессии
-  //   const storedQuantities = 1 || {};
-  //   // JSON.parse(localStorage.getItem("cartQuantities")) || {};
-
-  //   return products.reduce((acc, item) => {
-  //     acc[item.id] = storedQuantities[item.id] || 1;
-  //     return acc;
-  //   }, {});
-  // });
   const [quantities, setQuantities] = useState(() => {
-    if (typeof localStorage !== "undefined") {
-      const storedQuantities = 1 || {};
-      //   JSON.parse(localStorage.getItem("cartQuantities")) || {};
-      return products.reduce((acc, item) => {
-        acc[item.id] = storedQuantities[item.id] || 1;
-        return acc;
-      }, {});
-    } else {
-      return {};
-    }
+    const storedQuantities = 1;
+
+    return products.reduce((acc, item) => {
+      acc[item.id] = storedQuantities[item.id] || 1;
+      return acc;
+    }, {});
   });
 
   const [formData, setFormData] = useState({
@@ -50,7 +32,6 @@ function CartItem() {
     fiz_person_phone: "",
     fiz_person_email: "",
     fiz_person_city: "",
-    // Добавьте другие поля формы по необходимости
   });
   const [deliveryMethod, setDeliveryMethod] = useState("Нова пошта"); // установите значение по умолчанию
   const [paymentMethod, setPaymentMethod] = useState("Передоплата"); // установите значение по умолчанию
@@ -64,14 +45,9 @@ function CartItem() {
         [productId]: newQuantity,
       };
 
-      // Сохраняем обновленные количества в localStorage
-      // localStorage.setItem("cartQuantities", JSON.stringify(updatedQuantities));
-
       return updatedQuantities;
     });
   };
-
-  // Устанавливаем пробелы в цене товара
 
   function parcedNumber(num, quantity) {
     const numWithoutSpaces = num.replace(/\s/g, "") * quantity;
@@ -128,13 +104,7 @@ function CartItem() {
           fiz_person_phone: "",
           fiz_person_email: "",
           fiz_person_city: "",
-          // Очистите другие поля формы по необходимости
         });
-
-        clearCart();
-        // localStorage.removeItem("cartQuantities");
-        // localStorage.removeItem("false");
-        // localStorage.removeItem("cart");
 
         setUrIsOpen(false);
         setFizIsOpen(false);
@@ -146,6 +116,8 @@ function CartItem() {
       }
     }
   };
+
+  console.log(products);
 
   return (
     <>
@@ -302,8 +274,7 @@ function CartItem() {
                 </Link>
                 {t("Cart_title")}
               </h2>
-              {/* {products[0] ? (
-                <> */}
+
               {products.map((item) => (
                 <div className="cart-product" key={item.id}>
                   <div className="cart-product-block">
@@ -866,9 +837,7 @@ function CartItem() {
                   <p className="personal-info">{t("Cart_text_under_btn")}</p>
                 </div>
               </form>
-              {/* </>
-              ) : (
-                <> */}
+
               <div className="cart-page-empty">{t("Cart_page_empty")}</div>
               <Link
                 href="/catalog"
@@ -889,8 +858,6 @@ function CartItem() {
                   />
                 </svg>
               </Link>
-              {/* </> */}
-              {/* )} */}
             </div>
           </div>
         </section>
