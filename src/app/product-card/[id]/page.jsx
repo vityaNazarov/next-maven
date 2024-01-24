@@ -26,10 +26,9 @@ const ProductId = ({ params }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const initialAddedToCartMap = {};
-  const [addedToCartMap, setAddedToCartMap] = useState(initialAddedToCartMap);
+  const [addedToCartMap, setAddedToCartMap] = useState({});
 
-  const { addToCart } = useCartStore();
+  const { products, addToCart } = useCartStore();
 
   const { t } = useTranslation();
 
@@ -47,6 +46,15 @@ const ProductId = ({ params }) => {
 
     fetchData();
   }, [params.id]);
+
+  useEffect(() => {
+    // Проверка наличия товара в корзине при каждом изменении products
+    const cartMap = {};
+    products.forEach((product) => {
+      cartMap[product.id] = true;
+    });
+    setAddedToCartMap(cartMap);
+  }, [products]);
 
   const handleCart = () => {
     addToCart({

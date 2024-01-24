@@ -32,6 +32,7 @@ export const useCartStore = create(
           { autoClose: 1500 }
         );
       },
+      clearCart: () => set({ totalItems: 0, products: [] }),
     }),
     {
       name: "cart",

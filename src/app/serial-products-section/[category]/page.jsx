@@ -13,11 +13,10 @@ const Category = ({ params }) => {
   const [dataCategory, setDataCategory] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const initialAddedToCartMap = {};
-  const [addedToCartMap, setAddedToCartMap] = useState(initialAddedToCartMap);
+  const [addedToCartMap, setAddedToCartMap] = useState({});
 
   const { t } = useTranslation();
-  const { addToCart } = useCartStore();
+  const { products, addToCart } = useCartStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,6 +44,15 @@ const Category = ({ params }) => {
     fetchData();
   }, [params]);
 
+  useEffect(() => {
+    // Проверка наличия товаров в корзине при каждом изменении products
+    const cartMap = {};
+    products.forEach((product) => {
+      cartMap[product.id] = true;
+    });
+    setAddedToCartMap(cartMap);
+  }, [products]);
+
   const handleAddToCart = (item) => {
     addToCart({
       id: item._id,
@@ -53,6 +61,12 @@ const Category = ({ params }) => {
       img: item.img1,
       price: item.price,
     });
+
+    // Обновляем addedToCartMap, устанавливая для данного товара статус "добавлен в корзину"
+    setAddedToCartMap((prevMap) => ({
+      ...prevMap,
+      [item._id]: true,
+    }));
 
     toast.success(t("Product_id_btn_added_to_cart"), { autoClose: 1500 });
   };

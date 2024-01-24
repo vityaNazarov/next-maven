@@ -40,7 +40,11 @@ export default function RootLayout({ children }) {
           href="/android-chrome-512x512.png"
         />
 
-        <link rel="manifest" href="/public/site.webmanifest" />
+        <link
+          rel="manifest"
+          crossOrigin="use-credentials"
+          href="/site.webmanifest"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Comfortaa:wght@300;400;500;600;700&family=Lato&family=Montserrat:wght@400;500;600&display=swap"
           rel="stylesheet"
