@@ -13,13 +13,20 @@ const Category = ({ params }) => {
   const [dataCategory, setDataCategory] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const localStorageKey = `addedToCart_${params.id || ""}` === true;
+  // const localStorageKey = `addedToCart_${params.id || ""}` === true;
   const initialAddedToCartMap =
-    JSON.parse(localStorage.getItem(localStorageKey)) || {};
+    // JSON.parse(localStorage.getItem(localStorageKey)) ||
+    {};
   const [addedToCartMap, setAddedToCartMap] = useState(initialAddedToCartMap);
 
   const { t } = useTranslation();
   const { addToCart } = useCartStore();
+
+  // const { category } = params;
+  // const filteredData = dataCategory.filter(
+  //   (item) => item.category === category
+  // );
+  // setCategoryPage(filteredData);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,12 +63,12 @@ const Category = ({ params }) => {
       price: item.price,
     });
 
-    setAddedToCartMap((prevMap) => ({ ...prevMap, [item._id]: true }));
-    localStorage.setItem(
-      localStorageKey,
-      JSON.stringify({ ...addedToCartMap, [item._id]: true })
-    );
-    localStorage.removeItem("addedToCart_undefined", "true");
+    // setAddedToCartMap((prevMap) => ({ ...prevMap, [item._id]: true }));
+    // localStorage.setItem(
+    //   localStorageKey,
+    //   JSON.stringify({ ...addedToCartMap, [item._id]: true })
+    // );
+    // localStorage.removeItem("addedToCart_undefined", "true");
 
     toast.success(t("Product_id_btn_added_to_cart"), { autoClose: 1500 });
   };
@@ -319,5 +326,17 @@ const Category = ({ params }) => {
     </>
   );
 };
+
+// export async function getServerSideProps() {
+//   const res = await fetch(`http://localhost:3000/api/products`);
+
+//   const dataCategory = await res.json();
+
+//   return {
+//     props: {
+//       dataCategory: dataCategory,
+//     },
+//   };
+// }
 
 export default Category;

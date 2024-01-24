@@ -26,9 +26,10 @@ const ProductId = ({ params }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const localStorageKey = `addedToCart_${params.id || ""}` === true;
+  // const localStorageKey = `addedToCart_${params.id || ""}` === true;
   const initialAddedToCartMap =
-    JSON.parse(localStorage.getItem(localStorageKey)) || {};
+    //   JSON.parse(localStorage.getItem(localStorageKey)) ||
+    {};
   const [addedToCartMap, setAddedToCartMap] = useState(initialAddedToCartMap);
 
   const { addToCart, removeFromCart } = useCartStore();
@@ -59,11 +60,11 @@ const ProductId = ({ params }) => {
       img: data.img1,
     });
 
-    setAddedToCartMap((prevMap) => ({ ...prevMap, [data._id]: true }));
-    localStorage.setItem(
-      localStorageKey,
-      JSON.stringify({ ...addedToCartMap, [data._id]: true })
-    );
+    // setAddedToCartMap((prevMap) => ({ ...prevMap, [data._id]: true }));
+    // localStorage.setItem(
+    //   localStorageKey,
+    //   JSON.stringify({ ...addedToCartMap, [data._id]: true })
+    // );
 
     toast.success(t("Product_id_btn_added_to_cart"), { autoClose: 1500 });
   };
