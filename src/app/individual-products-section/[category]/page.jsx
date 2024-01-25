@@ -15,7 +15,8 @@ const Category = ({ params }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/products`, {
+        // const res = await fetch(`http://localhost:3000/api/products`, {
+        const res = await fetch(`/api/products`, {
           mode: "cors",
           cache: "no-store",
         });

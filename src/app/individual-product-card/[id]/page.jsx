@@ -7,7 +7,8 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 
 const getData = async (id) => {
-  const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+  // const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+  const res = await fetch(`/api/products/${id}`, {
     mode: "cors",
     cache: "no-store",
   });
