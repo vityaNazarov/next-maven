@@ -5,6 +5,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { ClipLoader } from "react-spinners";
 
 function IndividualProjects() {
   const [file, setFile] = useState(null);
@@ -17,6 +18,7 @@ function IndividualProjects() {
     user_message: "",
   });
   const [successMessage, setSuccessMessage] = useState(false); // Новое состояние
+  const [loadingSubmit, setLoadingSubmit] = useState(false); // Новое состояние для отслеживания загрузки
 
   const { t } = useTranslation();
 
@@ -52,6 +54,7 @@ function IndividualProjects() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    setLoadingSubmit(true);
     const telegramChatId = "-1002107177880";
 
     const data = new FormData();
@@ -67,48 +70,55 @@ function IndividualProjects() {
       data.append(key, formData[key]);
     });
 
-    // Отправьте файл в Telegram, если он существует
     try {
-      if (file) {
-        const fileResponse = await axios.post(
-          `https://api.telegram.org/bot6647104359:AAFnou6kdnQ4uNo2npcjBxsXKVAmW1rIPVo/sendDocument`,
-          data,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-
-        console.log("Ответ API Telegram (файл):", fileResponse.data);
-
-        if (!fileResponse.data.ok) {
-          console.error(
-            "Ошибка отправки файла в Telegram:",
-            fileResponse.data.description
+      // Отправьте файл в Telegram, если он существует
+      try {
+        if (file) {
+          const fileResponse = await axios.post(
+            `https://api.telegram.org/bot6647104359:AAFnou6kdnQ4uNo2npcjBxsXKVAmW1rIPVo/sendDocument`,
+            data,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
           );
+
+          console.log("Ответ API Telegram (файл):", fileResponse.data);
+
+          if (!fileResponse.data.ok) {
+            console.error(
+              "Ошибка отправки файла в Telegram:",
+              fileResponse.data.description
+            );
+          }
         }
+      } catch (fileError) {
+        console.error("Ошибка отправки файла в Telegram:", fileError.message);
       }
-    } catch (fileError) {
-      console.error("Ошибка отправки файла в Telegram:", fileError.message);
+
+      // Отправьте текстовые данные в Telegram
+      sendMessageToTelegram();
+
+      // Сбросьте значения инпутов и отобразите сообщение об успешной отправке
+      setFormData({
+        user_name: "",
+        user_email: "",
+        user_phone: "",
+        user_city: "",
+        user_message: "",
+      });
+      setFile(null);
+      setFileName("No selected file");
+      setSuccessMessage(true);
+
+      // Дополнительная логика обработки формы, если необходимо
+    } catch (error) {
+      console.error("Ошибка при отправке данных:", error.message);
+    } finally {
+      // После завершения запроса устанавливаем состояние загрузки в false
+      setLoadingSubmit(false);
     }
-
-    // Отправьте текстовые данные в Telegram
-    sendMessageToTelegram();
-
-    // Сбросьте значения инпутов и отобразите сообщение об успешной отправке
-    setFormData({
-      user_name: "",
-      user_email: "",
-      user_phone: "",
-      user_city: "",
-      user_message: "",
-    });
-    setFile(null);
-    setFileName("No selected file");
-    setSuccessMessage(true);
-
-    // Дополнительная логика обработки формы, если необходимо
   };
 
   return (
@@ -502,8 +512,16 @@ function IndividualProjects() {
                   <p className="career-textarea-text individual-textarea-text">
                     {t("Form_undertext")}
                   </p>
-                  <button className="career-form-btn" type="submit">
-                    {t("Form_btn_submit")}
+                  <button
+                    className="career-form-btn"
+                    type="submit"
+                    disabled={loadingSubmit}
+                  >
+                    {loadingSubmit ? (
+                      <ClipLoader color="#232427" />
+                    ) : (
+                      t("Form_btn_submit")
+                    )}
                   </button>
                 </form>
               </div>

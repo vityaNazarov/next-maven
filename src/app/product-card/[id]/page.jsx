@@ -10,7 +10,6 @@ import "react-toastify/dist/ReactToastify.min.css";
 import { toast } from "react-toastify";
 
 const getData = async (id) => {
-  // const res = await fetch(`http://localhost:3000/api/products/${id}`, {
   const res = await fetch(`/api/products/${id}`, {
     mode: "cors",
     cache: "no-store",

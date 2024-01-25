@@ -5,9 +5,9 @@ import ImageViewer from "@/components/imageViewer/ImageViewer";
 import Spinner from "@/components/spinner/Spinner";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import { ClipLoader } from "react-spinners";
 
 const getData = async (id) => {
-  // const res = await fetch(`http://localhost:3000/api/products/${id}`, {
   const res = await fetch(`/api/products/${id}`, {
     mode: "cors",
     cache: "no-store",
@@ -30,6 +30,7 @@ const ProductId = ({ params }) => {
     user_city: "",
   });
   const [successMessage, setSuccessMessage] = useState(false); // Новое состояние
+  const [loadingSubmit, setLoadingSubmit] = useState(false); // Новое состояние для отслеживания загрузки
 
   const { t } = useTranslation();
 
@@ -51,6 +52,7 @@ const ProductId = ({ params }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    setLoadingSubmit(true);
     const formData = new FormData(event.target);
 
     try {
@@ -94,6 +96,9 @@ const ProductId = ({ params }) => {
       // Дополнительные действия, если необходимо
     } catch (error) {
       console.error("Error sending message:", error);
+    } finally {
+      // После завершения запроса устанавливаем состояние загрузки в false
+      setLoadingSubmit(false);
     }
   };
 
@@ -649,8 +654,13 @@ const ProductId = ({ params }) => {
                             <button
                               className="modal-form-btn-sbmt"
                               type="submit"
+                              disabled={loadingSubmit}
                             >
-                              {t("Form_btn_submit")}
+                              {loadingSubmit ? (
+                                <ClipLoader color="#232427" />
+                              ) : (
+                                t("Form_btn_submit")
+                              )}
                             </button>
                           </form>
                         </div>

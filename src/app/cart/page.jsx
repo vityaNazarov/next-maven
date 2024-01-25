@@ -5,12 +5,14 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { ClipLoader } from "react-spinners";
 
 function CartItem() {
   const [urIsOpen, setUrIsOpen] = useState(false);
   const [fizIsOpen, setFizIsOpen] = useState(false);
   const { products, removeFromCart, clearCart } = useCartStore();
   const { t } = useTranslation();
+  const [loadingSubmit, setLoadingSubmit] = useState(false); // Новое состояние для отслеживания загрузки
   const [deliveryMethod, setDeliveryMethod] = useState("Нова пошта");
   const [paymentMethod, setPaymentMethod] = useState("Передоплата");
   const [successMessage, setSuccessMessage] = useState(false);
@@ -63,9 +65,12 @@ function CartItem() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
     if (!fizIsOpen) {
       setFizIsOpen(true);
     } else {
+      setLoadingSubmit(true);
+
       try {
         const response = await axios.post(
           "https://api.telegram.org/bot6647104359:AAFnou6kdnQ4uNo2npcjBxsXKVAmW1rIPVo/sendMessage",
@@ -120,6 +125,9 @@ function CartItem() {
         setSuccessMessage(true);
       } catch (error) {
         console.error("Error sending message:", error);
+      } finally {
+        // После завершения запроса устанавливаем состояние загрузки в false
+        setLoadingSubmit(false);
       }
     }
   };
@@ -861,9 +869,18 @@ function CartItem() {
                       </div>
                     </div>
                     <div className="order-submit-reverse">
-                      <button className="order-btn" type="submit">
-                        {t("Cart_order_btn")}
+                      <button
+                        className="order-btn"
+                        type="submit"
+                        disabled={loadingSubmit}
+                      >
+                        {loadingSubmit ? (
+                          <ClipLoader color="#232427" />
+                        ) : (
+                          t("Cart_order_btn")
+                        )}
                       </button>
+
                       <p className="personal-info">
                         {t("Cart_text_under_btn")}
                       </p>

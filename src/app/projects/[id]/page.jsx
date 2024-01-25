@@ -10,7 +10,6 @@ const Image = dynamic(() => import("next/image"));
 const Link = dynamic(() => import("next/link"));
 
 async function GetFetch(id) {
-  // const res = await fetch(`http://localhost:3000/api/projects/${id}`, {
   const res = await fetch(`/api/projects/${id}`, {
     cache: "no-store",
   });
