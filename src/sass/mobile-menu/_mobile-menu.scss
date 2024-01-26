@@ -1,19 +1,4 @@
-.mobile-menu {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 250ms ease-in-out;
-}
-
-.mobile-menu.active {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 250ms ease-in-out;
-}
-
-.backdrop {
+.mobile-backdrop {
   background: rgba(28, 28, 28, 0.847);
   position: fixed;
   z-index: 1001;
@@ -24,14 +9,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 250ms ease-in-out;
+}
+
+.mobile-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 250ms ease-in-out;
 }
 
 .mobile-section {
-  position: fixed;
   z-index: 1002;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 5%);
   width: 265px;
   background-color: var(--background);
   border-radius: 16px;

@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import i18next from "i18next";
 
 function MobileMenu({ active, setActive }) {
   const [open, setOpen] = useState(false);
@@ -10,9 +9,16 @@ function MobileMenu({ active, setActive }) {
   const { t } = useTranslation();
 
   return (
-    <div className={active ? "mobile-menu active" : "mobile-menu"}>
-      <div className="backdrop" onClick={() => setActive(false)}></div>
-      <div className="mobile-section">
+    <div
+      className={active ? "mobile-backdrop active" : "mobile-backdrop"}
+      onClick={() => setActive(false)}
+    >
+      <div
+        className="mobile-section"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <ul className="mobile-section-list list">
           <li className="mobile-section-item mobile-section-item-about">
             <div
