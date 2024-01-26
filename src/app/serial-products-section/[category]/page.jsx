@@ -25,11 +25,9 @@ const Category = ({ params }) => {
           mode: "cors",
           cache: "no-store",
         });
-
         if (!res.ok) {
           throw new Error("Failed to fetch data");
         }
-
         const data = await res.json();
         const { category } = params;
         const filteredData = data.filter((item) => item.category === category);
