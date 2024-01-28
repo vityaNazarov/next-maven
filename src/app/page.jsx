@@ -280,16 +280,6 @@ function Main() {
                 <div className="slide">
                   <Image
                     className="slide-img"
-                    src="/images/img/carusel/carousel-barchair1.jpg"
-                    alt="image"
-                    width={304}
-                    height={304}
-                    loading="lazy"
-                  />
-                </div>
-                <div className="slide">
-                  <Image
-                    className="slide-img"
                     src="/images/img/carusel/carousel-chair1.jpg"
                     alt="image"
                     width={304}
@@ -301,6 +291,16 @@ function Main() {
                   <Image
                     className="slide-img"
                     src="/images/img/carusel/carousel-sofa1.jpg"
+                    alt="image"
+                    width={304}
+                    height={304}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    className="slide-img"
+                    src="/images/img/carusel/carousel-barchair1.jpg"
                     alt="image"
                     width={304}
                     height={304}
@@ -430,7 +430,7 @@ function Main() {
 
                 {/* same sliders */}
 
-                <div className="slide">
+                {/* <div className="slide">
                   <Image
                     className="slide-img"
                     src="/images/img/carusel/carousel-armchair1.jpg"
@@ -479,7 +479,7 @@ function Main() {
                     height={304}
                     loading="lazy"
                   />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
