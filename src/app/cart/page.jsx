@@ -875,7 +875,7 @@ function CartItem() {
                         disabled={loadingSubmit}
                       >
                         {loadingSubmit ? (
-                          <ClipLoader color="#232427" />
+                          <ClipLoader color="#232427" size={30} />
                         ) : (
                           t("Cart_order_btn")
                         )}

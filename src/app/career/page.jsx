@@ -438,7 +438,7 @@ function Career() {
                     disabled={loadingSubmit}
                   >
                     {loadingSubmit ? (
-                      <ClipLoader color="#232427" />
+                      <ClipLoader color="#232427" size={30} />
                     ) : (
                       t("Form_btn_submit")
                     )}

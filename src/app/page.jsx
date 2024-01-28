@@ -274,6 +274,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -283,6 +284,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -292,6 +294,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -301,6 +304,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -310,6 +314,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -319,6 +324,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -328,6 +334,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -337,6 +344,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -346,6 +354,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -355,6 +364,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -364,6 +374,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -373,6 +384,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -382,6 +394,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -391,6 +404,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -400,6 +414,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -409,6 +424,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
 
@@ -421,6 +437,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -430,6 +447,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -439,6 +457,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -448,6 +467,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
                 <div className="slide">
@@ -457,6 +477,7 @@ function Main() {
                     alt="image"
                     width={304}
                     height={304}
+                    loading="lazy"
                   />
                 </div>
               </div>
