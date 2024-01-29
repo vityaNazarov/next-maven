@@ -30,6 +30,7 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: 32px;
+  position: relative;
 }
 
 .product-card-gallery-img {
@@ -183,6 +184,23 @@
   height: 30px;
   padding-bottom: 7px;
 }
+
+.image-viewer-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// .product-card-gallery-img.hidden {
+//   display: none;
+// }
 
 //
 //

@@ -430,7 +430,7 @@ function Main() {
 
                 {/* same sliders */}
 
-                {/* <div className="slide">
+                <div className="slide">
                   <Image
                     className="slide-img"
                     src="/images/img/carusel/carousel-armchair1.jpg"
@@ -479,7 +479,7 @@ function Main() {
                     height={304}
                     loading="lazy"
                   />
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
