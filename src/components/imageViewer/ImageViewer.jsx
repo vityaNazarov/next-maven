@@ -25,23 +25,26 @@ const ImageViewer = ({ imgs }) => {
 
   return (
     <div className="product-card-gallery">
-      {loading && (
-        <div className="loader-container">
-          <ClipLoader
-            className="image-viewer-loader"
-            color="#232427"
-            size={30}
-          />
-        </div>
-      )}
-      <Image
-        className={`product-card-gallery-img ${loading ? "hidden" : ""}`}
-        width="520"
-        height="520"
-        src={data ? data.image : imgs[0]}
-        alt=""
-        onLoad={handleImageLoad}
-      />
+      <div className="product-card-gallery-main-img">
+        {loading && (
+          <div className="loader-container">
+            <ClipLoader
+              className="image-viewer-loader"
+              color="#232427"
+              size={30}
+            />
+          </div>
+        )}
+        <Image
+          className={`product-card-gallery-img ${loading ? "hidden" : ""}`}
+          width="520"
+          height="520"
+          src={data ? data.image : imgs[0]}
+          alt=""
+          onLoad={handleImageLoad}
+        />
+      </div>
+
       <div className="product-card-gallery-secondary">
         {imgs.map((image, index) => {
           return index < 4 ? (
