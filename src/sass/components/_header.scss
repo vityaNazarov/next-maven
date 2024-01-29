@@ -40,6 +40,15 @@
   background: var(--background-header);
   -webkit-backdrop-filter: blur(50px);
   backdrop-filter: blur(50px);
+  transition: transform 500ms;
+}
+
+.page-header.hidden {
+  transform: translateY(-100%);
+}
+
+.page-header.visible {
+  transform: translateY(0);
 }
 
 .page-header-container {

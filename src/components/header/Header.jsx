@@ -14,6 +14,8 @@ function Header() {
   const [menuActive, setMenuActive] = useState(false);
   const [dropdownActive, setDropdownActive] = useState(false);
   const [translate, setTranslate] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   const { totalItems } = useCartStore();
 
@@ -40,8 +42,28 @@ function Header() {
     };
   }, [dropdownActive, translate]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+
+      if (currentScrollPos > prevScrollPos && currentScrollPos > 100) {
+        setHeaderVisible(false);
+      } else {
+        setHeaderVisible(true);
+      }
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+
   return (
-    <header className="page-header">
+    <header className={`page-header ${headerVisible ? "visible" : "hidden"}`}>
       <div className="container page-header-container">
         <nav className="page-nav">
           <Link className="header-logo" href="/">
