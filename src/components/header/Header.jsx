@@ -16,7 +16,6 @@ function Header() {
   const [translate, setTranslate] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [scrollUp, setScrollUp] = useState(false); // Новая переменная состояния
 
   const { totalItems } = useCartStore();
 
@@ -49,12 +48,8 @@ function Header() {
 
       if (currentScrollPos > prevScrollPos && currentScrollPos > 100) {
         setHeaderVisible(false);
-      } else if (currentScrollPos < prevScrollPos - 70) {
-        setHeaderVisible(true);
-        setScrollUp(true);
       } else {
         setHeaderVisible(true);
-        setScrollUp(false);
       }
 
       setPrevScrollPos(currentScrollPos);
@@ -68,11 +63,7 @@ function Header() {
   }, [prevScrollPos]);
 
   return (
-    <header
-      className={`page-header ${headerVisible ? "visible" : "hidden"} ${
-        scrollUp ? "scroll-up" : ""
-      }`}
-    >
+    <header className={`page-header ${headerVisible ? "visible" : "hidden"}`}>
       <div className="container page-header-container">
         <nav className="page-nav">
           <Link className="header-logo" href="/">
