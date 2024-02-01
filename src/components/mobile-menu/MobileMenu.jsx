@@ -37,7 +37,10 @@ function MobileMenu({ active, setActive }) {
               className="mobile-section-item-about-chevron"
               onClick={() => setOpen(!open)}
             >
-              {t("About_us")}
+              <span className="mobile-section-item-about-us-text">
+                {t("About_us")}
+              </span>
+
               <svg
                 className={
                   !open ? "mobile-menu-chevron" : "mobile-menu-chevron active"

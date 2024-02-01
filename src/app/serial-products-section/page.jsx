@@ -219,7 +219,7 @@ const SerialProductsSection = () => {
                       </p>
                     </div>
                   </li>
-                  <li className="serial-caegories-item">
+                  {/* <li className="serial-caegories-item">
                     <div>
                       <div className="serial-caegories-img-wrapper">
                         <Link
@@ -239,8 +239,8 @@ const SerialProductsSection = () => {
                         {t("Serial_products_section_countertops")}
                       </p>
                     </div>
-                  </li>
-                  <li className="serial-caegories-item">
+                  </li> */}
+                  {/* <li className="serial-caegories-item">
                     <div>
                       <div className="serial-caegories-img-wrapper">
                         <Link
@@ -260,7 +260,7 @@ const SerialProductsSection = () => {
                         {t("Serial_products_section_metal_supports")}
                       </p>
                     </div>
-                  </li>
+                  </li> */}
                   <li className="serial-caegories-item">
                     <div>
                       <div className="serial-caegories-img-wrapper">
@@ -303,7 +303,7 @@ const SerialProductsSection = () => {
                       </p>
                     </div>
                   </li>
-                  <li className="serial-caegories-item">
+                  {/* <li className="serial-caegories-item">
                     <div>
                       <div className="serial-caegories-img-wrapper">
                         <Link
@@ -323,7 +323,7 @@ const SerialProductsSection = () => {
                         {t("Serial_products_section_promotional_items")}
                       </p>
                     </div>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>

@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import React from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Spinner from "@/components/spinner/Spinner";
 import i18next from "i18next";
@@ -22,12 +22,14 @@ async function GetFetch(id) {
 }
 
 const ProjectId = ({ params }) => {
-  const [data, setData] = React.useState({});
-  const [loading, setLoading] = React.useState(true); // Состояние загрузки данных
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImageUrl, setModalImageUrl] = useState("");
 
   const { t } = useTranslation();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await GetFetch(params.id);
@@ -222,77 +224,65 @@ const ProjectId = ({ params }) => {
 
               <div className="project-gallery">
                 <ul className="project-gallery-list list">
-                  <li className="project-gallery-item">
-                    <picture>
-                      <source
-                        media="(min-width: 1300px)"
-                        width="411"
-                        height="415"
-                        srcSet={data.imgDesk1}
-                      />
-                      <source
-                        media="(min-width: 768px)"
-                        width="226"
-                        height="228"
-                        srcSet={data.imgMob1}
-                      />
-                      <Image
-                        width="167"
-                        height="170"
-                        className="project-img"
-                        src={data.imgMob1}
-                        alt={data.name}
-                      />
-                    </picture>
-                  </li>
-                  <li className="project-gallery-item">
-                    <picture>
-                      <source
-                        media="(min-width: 1300px)"
-                        width="411"
-                        height="415"
-                        srcSet={data.imgDesk2}
-                      />
-                      <source
-                        media="(min-width: 768px)"
-                        width="226"
-                        height="228"
-                        srcSet={data.imgMob2}
-                      />
-                      <Image
-                        width="167"
-                        height="170"
-                        className="project-img"
-                        src={data.imgMob2}
-                        alt={data.name}
-                      />
-                    </picture>
-                  </li>
-                  <li className="project-gallery-item">
-                    <picture>
-                      <source
-                        media="(min-width: 1300px)"
-                        width="411"
-                        height="415"
-                        srcSet={data.imgDesk3}
-                      />
-                      <source
-                        media="(min-width: 768px)"
-                        width="226"
-                        height="228"
-                        srcSet={data.imgMob3}
-                      />
-                      <Image
-                        width="167"
-                        height="170"
-                        className="project-img"
-                        src={data.imgMob3}
-                        alt={data.name}
-                      />
-                    </picture>
-                  </li>
+                  {data.images &&
+                    data.images.map((img, index) => (
+                      <li
+                        className="project-gallery-item"
+                        key={index}
+                        onClick={() => {
+                          setModalOpen(true);
+                          setModalImageUrl(img);
+                        }}
+                      >
+                        <picture>
+                          <source
+                            media="(min-width: 1300px)"
+                            width="411"
+                            height="415"
+                            srcSet={img}
+                          />
+                          <source
+                            media="(min-width: 768px)"
+                            width="226"
+                            height="228"
+                            srcSet={img}
+                          />
+                          <Image
+                            width="167"
+                            height="170"
+                            className="project-img"
+                            src={img}
+                            alt={data.name}
+                          />
+                        </picture>
+                      </li>
+                    ))}
                 </ul>
               </div>
+
+              {/* {modalOpen && ( */}
+              <div
+                className={
+                  modalOpen
+                    ? "project-modal-overlay active"
+                    : "project-modal-overlay"
+                }
+                onClick={() => setModalOpen(false)}
+              >
+                <div
+                  className="project-modal-content"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Image
+                    className="project-modal-img"
+                    src={modalImageUrl}
+                    alt="Project Image"
+                    width="350"
+                    height="350"
+                  />
+                </div>
+              </div>
+              {/* )} */}
             </div>
 
             <div>

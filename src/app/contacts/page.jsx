@@ -118,10 +118,10 @@ function Contacts() {
                   </h3>
                   <a
                     className="contacts-section-link"
-                    href="tel:+380677108100"
+                    href="tel:+380995316690"
                     target="_blank"
                   >
-                    +38 &#40;067&#41; 710 81 00
+                    +38 &#40;099&#41; 531 66 90
                   </a>
                 </div>
                 <div className="contacts-section">

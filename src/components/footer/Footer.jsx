@@ -30,9 +30,9 @@ function Footer() {
               </a>
               <a
                 className="footer-text contacts-number"
-                href="tel:+380677108100"
+                href="tel:+380995316690"
               >
-                +38-067-710-81-00
+                +38-099-531-66-90
               </a>
             </div>
             <div className="subscription">
