@@ -4,7 +4,11 @@ export default function ErrorPage() {
   return (
     <div>
       <h2>qwe</h2>
-      <p>123</p>
+
+      <ul>
+        <li></li>
+      </ul>
+      <p>qwe123</p>
     </div>
   );
 }
