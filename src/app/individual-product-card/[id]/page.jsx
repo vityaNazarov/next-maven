@@ -29,8 +29,8 @@ const ProductId = ({ params }) => {
     user_phone: "",
     user_city: "",
   });
-  const [successMessage, setSuccessMessage] = useState(false); // Новое состояние
-  const [loadingSubmit, setLoadingSubmit] = useState(false); // Новое состояние для отслеживания загрузки
+  const [successMessage, setSuccessMessage] = useState(false);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
 
   const { t } = useTranslation();
 
