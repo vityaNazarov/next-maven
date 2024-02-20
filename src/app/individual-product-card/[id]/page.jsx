@@ -8,7 +8,7 @@ import i18next from "i18next";
 import { ClipLoader } from "react-spinners";
 
 const getData = async (id) => {
-  const res = await fetch(`/api/products/${id}`, {
+  const res = await fetch(`/api/individuals/${id}`, {
     mode: "cors",
     cache: "no-store",
   });
