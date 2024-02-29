@@ -352,7 +352,10 @@ function IndividualProjects() {
                   </div>
                 </div>
               </div>
-              <div className="individual-projects-form-block">
+              <div
+                id="individual-form"
+                className="individual-projects-form-block"
+              >
                 <h2 className="individual-form-title">{t("Form_title")}</h2>
                 <form
                   className="career-form"

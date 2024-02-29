@@ -142,7 +142,7 @@ function Catalog() {
                   <li className="catalog-block-item">
                     <Link
                       className="catalog-block-link"
-                      href="/individual-products-section"
+                      href="/individual-projects#individual-form"
                     >
                       <picture>
                         <source
