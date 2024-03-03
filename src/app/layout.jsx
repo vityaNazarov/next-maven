@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 export default function RootLayout({ children }) {
   return (
     <html lang="ua">
-      <Head>
+      <head>
         <title>Maven Group</title>
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
         <meta property="og:image:type" content="image/jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-      </Head>
+      </head>
       <body>
         <div className="page">
           <Header />
