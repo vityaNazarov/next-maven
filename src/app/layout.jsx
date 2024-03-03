@@ -49,6 +49,7 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Comfortaa:wght@300;400;500;600;700&family=Lato&family=Montserrat:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
+        <meta name="og:image" content="/favicon.ico" />
       </head>
       <body>
         <div className="page">
