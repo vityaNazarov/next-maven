@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import "@/sass/main.scss";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
@@ -8,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 export default function RootLayout({ children }) {
   return (
     <html lang="ua">
-      <head>
+      <Head>
         <title>Maven Group</title>
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Comfortaa:wght@300;400;500;600;700&family=Lato&family=Montserrat:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
+        {/* Добавляем мета-теги Open Graph для изображения */}
         <meta
           property="og:image"
           content="/images/img/about-company/about-company-desctop/collective.jpg"
@@ -57,7 +59,7 @@ export default function RootLayout({ children }) {
         <meta property="og:image:type" content="image/jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-      </head>
+      </Head>
       <body>
         <div className="page">
           <Header />
