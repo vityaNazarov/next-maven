@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
         {/* Добавляем мета-теги Open Graph для изображения */}
         <meta
           property="og:image"
-          content="/images/img/about-company/about-company-desctop/collective.jpg"
+          content="../../public/images/img/about-company/about-company-desctop/company-img1.jpg"
         />
         <meta property="og:image:alt" content="Collective" />
         <meta property="og:image:type" content="image/jpg" />
