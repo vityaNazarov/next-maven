@@ -51,8 +51,12 @@ export default function RootLayout({ children }) {
         />
         <meta
           property="og:image"
-          content="https://ru.freepik.com/free-photo/corporate-connected-link-perforated-paper_3686491.htm#query=%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B0&position=0&from_view=keyword&track=ais&uuid=a98c74d3-d256-4e7e-abd2-041a3f2dc170"
+          content="/images/img/about-company/about-company-desctop/collective.jpg"
         />
+        <meta property="og:image:alt" content="Collective" />
+        <meta property="og:image:type" content="image/jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
       </head>
       <body>
         <div className="page">
