@@ -49,7 +49,10 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Comfortaa:wght@300;400;500;600;700&family=Lato&family=Montserrat:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
-        <meta name="og:image" content="/favicon.ico" />
+        <meta
+          property="og:image"
+          content="https://ru.freepik.com/free-photo/corporate-connected-link-perforated-paper_3686491.htm#query=%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B0&position=0&from_view=keyword&track=ais&uuid=a98c74d3-d256-4e7e-abd2-041a3f2dc170"
+        />
       </head>
       <body>
         <div className="page">
