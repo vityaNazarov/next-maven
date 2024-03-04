@@ -36,6 +36,12 @@ export default function RootLayout({ children }) {
     <html lang="ua">
       <head>
         <title>Maven Group</title>
+        <meta property="og:title" content="MAVEN" />
+        <meta
+          property="og:image"
+          content="/images/img/about-company/about-company-desctop/company-img1.jpg"
+        />
+
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="icon"
