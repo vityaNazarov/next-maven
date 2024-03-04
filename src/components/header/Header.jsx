@@ -71,7 +71,7 @@ function Header() {
               className="logo-img"
               src="/images/svg/logo.svg"
               alt="логотип"
-              priority={true}
+              // priority={true}
               width="112"
               height="48"
             />

@@ -629,7 +629,7 @@ function Main() {
                 className="inst-img"
                 src="/images/img/inst-section/image-example3.jpg"
                 alt="example"
-                priority={true}
+                // priority={true}
                 width="186"
                 height="418"
               />
