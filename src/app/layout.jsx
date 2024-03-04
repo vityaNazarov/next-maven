@@ -4,19 +4,7 @@ import "@/sass/main.scss";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ToastContainer } from "react-toastify";
-// import { Metadata } from "next";
 
-// export const metadata = {
-//   title: "Maven Group",
-//   description: "#",
-//   ogImage: {
-//     url: "/images/img/about-company/about-company-desctop/company-img1.jpg",
-//     alt: "Collective",
-//     type: "image/jpg",
-//     width: "1200",
-//     height: "630",
-//   },
-// };
 export const metadata = {
   title: "Maven Group",
   description: "Furniture",
@@ -48,7 +36,7 @@ export default function RootLayout({ children }) {
     <html lang="ua">
       <head>
         {/* <title>Maven Group</title> */}
-        <link rel="icon" href="/favicon.ico" />
+        {/* <link rel="icon" href="/favicon.ico" />
         <link
           rel="icon"
           href="/favicon-16x16.png"
@@ -82,20 +70,11 @@ export default function RootLayout({ children }) {
           rel="manifest"
           crossOrigin="use-credentials"
           href="/site.webmanifest"
-        />
+        /> */}
         <link
           href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Comfortaa:wght@300;400;500;600;700&family=Lato&family=Montserrat:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
-        {/* Добавляем мета-теги Open Graph для изображения */}
-        {/* <meta
-          property="og:image"
-          content="/images/img/about-company/about-company-desctop/company-img1.jpg"
-        />
-        <meta property="og:image:alt" content="Collective" />
-        <meta property="og:image:type" content="image/jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" /> */}
       </head>
       <body>
         <div className="page">
