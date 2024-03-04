@@ -5,38 +5,38 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ToastContainer } from "react-toastify";
 
-export const metadata = {
-  title: "Maven Group",
-  description: "Furniture",
-  openGraph: {
-    title: "Maven",
-    description: "The React Framework for the Web",
-    url: "",
-    siteName: "Next.js",
-    images: [
-      {
-        url: "/images/img/about-company/about-company-desctop/company-img1.jpg", // Must be an absolute URL
-        width: 800,
-        height: 600,
-      },
-      {
-        url: "/images/img/about-company/about-company-desctop/company-img1.jpg", // Must be an absolute URL
-        width: 1800,
-        height: 1600,
-        alt: "My custom alt",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-};
+// export const metadata = {
+//   title: "Maven Group",
+//   description: "Furniture",
+//   openGraph: {
+//     title: "Maven",
+//     description: "The React Framework for the Web",
+//     url: "",
+//     siteName: "Next.js",
+//     images: [
+//       {
+//         url: "/images/img/about-company/about-company-desctop/company-img1.jpg", // Must be an absolute URL
+//         width: 800,
+//         height: 600,
+//       },
+//       {
+//         url: "/images/img/about-company/about-company-desctop/company-img1.jpg", // Must be an absolute URL
+//         width: 1800,
+//         height: 1600,
+//         alt: "My custom alt",
+//       },
+//     ],
+//     locale: "en_US",
+//     type: "website",
+//   },
+// };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="ua">
       <head>
-        {/* <title>Maven Group</title> */}
-        {/* <link rel="icon" href="/favicon.ico" />
+        <title>Maven Group</title>
+        <link rel="icon" href="/favicon.ico" />
         <link
           rel="icon"
           href="/favicon-16x16.png"
@@ -70,7 +70,7 @@ export default function RootLayout({ children }) {
           rel="manifest"
           crossOrigin="use-credentials"
           href="/site.webmanifest"
-        /> */}
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Comfortaa:wght@300;400;500;600;700&family=Lato&family=Montserrat:wght@400;500;600&display=swap"
           rel="stylesheet"
