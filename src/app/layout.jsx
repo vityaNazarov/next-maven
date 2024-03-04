@@ -37,6 +37,8 @@ export default function RootLayout({ children }) {
       <head>
         <title>Maven Group</title>
         <meta property="og:title" content="MAVEN" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.maven-group.ua/" />
         <meta
           property="og:image"
           content="/images/img/about-company/about-company-desctop/company-img1.jpg"
