@@ -17,6 +17,15 @@ export default function RootLayout({ children }) {
           property="og:image"
           content="/images/img/about-company/about-company-desctop/company-img1.jpg"
         />
+        <meta
+          property="og:description"
+          content="Виробництво мяких меблів для готелів, ресторанів, кафе та індивідуальних просторів."
+        />
+
+        <meta
+          name="google-site-verification"
+          content="pDE-Dp4K0pnbSWJAeM1v-nTIakdqXMV_jGBWEaE2eGY"
+        />
 
         <link rel="icon" href="/favicon.ico" />
         <link
