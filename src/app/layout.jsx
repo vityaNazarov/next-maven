@@ -16,7 +16,11 @@ export default function RootLayout({ children }) {
         <meta property="og:image" content="/images/img/Main-logo.jpg" />
         <meta
           property="og:description"
-          content="Виробництво мяких меблів для готелів, ресторанів, кафе та індивідуальних просторів."
+          content="Виробництво та продаж мяких меблів для готелів, ресторанів, кафе та індивідуальних просторів."
+        />
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
         />
         <meta
           name="description"
