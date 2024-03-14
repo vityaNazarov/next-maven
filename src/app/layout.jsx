@@ -13,10 +13,7 @@ export default function RootLayout({ children }) {
         <meta property="og:title" content="Maven Group" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.maven-group.ua/" />
-        <meta
-          property="og:image"
-          content="/images/img/about-company/about-company-desctop/collective.jpg"
-        />
+        <meta property="og:image" content="/images/img/Main-logo.jpg" />
         <meta
           property="og:description"
           content="Виробництво та продаж мяких меблів для готелів, ресторанів, кафе та індивідуальних просторів."
