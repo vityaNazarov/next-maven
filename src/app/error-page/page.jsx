@@ -8,7 +8,7 @@ export default function ErrorPage() {
       <ul>
         <li></li>
       </ul>
-      <p>1111</p>
+      <p>wfwveve</p>
     </div>
   );
 }
