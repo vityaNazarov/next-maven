@@ -18,6 +18,14 @@ export default function RootLayout({ children }) {
           property="og:description"
           content="Виробництво мяких меблів для готелів, ресторанів, кафе та індивідуальних просторів."
         />
+        <meta
+          name="description"
+          content="Виробництво та продаж мяких меблів в Україні, для готелів, ресторанів, кафе та індивідуальних просторів."
+        ></meta>
+        <meta
+          name="keywords"
+          content="купить, мебель украина, для ресторанов, кафе, цена, меблі україна, для ресторанів, кафе, ціна"
+        />
 
         <meta
           name="google-site-verification"
