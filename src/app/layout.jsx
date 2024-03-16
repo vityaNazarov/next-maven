@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ua">
       <head>
-        <title>Maven Group</title>
+        <title>Maven Group - HoReCa Furniture</title>
         <meta property="og:title" content="Maven Group" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.maven-group.ua/" />
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         />
         <meta
           property="og:description"
-          content="Виробництво та продаж мяких меблів для готелів, ресторанів, кафе та індивідуальних просторів."
+          content="Виробництво та продаж мяких меблів для готелів, ресторанів, кафе та індивідуальних просторів. Оберіть свій ідеальний варіант крісла, дивана або барного стільця для вашого простору."
         />
         <meta
           name="robots"
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         />
         <meta
           name="description"
-          content="Виробництво та продаж мяких меблів в Україні, для готелів, ресторанів, кафе та індивідуальних просторів."
+          content="Виробництво та продаж мяких меблів в Україні, для готелів, ресторанів, кафе та індивідуальних просторів. Оберіть свій ідеальний варіант крісла, дивана або барного стільця для вашого простору."
         ></meta>
         <meta
           name="keywords"

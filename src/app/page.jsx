@@ -72,6 +72,16 @@ function Main() {
 
       <main>
         <section className="main-hero">
+          <h1 className="visually-hidden">
+            продажа мебель дня ресторанов, кафе, отелей, в Украине, изготовление
+            мебели, мавен груп, horeca furniture, стулья, диваны, барные стулья,
+            мягкие кресла, диваны, пуфы
+          </h1>
+          <h1 className="visually-hidden">
+            продаж меблів для ресторанів, кафе, готелів, в Україні, виготвлення
+            мебелі, майвен груп, horeca furniture, стільці, дивани, барні
+            стільці, мякі крісла, дивани, пуфи
+          </h1>
           <div className="container container-hero">
             <div className="hero">
               <h1 className="hero-title">MAVEN GROUP</h1>
