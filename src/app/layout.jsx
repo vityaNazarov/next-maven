@@ -42,6 +42,11 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="icon"
+          href="/assets/img/design/logo.svg"
+          type="image/svg+xml"
+        />
+        <link
+          rel="icon"
           href="/favicon-16x16.png"
           sizes="16x16"
           type="image/png"
