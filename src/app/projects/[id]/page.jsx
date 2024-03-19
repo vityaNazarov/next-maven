@@ -261,27 +261,31 @@ const ProjectId = ({ params }) => {
               </div>
 
               {/* {modalOpen && ( */}
-              <div
-                className={
-                  modalOpen
-                    ? "project-modal-overlay active"
-                    : "project-modal-overlay"
-                }
-                onClick={() => setModalOpen(false)}
-              >
+
+              {modalImageUrl && (
                 <div
-                  className="project-modal-content"
-                  onClick={(e) => e.stopPropagation()}
+                  className={
+                    modalOpen
+                      ? "project-modal-overlay active"
+                      : "project-modal-overlay"
+                  }
+                  onClick={() => setModalOpen(false)}
                 >
-                  <Image
-                    className="project-modal-img"
-                    src={modalImageUrl}
-                    alt="Project Image"
-                    width="350"
-                    height="350"
-                  />
+                  <div
+                    className="project-modal-content"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Image
+                      className="project-modal-img"
+                      src={modalImageUrl}
+                      alt="Project Image"
+                      width="350"
+                      height="350"
+                    />
+                  </div>
                 </div>
-              </div>
+              )}
+
               {/* )} */}
             </div>
 

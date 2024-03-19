@@ -4,11 +4,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
+// const metadata = {
+//   title: "Заголовок вашей страницы",
+//   description: "Описание вашей страницы",
+//   keywords: "ключевые слова вашей страницы",
+// };
+
 const SerialProductsSection = () => {
   const { t } = useTranslation();
 
   return (
     <>
+      {/* <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta name="keywords" content={metadata.keywords} />
+      </Head> */}
+
       <svg
         className="nonsense-svg"
         width="48"

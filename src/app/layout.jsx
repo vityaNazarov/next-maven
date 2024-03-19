@@ -1,15 +1,22 @@
-"use client";
+// "use client";
 
 import "@/sass/main.scss";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ToastContainer } from "react-toastify";
 
+// const metadata = {
+//   title: "Maven Group - HoReCa Furniture",
+//   description: "Описание вашей страницы",
+//   keywords: "ключевые слова вашей страницы",
+// };
+
 export default function RootLayout({ children }) {
   return (
     <html lang="ua">
       <head>
         <title>Maven Group - HoReCa Furniture</title>
+
         <meta property="og:title" content="Maven Group" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.maven-group.ua/" />
@@ -28,7 +35,7 @@ export default function RootLayout({ children }) {
         <meta
           name="description"
           content="Виробництво та продаж мяких меблів в Україні, для готелів, ресторанів, кафе та індивідуальних просторів. Оберіть свій ідеальний варіант крісла, дивана або барного стільця для вашого простору."
-        ></meta>
+        />
         <meta
           name="keywords"
           content="купить, мебель украина, для ресторанов, кафе, цена, меблі україна, для ресторанів, кафе, ціна"
