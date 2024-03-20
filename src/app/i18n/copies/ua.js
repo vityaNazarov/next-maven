@@ -2,7 +2,7 @@ export const ua = {
   // MAIN-PAGE
 
   Contacts: "Контакти",
-  Individual_projects: "Індивідуальні проекти",
+  Individual_projects: "Індивідуальні проєкти",
   Catalogue: "Каталог",
   Projects: "Проєкти",
   About_us: "Про нас",
