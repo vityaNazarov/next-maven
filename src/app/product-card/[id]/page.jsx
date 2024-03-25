@@ -8,6 +8,7 @@ import i18next from "i18next";
 import { useCartStore } from "@/utils/store";
 import "react-toastify/dist/ReactToastify.min.css";
 import { toast } from "react-toastify";
+import { FacebookPixel } from "react-facebook-pixel";
 
 const getData = async (id) => {
   const res = await fetch(`/api/products/${id}`, {
@@ -31,6 +32,10 @@ const ProductId = ({ params }) => {
   const { products, addToCart } = useCartStore();
 
   const { t } = useTranslation();
+
+  const facebookPixel = new FacebookPixel({
+    pixelId: "1414671689923095", // Замените на свой ID Facebook Pixel
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,6 +68,15 @@ const ProductId = ({ params }) => {
       code: data.code,
       price: data.price,
       img: data.img1,
+    });
+
+    // Отслеживание события "AddToCart" при добавлении товара в корзину
+    facebookPixel.track("AddToCart", {
+      content_ids: [data._id],
+      content_name: data.name,
+      content_type: "product",
+      value: data.price,
+      currency: "UAH", // Укажите валюту, если она отличается от USD
     });
 
     toast.success(t("Product_id_btn_added_to_cart"), { autoClose: 1500 });

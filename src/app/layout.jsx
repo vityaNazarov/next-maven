@@ -1,9 +1,11 @@
-// "use client";
-
 import "@/sass/main.scss";
+
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ToastContainer } from "react-toastify";
+import { FacebookPixel } from "react-facebook-pixel";
 
 export const metadata = {
   title: "Maven Group - HoReCa Furniture",
@@ -14,11 +16,30 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const facebookPixel = new FacebookPixel({
+      pixelId: "1414671689923095", // Замените на свой ID Facebook Pixel
+    });
+
+    facebookPixel.init();
+
+    // Отслеживание события на каждой смене маршрута
+    const handleRouteChange = () => {
+      facebookPixel.pageView();
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <html lang="ua">
       <head>
-        {/* <title>Maven Group - HoReCa Furniture</title> */}
-
         <meta property="og:title" content="Maven Group - HoReCa Furniture" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.maven-group.ua/" />
@@ -34,14 +55,6 @@ export default function RootLayout({ children }) {
           name="robots"
           content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
         />
-        {/* <meta
-          name="description"
-          content="Виробництво та продаж мяких меблів в Україні, для готелів, ресторанів, кафе та індивідуальних просторів. Оберіть свій ідеальний варіант крісла, дивана або барного стільця для вашого простору."
-        />
-        <meta
-          name="keywords"
-          content="купить, мебель украина, для ресторанов, кафе, цена, меблі україна, для ресторанів, кафе, ціна"
-        /> */}
 
         <meta
           name="google-site-verification"
