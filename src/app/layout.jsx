@@ -1,45 +1,48 @@
+"use client";
+
 import "@/sass/main.scss";
 
 import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"; // Используйте next/router вместо next/navigation
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ToastContainer } from "react-toastify";
-import { FacebookPixel } from "react-facebook-pixel";
+import * as FacebookPixel from "react-facebook-pixel";
 
-export const metadata = {
-  title: "Maven Group - HoReCa Furniture",
-  description:
-    "Виробництво та продаж мяких меблів для готелів, ресторанів, кафе та індивідуальних просторів. Оберіть свій ідеальний варіант крісла, дивана або барного стільця для вашого простору.",
-  keywords:
-    "купить, мебель украина, для ресторанов, кафе, цена, меблі україна, для ресторанів, кафе, ціна",
-};
+// export const metadata = {
+//   title: "Maven Group - HoReCa Furniture",
+//   description:
+//     "Виробництво та продаж мяких меблів для готелів, ресторанів, кафе та індивідуальних просторів. Оберіть свій ідеальний варіант крісла, дивана або барного стільця для вашого простору.",
+//   keywords:
+//     "купить, мебель украина, для ресторанов, кафе, цена, меблі україна, для ресторанів, кафе, ціна",
+// };
 
 export default function RootLayout({ children }) {
   const router = useRouter();
 
   useEffect(() => {
-    const facebookPixel = new FacebookPixel({
+    const facebookPixel = FacebookPixel.default.init({
       pixelId: "1414671689923095", // Замените на свой ID Facebook Pixel
     });
-
-    facebookPixel.init();
 
     // Отслеживание события на каждой смене маршрута
     const handleRouteChange = () => {
       facebookPixel.pageView();
     };
 
-    router.events.on("routeChangeComplete", handleRouteChange);
+    if (router.events) {
+      router.events.on("routeChangeComplete", handleRouteChange);
 
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
+      return () => {
+        router.events.off("routeChangeComplete", handleRouteChange);
+      };
+    }
   }, [router.events]);
 
   return (
     <html lang="ua">
       <head>
+        {/* <title>Maven Group - HoReCa Furniture</title> */}
         <meta property="og:title" content="Maven Group - HoReCa Furniture" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.maven-group.ua/" />

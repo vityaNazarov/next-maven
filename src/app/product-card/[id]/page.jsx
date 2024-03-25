@@ -1,4 +1,6 @@
 "use client";
+
+import FacebookPixel from "react-facebook-pixel";
 import { useEffect, useState } from "react";
 import ImageViewer from "@/components/imageViewer/ImageViewer";
 import Link from "next/link";
@@ -8,7 +10,6 @@ import i18next from "i18next";
 import { useCartStore } from "@/utils/store";
 import "react-toastify/dist/ReactToastify.min.css";
 import { toast } from "react-toastify";
-import { FacebookPixel } from "react-facebook-pixel";
 
 const getData = async (id) => {
   const res = await fetch(`/api/products/${id}`, {
@@ -33,9 +34,10 @@ const ProductId = ({ params }) => {
 
   const { t } = useTranslation();
 
-  const facebookPixel = new FacebookPixel({
-    pixelId: "1414671689923095", // Замените на свой ID Facebook Pixel
-  });
+  // const facebookPixel = new FacebookPixel({
+  //   pixelId: "1414671689923095", // Замените на свой ID Facebook Pixel
+  // });
+  // const { track } = usePixel();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,7 +73,7 @@ const ProductId = ({ params }) => {
     });
 
     // Отслеживание события "AddToCart" при добавлении товара в корзину
-    facebookPixel.track("AddToCart", {
+    FacebookPixel.track("AddToCart", {
       content_ids: [data._id],
       content_name: data.name,
       content_type: "product",
