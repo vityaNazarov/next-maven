@@ -1,6 +1,6 @@
 "use client";
 
-import FacebookPixel from "react-facebook-pixel";
+// import FacebookPixel from "react-facebook-pixel";
 import { useEffect, useState } from "react";
 import ImageViewer from "@/components/imageViewer/ImageViewer";
 import Link from "next/link";
@@ -34,9 +34,9 @@ const ProductId = ({ params }) => {
 
   const { t } = useTranslation();
 
-  // const facebookPixel = new FacebookPixel({
-  //   pixelId: "1414671689923095", // Замените на свой ID Facebook Pixel
-  // });
+  // const facebookPixel = new FacebookPixel(
+  //   "1414671689923095" // Замените на свой ID Facebook Pixel
+  // );
   // const { track } = usePixel();
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"; // Используйте next/rout
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ToastContainer } from "react-toastify";
-import * as FacebookPixel from "react-facebook-pixel";
+// import * as FacebookPixel from "react-facebook-pixel";
 
 // export const metadata = {
 //   title: "Maven Group - HoReCa Furniture",
@@ -21,28 +21,34 @@ export default function RootLayout({ children }) {
   const router = useRouter();
 
   useEffect(() => {
-    const facebookPixel = FacebookPixel.default.init({
-      pixelId: "1414671689923095", // Замените на свой ID Facebook Pixel
-    });
+    // const facebookPixel = FacebookPixel.default.init(
+    //   "1414671689923095" // Замените на свой ID Facebook Pixel
+    // );
+    import("react-facebook-pixel")
+      .then((module) => module.default)
+      .then((ReactPixel) => {
+        ReactPixel.init("1414671689923095");
+        ReactPixel.pageView();
+      });
 
     // Отслеживание события на каждой смене маршрута
-    const handleRouteChange = () => {
-      facebookPixel.pageView();
-    };
+    // const handleRouteChange = () => {
+    //   facebookPixel.pageView();
+    // };
 
-    if (router.events) {
-      router.events.on("routeChangeComplete", handleRouteChange);
+    // if (router.events) {
+    //   router.events.on("routeChangeComplete", handleRouteChange);
 
-      return () => {
-        router.events.off("routeChangeComplete", handleRouteChange);
-      };
-    }
+    //   return () => {
+    //     router.events.off("routeChangeComplete", handleRouteChange);
+    //   };
+    // }
   }, [router.events]);
 
   return (
     <html lang="ua">
       <head>
-        {/* <title>Maven Group - HoReCa Furniture</title> */}
+        <title>Maven Group - HoReCa Furniture</title>
         <meta property="og:title" content="Maven Group - HoReCa Furniture" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.maven-group.ua/" />
