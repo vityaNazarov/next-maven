@@ -1,6 +1,5 @@
 "use client";
 
-// import FacebookPixel from "react-facebook-pixel";
 import { useEffect, useState } from "react";
 import ImageViewer from "@/components/imageViewer/ImageViewer";
 import Link from "next/link";
@@ -34,11 +33,6 @@ const ProductId = ({ params }) => {
 
   const { t } = useTranslation();
 
-  // const facebookPixel = new FacebookPixel(
-  //   "1414671689923095" // Замените на свой ID Facebook Pixel
-  // );
-  // const { track } = usePixel();
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,6 +46,16 @@ const ProductId = ({ params }) => {
     };
 
     fetchData();
+
+    // Здесь инициализируем Facebook Pixel и вызываем функцию отслеживания события "ViewContent"
+    if (typeof fbq !== "undefined") {
+      fbq("init", "1414671689923095");
+      fbq("track", "PageView");
+      fbq("track", "ViewContent", {
+        content_ids: [params.id],
+        content_type: "product",
+      });
+    }
   }, [params.id]);
 
   useEffect(() => {
@@ -72,17 +76,37 @@ const ProductId = ({ params }) => {
       img: data.img1,
     });
 
-    // Отслеживание события "AddToCart" при добавлении товара в корзину
-    FacebookPixel.track("AddToCart", {
-      content_ids: [data._id],
-      content_name: data.name,
-      content_type: "product",
-      value: data.price,
-      currency: "UAH", // Укажите валюту, если она отличается от USD
-    });
-
     toast.success(t("Product_id_btn_added_to_cart"), { autoClose: 1500 });
   };
+
+  //
+  useEffect(() => {
+    // Отслеживание события нажатия на кнопку добавления в корзину
+    const handleAddToCart = () => {
+      if (typeof fbq !== "undefined") {
+        fbq("track", "AddToCart", {
+          content_ids: [data._id],
+          content_type: "product",
+          value: data.price,
+          currency: "UAH", // Валюта может быть заменена на нужную вам
+        });
+      }
+    };
+
+    // Добавление обработчика события нажатия на кнопку добавления в корзину
+    const addToCartBtn = document.querySelector(".product-card-gallery-btn");
+    if (addToCartBtn) {
+      addToCartBtn.addEventListener("click", handleAddToCart);
+    }
+
+    // Удаление обработчика события при размонтировании компонента
+    return () => {
+      if (addToCartBtn) {
+        addToCartBtn.removeEventListener("click", handleAddToCart);
+      }
+    };
+  }, [data._id, data.price]);
+  //
 
   if (loading) {
     return (

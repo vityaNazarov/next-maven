@@ -3,11 +3,9 @@
 import "@/sass/main.scss";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation"; // Используйте next/router вместо next/navigation
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ToastContainer } from "react-toastify";
-// import * as FacebookPixel from "react-facebook-pixel";
 
 // export const metadata = {
 //   title: "Maven Group - HoReCa Furniture",
@@ -18,32 +16,14 @@ import { ToastContainer } from "react-toastify";
 // };
 
 export default function RootLayout({ children }) {
-  const router = useRouter();
-
   useEffect(() => {
-    // const facebookPixel = FacebookPixel.default.init(
-    //   "1414671689923095" // Замените на свой ID Facebook Pixel
-    // );
     import("react-facebook-pixel")
       .then((module) => module.default)
       .then((ReactPixel) => {
         ReactPixel.init("1414671689923095");
         ReactPixel.pageView();
       });
-
-    // Отслеживание события на каждой смене маршрута
-    // const handleRouteChange = () => {
-    //   facebookPixel.pageView();
-    // };
-
-    // if (router.events) {
-    //   router.events.on("routeChangeComplete", handleRouteChange);
-
-    //   return () => {
-    //     router.events.off("routeChangeComplete", handleRouteChange);
-    //   };
-    // }
-  }, [router.events]);
+  }, []);
 
   return (
     <html lang="ua">
