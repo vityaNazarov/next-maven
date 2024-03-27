@@ -61,6 +61,10 @@ export default function RootLayout({ children }) {
           content="Виробництво та продаж мяких меблів для готелів, ресторанів, кафе та індивідуальних просторів. Оберіть свій ідеальний варіант крісла, дивана або барного стільця для вашого простору."
         />
         <meta
+          name="facebook-domain-verification"
+          content="7xdf9e31cx899ou4fqk0oywsxiitje"
+        />
+        <meta
           name="robots"
           content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
         />
