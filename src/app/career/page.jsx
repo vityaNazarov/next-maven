@@ -278,10 +278,11 @@ function Career() {
                   method="post"
                   encType="multipart/form-data"
                 >
-                  <label htmlFor="" className="career-form-label">
+                  <label htmlFor="user_name" className="career-form-label">
                     {t("Form_name")}
                   </label>
                   <input
+                    id="user_name"
                     className="career-form-input"
                     type="text"
                     placeholder={t("Form_name_placeholder")}
@@ -293,10 +294,11 @@ function Career() {
                     required
                   />
 
-                  <label htmlFor="" className="career-form-label">
+                  <label htmlFor="user_email" className="career-form-label">
                     {t("Form_email")}
                   </label>
                   <input
+                    id="user_email"
                     className="career-form-input"
                     type="email"
                     placeholder={t("Form_email_placeholder")}
@@ -308,10 +310,11 @@ function Career() {
                     required
                   />
 
-                  <label htmlFor="" className="career-form-label">
+                  <label htmlFor="user_phone" className="career-form-label">
                     {t("Form_tel")}
                   </label>
                   <input
+                    id="user_phone"
                     className="career-form-input"
                     type="tel"
                     placeholder={t("Form_tel_placeholder")}
@@ -322,10 +325,11 @@ function Career() {
                     }
                     required
                   />
-                  <label htmlFor="" className="career-form-label">
+                  <label htmlFor="user_city" className="career-form-label">
                     {t("Form_city")}
                   </label>
                   <input
+                    id="user_city"
                     className="career-form-input"
                     type="text"
                     placeholder={t("Form_city_placeholder")}
@@ -338,10 +342,14 @@ function Career() {
                   />
 
                   <div className="textarea-input-block">
-                    <label htmlFor="" className="career-form-label-textarea">
+                    <label
+                      htmlFor="user_message"
+                      className="career-form-label-textarea"
+                    >
                       {t("Form_message")}
                     </label>
                     <textarea
+                      id="user_message"
                       className="career-form-input-textarea"
                       name="user_message"
                       value={formData.user_message}
@@ -353,8 +361,12 @@ function Career() {
                       }
                       placeholder={t("Form_message_placeholder")}
                     ></textarea>
-                    <label className="custom-file">
+                    <label
+                      className="custom-file"
+                      // htmlFor="inputField"
+                    >
                       <input
+                        id="inputField"
                         type="file"
                         onChange={({ target: { files } }) => {
                           if (files[0]) {

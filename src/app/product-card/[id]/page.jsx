@@ -84,7 +84,7 @@ const ProductId = ({ params }) => {
     // Отслеживание события нажатия на кнопку добавления в корзину
     const handleAddToCart = () => {
       if (typeof fbq !== "undefined") {
-        fbq("track", "AddToCart", {
+        window.fbq("track", "AddToCart", {
           content_ids: [data._id],
           content_type: "product",
           value: data.price,
