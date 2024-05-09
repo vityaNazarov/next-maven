@@ -79,6 +79,11 @@
     height: 24px;
   }
 
+  .cart-product-price-svg-euro {
+    width: 18px;
+    height: 24px;
+  }
+
   .cart-product-price-title {
     color: var(--text-dark);
     font-size: 16px;
@@ -86,6 +91,7 @@
     line-height: 1.5;
     letter-spacing: 0.019px;
     text-transform: uppercase;
+    margin-top: 1px;
   }
 
   .cart-product-counter-btn {
@@ -470,6 +476,11 @@
 
   .cart-product-price-svg {
     width: 13px;
+    height: 24px;
+  }
+
+  .cart-product-price-svg-euro {
+    width: 20px;
     height: 24px;
   }
 
@@ -868,6 +879,13 @@
   .cart-product-price-svg {
     width: 16px;
     height: 29px;
+    margin-top: 1px;
+  }
+
+  .cart-product-price-svg-euro {
+    width: 24px;
+    height: 29px;
+    margin-top: 1px;
   }
 
   .cart-product-price-title {

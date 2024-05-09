@@ -102,6 +102,11 @@
   height: 27px;
 }
 
+.product-card-gallery-price-svg-euro {
+  width: 18px;
+  height: 30px;
+}
+
 .product-card-gallery-pricetext {
   width: 143px;
   color: var(--text-secondary);
@@ -287,6 +292,11 @@
   .product-card-gallery-price-svg {
     width: 16px;
     height: 29px;
+  }
+
+  .product-card-gallery-price-svg-euro {
+    width: 24px;
+    height: 30px;
   }
 
   .product-card-gallery-price-cost {
