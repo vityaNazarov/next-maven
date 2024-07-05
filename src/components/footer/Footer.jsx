@@ -71,7 +71,7 @@ function Footer() {
           </div>
         </div>
         <p className="rights-reserved">
-          © 2023 MavenGroupFurniture All Rights Reserved
+          © 2024 MavenGroupFurniture All Rights Reserved
         </p>
       </div>
     </footer>
