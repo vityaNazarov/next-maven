@@ -11,8 +11,8 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "ua" || localStorage.getItem("lng"),
-  fallbackLng: "ua",
+  lng: "eng" || localStorage.getItem("lng"),
+  fallbackLng: "eng",
   interpolation: {
     escapeValue: false,
   },
