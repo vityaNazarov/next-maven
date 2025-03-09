@@ -8,7 +8,8 @@ export default function ErrorPage() {
       <ul>
         <li></li>
       </ul>
-      <p>qw131ewqqwe123</p>
+      <p>error page</p>
+      <p>new data prices</p>
     </div>
   );
 }
