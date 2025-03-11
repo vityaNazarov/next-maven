@@ -94,10 +94,10 @@ export default function RootLayout({ children }) {
           crossOrigin="use-credentials"
           href="/site.webmanifest"
         />
-        {/* <link
+        <link
           href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Comfortaa:wght@300;400;500;600;700&family=Lato&family=Montserrat:wght@400;500;600&display=swap"
           rel="stylesheet"
-        /> */}
+        />
       </head>
       <body>
         <div className="page">
