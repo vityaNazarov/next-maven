@@ -9,7 +9,7 @@ export default function ErrorPage() {
         <li></li>
       </ul>
       <p>error page</p>
-      <p>fix card pic</p>
+      <p>update paul project main pic</p>
     </div>
   );
 }
