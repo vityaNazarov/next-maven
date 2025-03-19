@@ -9,7 +9,8 @@ export default function ErrorPage() {
         <li></li>
       </ul>
       <p>error page</p>
-      <p>update paul project main pic</p>
+      <p>hope it will be work</p>
+      <p>wqfcsdwfw</p>
     </div>
   );
 }
