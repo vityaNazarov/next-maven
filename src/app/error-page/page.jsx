@@ -9,8 +9,8 @@ export default function ErrorPage() {
         <li></li>
       </ul>
       <p>error page</p>
-      <p>new db changes</p>
-      <p>qwqfaff</p>
+      <p>add pillow d3</p>
+      <p>fcjsbhvsv</p>
     </div>
   );
 }
