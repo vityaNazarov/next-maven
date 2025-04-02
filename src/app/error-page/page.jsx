@@ -9,8 +9,7 @@ export default function ErrorPage() {
         <li></li>
       </ul>
       <p>error page</p>
-      <p>add pillow d3</p>
-      <p>fcjsbhvsv</p>
+      <p>add projects</p>
     </div>
   );
 }
