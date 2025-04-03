@@ -142,7 +142,7 @@ const Projects = () => {
 
               <div className="projects-block">
                 <ul className="projects-block-list list">
-                  {data.map((item) => (
+                  {data.reverse().map((item) => (
                     <li className="projects-block-item" key={item._id}>
                       <Link
                         className="projects-block-link"
