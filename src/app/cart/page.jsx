@@ -452,7 +452,7 @@ function CartItem() {
                                       Math.floor(
                                         parseInt(
                                           item.price.replace(/\s/g, "")
-                                        ) / 42
+                                        ) / 48.5
                                       ).toLocaleString("ua-UA"),
                                       quantities[item.id]
                                     )}

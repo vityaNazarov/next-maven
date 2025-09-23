@@ -286,7 +286,8 @@ const Category = ({ params }) => {
                               {i18next.language === "ua"
                                 ? item.price
                                 : Math.floor(
-                                    parseInt(item.price.replace(/\s/g, "")) / 42
+                                    parseInt(item.price.replace(/\s/g, "")) /
+                                      48.5
                                   ).toLocaleString("ua-UA")}
                             </p>
                           </div>

@@ -334,7 +334,7 @@ const ProductId = ({ params }) => {
                             {i18next.language === "ua"
                               ? data.price
                               : Math.floor(
-                                  parseInt(data.price.replace(/\s/g, "")) / 42
+                                  parseInt(data.price.replace(/\s/g, "")) / 48.5
                                 ).toLocaleString("ua-UA")}
                           </span>
                         </p>

@@ -9,7 +9,7 @@ export default function ErrorPage() {
         <li></li>
       </ul>
       <p>error page</p>
-      <p>reverse projects</p>
+      <p>change currency</p>
     </div>
   );
 }
