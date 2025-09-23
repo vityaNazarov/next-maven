@@ -8,8 +8,8 @@ export default function ErrorPage() {
       <ul>
         <li></li>
       </ul>
-      <p>error page</p>
-      <p>change currency</p>
+      <p>bug fix with currency</p>
+      {/* <p>change currency</p> */}
     </div>
   );
 }
