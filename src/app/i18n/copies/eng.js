@@ -185,7 +185,7 @@ export const eng = {
   Product_id_product_colors: "product colors",
   Product_id_code: "Product code:",
   Product_id_individual_changes:
-    "*The price is for the product in the material - fabric",
+    "*The price is for the product in the material - fabric '10 euro'",
   Product_id_sizes: "sizes",
   Product_id_length: "Length",
   Product_id_width: "Depth",
