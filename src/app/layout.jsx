@@ -2,10 +2,12 @@
 
 import "@/sass/main.scss";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ToastContainer } from "react-toastify";
+import SplashScreen from "@/components/splashScreen/SplashScreen";
+import { usePathname } from "next/navigation";
 
 // export const metadata = {
 //   title: "Maven Group - HoReCa Furniture",
@@ -16,6 +18,14 @@ import { ToastContainer } from "react-toastify";
 // };
 
 export default function RootLayout({ children }) {
+  const pathName = usePathname();
+  const isHome = pathName === "/";
+  const [isLoading, setIsLoading] = useState(isHome);
+
+  useEffect(() => {
+    if (isLoading) return;
+  }, [isLoading]);
+
   useEffect(() => {
     import("react-facebook-pixel")
       .then((module) => module.default)
@@ -101,9 +111,15 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <div className="page">
-          <Header />
-          {children}
-          <Footer />
+          {isLoading && isHome ? (
+            <SplashScreen isComplete={() => setIsLoading(false)} />
+          ) : (
+            <>
+              <Header />
+              {children}
+              <Footer />
+            </>
+          )}
         </div>
         <ToastContainer />
       </body>
