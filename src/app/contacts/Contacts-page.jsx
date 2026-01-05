@@ -130,10 +130,10 @@ function Contactspage() {
                   </h3>
                   <a
                     className="contacts-section-link"
-                    href="mailto:maven.furniture.group@gmail.com"
+                    href="mailto:maven.sales.ua@gmail.com"
                     target="_blank"
                   >
-                    maven.furniture.group@gmail.com
+                    maven.sales.ua@gmail.com
                   </a>
                 </div>
                 <div className="contacts-section">

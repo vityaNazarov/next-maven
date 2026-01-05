@@ -3,9 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 function Main() {
   const { t } = useTranslation();
+  const router = useRouter();
+
+  useEffect(() => {
+    // Редирект на страницу категории chairs
+    router.push("/serial-products-section/chairs");
+  }, [router]);
 
   return (
     <>
@@ -73,7 +81,7 @@ function Main() {
       <main>
         <section className="main-hero">
           <h1 className="visually-hidden">
-            продажа мебель дня ресторанов, кафе, отелей, в Украине, изготовление
+            продажа мебель для ресторанов, кафе, отелей, в Украине, изготовление
             мебели, мавен груп, horeca furniture, стулья, диваны, барные стулья,
             мягкие кресла, диваны, пуфы
           </h1>
@@ -524,7 +532,8 @@ function Main() {
               alt=""
             />
             <a
-              href="https://www.instagram.com/katalog.mebeli_maven.group?igshid=MzRlODBiNWFlZA%3D%3D"
+              href="https://www.instagram.com/katalog.mebeli_maven.group/?igshid=MzRlODBiNWFlZA%3D%3D
+"
               target="_blank"
               className="chevron-btn chevron-btn-inst-mobile"
             >
@@ -578,7 +587,8 @@ function Main() {
               <a
                 className="chevron-btn chevron-btn-inst"
                 target="_blank"
-                href="https://www.instagram.com/katalog.mebeli_maven.group?igshid=MzRlODBiNWFlZA%3D%3D"
+                href="https://www.instagram.com/katalog.mebeli_maven.group/?igshid=MzRlODBiNWFlZA%3D%3D
+"
               >
                 {t("Main_inst_btn")}
                 <svg
@@ -651,7 +661,8 @@ function Main() {
               <a
                 className="chevron-btn chevron-btn-inst"
                 target="_blank"
-                href="https://www.instagram.com/katalog.mebeli_maven.group?igshid=MzRlODBiNWFlZA%3D%3D"
+                href="https://www.instagram.com/katalog.mebeli_maven.group/?igshid=MzRlODBiNWFlZA%3D%3D
+"
               >
                 {t("Main_inst_btn")}
                 <svg

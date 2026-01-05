@@ -24,9 +24,9 @@ function Footer() {
               <h3 className="footer-title contacts-title">Contact us</h3>
               <a
                 className="footer-text contacts-link"
-                href="mailto:maven.furniture.group@gmail.com"
+                href="mailto:maven.sales.ua@gmail.com"
               >
-                maven.furniture.group@gmail.com
+                maven.sales.ua@gmail.com
               </a>
               <a
                 className="footer-text contacts-number"
@@ -42,7 +42,8 @@ function Footer() {
                   className="subscription-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://www.instagram.com/katalog.mebeli_maven.group?igshid=MzRlODBiNWFlZA%3D%3D"
+                  href="https://www.instagram.com/katalog.mebeli_maven.group/?igshid=MzRlODBiNWFlZA%3D%3D
+"
                 >
                   <Image
                     width="24"
