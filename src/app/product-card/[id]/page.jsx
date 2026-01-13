@@ -7,6 +7,7 @@ import Spinner from "@/components/spinner/Spinner";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { useCartStore } from "@/utils/store";
+import { useExchangeRate } from "@/utils/useExchangeRate";
 import "react-toastify/dist/ReactToastify.min.css";
 import { toast } from "react-toastify";
 
@@ -30,6 +31,7 @@ const ProductId = ({ params }) => {
   const [addedToCartMap, setAddedToCartMap] = useState({});
 
   const { products, addToCart } = useCartStore();
+  const { rate: exchangeRate } = useExchangeRate();
 
   const { t } = useTranslation();
 
@@ -334,7 +336,8 @@ const ProductId = ({ params }) => {
                             {i18next.language === "ua"
                               ? data.price
                               : Math.floor(
-                                  parseInt(data.price.replace(/\s/g, "")) / 48.5
+                                  parseInt(data.price.replace(/\s/g, "")) /
+                                    exchangeRate
                                 ).toLocaleString("ua-UA")}
                           </span>
                         </p>

@@ -1,5 +1,6 @@
 "use client";
 import { useCartStore } from "@/utils/store";
+import { useExchangeRate } from "@/utils/useExchangeRate";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -12,6 +13,7 @@ function CartItem() {
   const [urIsOpen, setUrIsOpen] = useState(false);
   const [fizIsOpen, setFizIsOpen] = useState(false);
   const { products, removeFromCart, clearCart } = useCartStore();
+  const { rate: exchangeRate } = useExchangeRate();
   const { t } = useTranslation();
   const [loadingSubmit, setLoadingSubmit] = useState(false); // Новое состояние для отслеживания загрузки
   const [deliveryMethod, setDeliveryMethod] = useState("Нова пошта");
@@ -452,7 +454,7 @@ function CartItem() {
                                       Math.floor(
                                         parseInt(
                                           item.price.replace(/\s/g, "")
-                                        ) / 48.5
+                                        ) / exchangeRate
                                       ).toLocaleString("ua-UA"),
                                       quantities[item.id]
                                     )}
