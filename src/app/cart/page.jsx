@@ -13,7 +13,7 @@ function CartItem() {
   const [urIsOpen, setUrIsOpen] = useState(false);
   const [fizIsOpen, setFizIsOpen] = useState(false);
   const { products, removeFromCart, clearCart } = useCartStore();
-  const { rate: exchangeRate } = useExchangeRate();
+  const { convertToUAH, formatEUR, rate: exchangeRate } = useExchangeRate();
   const { t } = useTranslation();
   const [loadingSubmit, setLoadingSubmit] = useState(false); // Новое состояние для отслеживания загрузки
   const [deliveryMethod, setDeliveryMethod] = useState("Нова пошта");
@@ -60,9 +60,9 @@ function CartItem() {
   }, [products]);
 
   function parcedNumber(num, quantity) {
-    const numWithoutSpaces = num.replace(/\s/g, "") * quantity;
-    let number = parseInt(numWithoutSpaces, 10);
-    let formattedNumber = number.toLocaleString();
+    const numWithoutSpaces = num.replace(/\s/g, "").replace(",", ".");
+    let number = parseFloat(numWithoutSpaces) * quantity;
+    let formattedNumber = Math.round(number).toLocaleString("ua-UA");
     return formattedNumber.replace(/,/g, " ");
   }
 
@@ -444,20 +444,36 @@ function CartItem() {
                                 </svg>
                               )}
                               <p className="cart-product-price-title">
-                                {/* {parcedNumber(item.price, quantities[item.id])} */}
                                 {i18next.language === "ua"
-                                  ? parcedNumber(
-                                      item.price,
-                                      quantities[item.id]
-                                    )
-                                  : parcedNumber(
-                                      Math.floor(
-                                        parseInt(
-                                          item.price.replace(/\s/g, "")
-                                        ) / exchangeRate
-                                      ).toLocaleString("ua-UA"),
-                                      quantities[item.id]
-                                    )}
+                                  ? (() => {
+                                      const priceInEUR = parseFloat(
+                                        item.price
+                                          .replace(/\s/g, "")
+                                          .replace(",", ".")
+                                      );
+                                      const singlePriceUAH = Math.round(
+                                        priceInEUR * exchangeRate
+                                      );
+                                      const totalPriceUAH =
+                                        singlePriceUAH * quantities[item.id];
+                                      return parcedNumber(
+                                        totalPriceUAH.toString(),
+                                        1
+                                      );
+                                    })()
+                                  : (() => {
+                                      const priceInEUR = parseFloat(
+                                        item.price
+                                          .replace(/\s/g, "")
+                                          .replace(",", ".")
+                                      );
+                                      const totalPriceEUR =
+                                        priceInEUR * quantities[item.id];
+                                      return parcedNumber(
+                                        totalPriceEUR.toString(),
+                                        1
+                                      );
+                                    })()}
                               </p>
                             </div>
                           </div>

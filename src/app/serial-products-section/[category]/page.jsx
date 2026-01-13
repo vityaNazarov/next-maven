@@ -18,7 +18,7 @@ const Category = ({ params }) => {
 
   const { t } = useTranslation();
   const { products, addToCart } = useCartStore();
-  const { rate: exchangeRate } = useExchangeRate();
+  const { convertToUAH, formatEUR } = useExchangeRate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -286,11 +286,8 @@ const Category = ({ params }) => {
 
                             <p className="subsection-caegories-priceproduct">
                               {i18next.language === "ua"
-                                ? item.price
-                                : Math.floor(
-                                    parseInt(item.price.replace(/\s/g, "")) /
-                                      exchangeRate
-                                  ).toLocaleString("ua-UA")}
+                                ? convertToUAH(item.price)
+                                : formatEUR(item.price)}
                             </p>
                           </div>
                         </div>

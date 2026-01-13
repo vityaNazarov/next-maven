@@ -31,7 +31,7 @@ const ProductId = ({ params }) => {
   const [addedToCartMap, setAddedToCartMap] = useState({});
 
   const { products, addToCart } = useCartStore();
-  const { rate: exchangeRate } = useExchangeRate();
+  const { convertToUAH, formatEUR } = useExchangeRate();
 
   const { t } = useTranslation();
 
@@ -332,13 +332,9 @@ const ProductId = ({ params }) => {
                             </svg>
                           )}
                           <span className="product-card-gallery-price-cost">
-                            {/* {data.price} */}
                             {i18next.language === "ua"
-                              ? data.price
-                              : Math.floor(
-                                  parseInt(data.price.replace(/\s/g, "")) /
-                                    exchangeRate
-                                ).toLocaleString("ua-UA")}
+                              ? convertToUAH(data.price)
+                              : formatEUR(data.price)}
                           </span>
                         </p>
                         <p className="product-card-gallery-pricetext">
