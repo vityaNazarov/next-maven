@@ -186,7 +186,7 @@ export const ua = {
   Product_id_product_colors: "Кольори виробу",
   Product_id_code: "Код продукту:",
   Product_id_individual_changes:
-    "*Ціна вказана за виріб у матеріалі - тканина '10 євро'",
+    "*Ціна вказана за виріб у матеріалі - тканина категорії 'base'",
   Product_id_sizes: "розміри",
   Product_id_length: "Довжина",
   Product_id_width: "Ширина",
