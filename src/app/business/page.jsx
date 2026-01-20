@@ -31,7 +31,7 @@ function Business() {
         `https://api.telegram.org/bot${telegramToken}/sendMessage`,
         {
           chat_id: telegramChatId,
-          text: `Новая заявка (B2B):\n${JSON.stringify(formData, null, 2)}`,
+          text: `Нова заявка!!! (B2B):\n\nІм'я: ${formData.user_name}\nТелефон: ${formData.user_phone}\nЕлектронна пошта: ${formData.user_email}\nМісто: ${formData.user_city}\nПовідомлення: ${formData.user_message || "Не вказано"}\n\nФайл: ${file ? fileName : "Не додано"}`,
         }
       );
 

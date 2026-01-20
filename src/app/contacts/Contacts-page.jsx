@@ -170,7 +170,7 @@ function Contactspage() {
               <div className="contacts-map">
                 <iframe
                   className="contacts-map-iframe"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5197.810017003558!2d30.635766190904434!3d46.31519109395907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c7c951b6fd7df1%3A0xf291d4d7347723c8!2z0LLRg9C7LiDQn9GA0L7QvNC40YHQu9C-0LLQsCwgMSwg0KfQvtGA0L3QvtC80L7RgNGB0YzQuiwg0J7QtNC10YHRjNC60LAg0L7QsdC70LDRgdGC0YwsIDY4MDAw!5e0!3m2!1suk!2sua!4v1696445159503!5m2!1suk!2sua"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5197.810017003558!2d30.635766190904434!3d46.31519109395907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c7c951b6fd7df1%3A0xf291d4d7347723c8!2z0LLRg9C7LiDQn9GA0L7QvNC40YHQu9C-0LLQsCwgMSwg0KfQvtGA0L3QvtC80L7RgNGB0YzQuiwg0J7QtNC10YHRjNC60LAg0L7QsdC70LDRgdGC0YwsIDY4MDAw!5e0!4v1696445159503"
                   width="737"
                   height="504"
                   style={{ border: 0 }}
