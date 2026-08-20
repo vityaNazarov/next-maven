@@ -4,16 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 function Main() {
   const { t } = useTranslation();
   const router = useRouter();
 
-  useEffect(() => {
-    // Редирект на страницу категории chairs
-    router.push("/serial-products-section/chairs");
-  }, [router]);
+  // useEffect(() => {
+  //   // Редирект на страницу категории chairs
+  //   router.push("/serial-products-section/chairs");
+  // }, [router]);
 
   return (
     <>
