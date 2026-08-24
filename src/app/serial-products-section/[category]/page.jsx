@@ -180,34 +180,16 @@ const Category = ({ params }) => {
               </svg>
               <Link
                 className="container-nav-link"
-                href="/serial-products-section"
+                href="/serial-products-section/chairs"
               >
                 {t("Breadcrumbs_serial_products")}
-              </Link>
-              <svg
-                className="container-nav-link-arrow"
-                width="18"
-                height="18"
-                viewBox="0 0 16 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M10.0637 11.6136L9.24834 10.8232L13.5445 6.52703H0.29834V5.39245H13.5445L9.23297 1.0809L10.0483 0.290527L15.7175 5.95975L10.0637 11.6136Z"
-                  fill="#232427"
-                />
-              </svg>
-              <Link className="container-nav-link" href="">
-                {i18next.language === "ua"
-                  ? dataCategory[0].categoryname
-                  : dataCategory[0].categorynameEng}
               </Link>
             </div>
 
             <div>
               <h2 className="title serial-products-title">
                 <Link
-                  href="/serial-products-section"
+                  href="/catalog"
                   className="arrow-back-link"
                 >
                   <svg
@@ -225,9 +207,7 @@ const Category = ({ params }) => {
                   </svg>
                 </Link>
 
-                {i18next.language === "ua"
-                  ? dataCategory[0].categoryname
-                  : dataCategory[0].categorynameEng}
+                {t("Serial_products_section_title")}
               </h2>
 
               <div className="subsection-caegories">

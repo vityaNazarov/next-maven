@@ -106,7 +106,7 @@ function Catalog() {
                   <li className="catalog-block-item">
                     <Link
                       className="catalog-block-link"
-                      href="/serial-products-section"
+                      href="/serial-products-section/chairs"
                     >
                       <picture>
                         <source
