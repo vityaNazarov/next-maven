@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
+import BackgroundSlider from "@/components/BackgroundSlider";
+import DrippingScrollArrow from "@/components/DrippingScrollArrow";
 // import { useEffect } from "react";
 
 function Main() {
@@ -80,6 +82,20 @@ function Main() {
 
       <main>
         <section className="main-hero">
+          <div className="main-hero-slider">
+            <BackgroundSlider
+              images={[
+                "/images/img/overlay/overlay-desktop.jpg",
+                "/images/img/overlay/IMG-1.jpg",
+                "/images/img/overlay/IMG-2.jpg",
+                "/images/img/overlay/IMG-3.jpg",
+                "/images/img/overlay/IMG-4.jpg",
+                "/images/img/overlay/IMG-5.jpg",
+                "/images/img/overlay/IMG-6.jpg",
+                "/images/img/overlay/IMG-7.jpg",
+              ]}
+            />
+          </div>
           <h1 className="visually-hidden">
             продажа мебель для ресторанов, кафе, отелей, в Украине, изготовление
             мебели, мавен груп, horeca furniture, стулья, диваны, барные стулья,
@@ -99,6 +115,7 @@ function Main() {
               </Link>
             </div>
           </div>
+          <DrippingScrollArrow />
         </section>
 
         <section className="advantages-section">

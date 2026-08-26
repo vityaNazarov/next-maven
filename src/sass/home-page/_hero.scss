@@ -3,22 +3,42 @@
 //
 
 .main-hero {
+  position: relative;
   height: 100vh;
+  overflow: hidden;
   background-color: var(--coffee);
 }
 
+.main-hero-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.main-hero-slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+}
+
 .container-hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  background-image: url("../../../public/images/img/overlay/overlay-mobile.jpg");
-  background-size: cover;
 }
 
 .hero {
-  padding-top: 283px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .hero-title {
@@ -85,16 +105,7 @@
 /* ==================================== min-width: 768px ==================================== */
 @media screen and (min-width: 768px) {
   .main-hero {
-    // height: 1133px;
     height: 100vh;
-  }
-
-  .container-hero {
-    background-image: url("../../../public/images/img/overlay/overlay-tablet.jpg");
-  }
-
-  .hero {
-    padding-top: 397px;
   }
 
   .hero-title {
@@ -135,16 +146,7 @@
 /* ==================================== min-width: 1300px ==================================== */
 @media screen and (min-width: 1300px) {
   .main-hero {
-    // height: 905px;
     height: 100vh;
-  }
-
-  .container-hero {
-    background-image: url("../../../public/images/img/overlay/overlay-desktop.jpg");
-  }
-
-  .hero {
-    padding-top: 295px;
   }
 
   .hero-btn {
