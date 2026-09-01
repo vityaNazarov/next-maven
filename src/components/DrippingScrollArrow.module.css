@@ -14,6 +14,8 @@
   position: relative;
   width: 24px;
   height: 52px;
+  transform: scale(0.5);
+  transform-origin: top center;
 }
 
 .chevron {
@@ -50,7 +52,7 @@
 }
 
 .label {
-  margin-top: 8px;
+  margin-top: -18px;
   padding-left: 0.22em;
   color: #fff;
   font-size: 10px;
@@ -102,7 +104,12 @@
 
 /* ==================================== min-width: 768px ==================================== */
 @media screen and (min-width: 768px) {
+  .chevrons {
+    transform: scale(0.7);
+  }
+
   .label {
+    margin-top: -6px;
     font-size: 12px;
   }
 }
@@ -110,7 +117,12 @@
 
 /* ==================================== min-width: 1300px ==================================== */
 @media screen and (min-width: 1300px) {
+  .chevrons {
+    transform: scale(1);
+  }
+
   .label {
+    margin-top: 8px;
     font-size: 16px;
   }
 }
