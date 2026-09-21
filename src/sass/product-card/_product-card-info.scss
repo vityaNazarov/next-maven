@@ -2,6 +2,10 @@
 //
 //
 
+.is-hidden {
+  visibility: hidden;
+}
+
 .product-card-info-title {
   color: var(--text-dark);
   font-size: 18px;

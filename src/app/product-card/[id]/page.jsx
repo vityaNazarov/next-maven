@@ -343,7 +343,7 @@ const ProductId = ({ params }) => {
                           {t("Product_id_length")}
                         </td>
                         <td className="product-card-info-table-th2">
-                          {data.length} mm
+                          {data.length ? `${data.length} mm` : "—"}
                         </td>
                       </tr>
                       <tr className="product-card-info-table-tr">
@@ -351,7 +351,7 @@ const ProductId = ({ params }) => {
                           {t("Product_id_width")}
                         </td>
                         <td className="product-card-info-table-th2">
-                          {data.width} mm
+                          {data.width ? `${data.width} mm` : "—"}
                         </td>
                       </tr>
                       <tr className="product-card-info-table-tr">
@@ -359,7 +359,7 @@ const ProductId = ({ params }) => {
                           {t("Product_id_height")}
                         </td>
                         <td className="product-card-info-table-th2">
-                          {data.height} mm
+                          {data.height ? `${data.height} mm` : "—"}
                         </td>
                       </tr>
                       <tr className="product-card-info-table-tr">
@@ -367,7 +367,7 @@ const ProductId = ({ params }) => {
                           {t("Product_id_seatheight")}
                         </td>
                         <td className="product-card-info-table-th2">
-                          {data.seatheight} mm
+                          {data.seatheight ? `${data.seatheight} mm` : "—"}
                         </td>
                       </tr>
                       <tr className="product-card-info-table-tr">
@@ -375,7 +375,7 @@ const ProductId = ({ params }) => {
                           {t("Product_id_weight")}
                         </td>
                         <td className="product-card-info-table-th2">
-                          {data.weight} kg
+                          {data.weight ? `${data.weight} kg` : "—"}
                         </td>
                       </tr>
                       <tr className="product-card-info-table-tr">
@@ -383,7 +383,7 @@ const ProductId = ({ params }) => {
                           {t("Product_id_volume")}
                         </td>
                         <td className="product-card-info-table-th2">
-                          {data.volume} m3
+                          {data.volume ? `${data.volume} m3` : "—"}
                         </td>
                       </tr>
                     </tbody>
@@ -393,21 +393,31 @@ const ProductId = ({ params }) => {
                       {t("Product_id_materials")}
                     </p>
                     <ul className="product-card-info-materials-list">
-                      <li className="product-card-info-materials-item">
-                        {t("Product_id_materials_legs")}{" "}
-                        {i18next.language === "ua" ? data.legs : data.legsEng}
-                      </li>
-                      <li className="product-card-info-materials-item">
-                        {t("Product_id_materials_upholstery")}{" "}
-                        {i18next.language === "ua"
-                          ? data.upholstery
-                          : data.upholsteryEng}
-                      </li>
-                      <li className="product-card-info-materials-item">
-                        {t("Product_id_materials_frame")}
-                        {i18next.language === "ua" ? data.frame : data.frameEng}
-                      </li>
-                    </ul>
+  <li
+    className={`product-card-info-materials-item ${
+      !(i18next.language === "ua" ? data.legs : data.legsEng) ? "is-hidden" : ""
+    }`}
+  >
+    {t("Product_id_materials_legs")}{" "}
+    {i18next.language === "ua" ? data.legs : data.legsEng}
+  </li>
+  <li
+    className={`product-card-info-materials-item ${
+      !(i18next.language === "ua" ? data.upholstery : data.upholsteryEng) ? "is-hidden" : ""
+    }`}
+  >
+    {t("Product_id_materials_upholstery")}{" "}
+    {i18next.language === "ua" ? data.upholstery : data.upholsteryEng}
+  </li>
+  <li
+    className={`product-card-info-materials-item ${
+      !(i18next.language === "ua" ? data.frame : data.frameEng) ? "is-hidden" : ""
+    }`}
+  >
+    {t("Product_id_materials_frame")}{" "}
+    {i18next.language === "ua" ? data.frame : data.frameEng}
+  </li>
+</ul>
                     <p className="product-card-info-materials-text">
                       {t("Product_id_certificates_of_quality")}
                     </p>
