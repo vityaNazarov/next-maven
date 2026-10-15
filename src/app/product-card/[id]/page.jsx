@@ -10,6 +10,8 @@ import { useCartStore } from "@/utils/store";
 import { useExchangeRate } from "@/utils/useExchangeRate";
 import "react-toastify/dist/ReactToastify.min.css";
 import { toast } from "react-toastify";
+import Furniture3DModal from "@/components/Furniture3DModal";
+import { getViewer3dId } from "@/data/viewer3dMap";
 
 const getData = async (id) => {
   const res = await fetch(`/api/products/${id}`, {
@@ -266,12 +268,10 @@ const ProductId = ({ params }) => {
                   <ImageViewer imgs={data.images} />
 
                   <div className="product-card-gallery-info">
-                    <a
-                      className="product-card-gallery-link product-card-gallery-link-none"
-                      href=""
-                    >
-                      {t("Product_id_product_colors")}
-                    </a>
+                    <Furniture3DModal
+                      id={getViewer3dId(String(data._id ?? params.id))}
+                      lang={i18next.language === "ua" ? "uk" : "en"}
+                    />
                     <div className="product-card-gallery-price-block">
                       <div className="product-card-price-none">
                         <h2 className="product-card-info-title">{data.name}</h2>

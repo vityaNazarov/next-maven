@@ -184,6 +184,8 @@ export const ua = {
   // PRODUCT ID
 
   Product_id_product_colors: "Кольори виробу",
+  Product_id_view_in_3d: "ВИГЛЯД У 3D",
+  Product_id_view_in_3d_dialog: "3D-вигляд виробу",
   Product_id_code: "Код продукту:",
   Product_id_individual_changes:
     "*Ціна вказана за виріб у матеріалі - тканина категорії 'base'",

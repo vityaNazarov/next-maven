@@ -183,6 +183,8 @@ export const eng = {
   // PRODUCT ID
 
   Product_id_product_colors: "product colors",
+  Product_id_view_in_3d: "VIEW IN 3D",
+  Product_id_view_in_3d_dialog: "3D view of the product",
   Product_id_code: "Product code:",
   Product_id_individual_changes:
     "*The price is for the product in the material - fabric category 'base'",

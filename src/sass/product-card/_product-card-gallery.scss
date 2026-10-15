@@ -68,6 +68,19 @@
   text-decoration: underline;
   text-transform: uppercase;
   margin-bottom: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color 250ms ease-in-out, opacity 250ms ease-in-out;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 4px;
+}
+
+.product-card-gallery-link:hover {
+  opacity: 0.7;
 }
 
 .product-card-gallery-price-block {
