@@ -5,7 +5,7 @@ export default function Error({ reset }) {
     <div style={{ padding: "2rem" }}>
       <h2>Something went wrong</h2>
       <button type="button" onClick={() => reset()}>
-        Try again
+        Try again later.
       </button>
     </div>
   );
