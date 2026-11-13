@@ -100,9 +100,14 @@ function Main() {
             <div className="hero">
               <h1 className="hero-title">MAVEN GROUP</h1>
               <p className="hero-text">{t("Main_title")}</p>
-              <Link href="/catalog" className="hero-btn">
-                <p>{t("Main_catalogue_btn")} </p>
-              </Link>
+              <div className="hero-actions">
+                <Link href="/serial-products-section/chairs" className="hero-btn">
+                  <span>{t("Main_serial_products_btn")}</span>
+                </Link>
+                <Link href="/individual-projects#individual-form" className="hero-btn">
+                  <span>{t("Main_individual_products_btn")}</span>
+                </Link>
+              </div>
             </div>
           </div>
           <DrippingScrollArrow />

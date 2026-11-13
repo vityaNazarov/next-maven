@@ -11,6 +11,8 @@ export const eng = {
   Main_title:
     "Production of upholstered furniture for hotels, restaurants, cafes and individual spaces",
   Main_catalogue_btn: "Catalogue",
+  Main_serial_products_btn: "Serial products",
+  Main_individual_products_btn: "Individual products",
   Our_advantages: "OUR ADVANTAGES",
   Advantages_title:
     "What are our key metrics that have led us to have a large number of satisfied customers? ",

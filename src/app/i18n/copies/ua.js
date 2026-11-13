@@ -11,6 +11,8 @@ export const ua = {
   Main_title:
     "Виробництво мяких меблів для готелів, ресторанів, кафе та індивідуальних просторів",
   Main_catalogue_btn: "Каталог",
+  Main_serial_products_btn: "Серійні вироби",
+  Main_individual_products_btn: "Індивідуальні вироби",
   Our_advantages: "НАШІ ПЕРЕВАГИ",
   Advantages_title:
     "Які наші основні метрики, завдяки яким ми маємо велику кількість задоволених клієнтів? ",

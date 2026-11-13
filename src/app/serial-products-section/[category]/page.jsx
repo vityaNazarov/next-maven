@@ -20,29 +20,96 @@ const Category = ({ params }) => {
   const { products, addToCart } = useCartStore();
   const { convertToUAH, formatEUR } = useExchangeRate();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`/api/products`, {
-          mode: "cors",
-          cache: "no-store",
+useEffect(() => {
+  let isMounted = true;
+
+  const fetchData = async () => {
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/products", {
+        cache: "no-store",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
+      }
+
+      const data = await res.json();
+      const { category } = params;
+
+      // Фільтрація за категорією та сортування за order
+      const filteredData = data
+        .filter((item) => item.category === category)
+        .sort((a, b) => {
+          const orderA =
+            a.order !== null &&
+            a.order !== undefined &&
+            a.order !== ""
+              ? Number(a.order)
+              : Infinity;
+
+          const orderB =
+            b.order !== null &&
+            b.order !== undefined &&
+            b.order !== ""
+              ? Number(b.order)
+              : Infinity;
+
+          const validOrderA = Number.isFinite(orderA)
+            ? orderA
+            : Infinity;
+
+          const validOrderB = Number.isFinite(orderB)
+            ? orderB
+            : Infinity;
+
+          return validOrderA - validOrderB;
         });
-        if (!res.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await res.json();
-        const { category } = params;
-        const filteredData = data.filter((item) => item.category === category);
+
+      if (isMounted) {
         setDataCategory(filteredData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      if (isMounted) {
         setLoading(false);
       }
-    };
+    }
+  };
 
-    fetchData();
-  }, [params]);
+  fetchData();
+
+  return () => {
+    isMounted = false;
+  };
+}, [params.category]);
+
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch(`/api/products`, {
+  //         mode: "cors",
+  //         cache: "no-store",
+  //       });
+  //       if (!res.ok) {
+  //         throw new Error("Failed to fetch data");
+  //       }
+  //       const data = await res.json();
+  //       const { category } = params;
+  //       const filteredData = data.filter((item) => item.category === category);
+  //       setDataCategory(filteredData);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [params]);
 
   useEffect(() => {
     // Проверка наличия товаров в корзине при каждом изменении products
