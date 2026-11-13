@@ -143,14 +143,14 @@ function Contactspage() {
                   <div className="contacts-section-social-links">
                     <a
                       className="contacts-section-link"
-                      href="https://www.instagram.com/katalog.mebeli_maven.group"
+                      href="https://www.instagram.com/stories/highlights/18331012291036461/"
                       target="_blank"
                     >
                       {t("Contacts_social_media_inst")} @maven.furniture.group
                     </a>
                     <a
                       className="contacts-section-link"
-                      href="https://www.instagram.com/maven.furniture.group"
+                      href="https://www.instagram.com/stories/highlights/17927115854072761/"
                       target="_blank"
                     >
                       {t("Contacts_social_media_projects")}{" "}

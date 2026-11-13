@@ -42,7 +42,7 @@ function Footer() {
                   className="subscription-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://www.instagram.com/katalog.mebeli_maven.group/?igshid=MzRlODBiNWFlZA%3D%3D
+                  href="https://www.instagram.com/maven_group_ua?exln=MTNhMmJxbXo2NDhkMQ==
 "
                 >
                   <Image

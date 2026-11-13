@@ -544,7 +544,7 @@ function Main() {
               alt=""
             />
             <a
-              href="https://www.instagram.com/katalog.mebeli_maven.group/?igshid=MzRlODBiNWFlZA%3D%3D
+              href="https://www.instagram.com/maven_group_ua?exln=MTNhMmJxbXo2NDhkMQ==
 "
               target="_blank"
               className="chevron-btn chevron-btn-inst-mobile"
@@ -599,7 +599,7 @@ function Main() {
               <a
                 className="chevron-btn chevron-btn-inst"
                 target="_blank"
-                href="https://www.instagram.com/katalog.mebeli_maven.group/?igshid=MzRlODBiNWFlZA%3D%3D
+                href="https://www.instagram.com/maven_group_ua?exln=MTNhMmJxbXo2NDhkMQ==
 "
               >
                 {t("Main_inst_btn")}
@@ -673,7 +673,7 @@ function Main() {
               <a
                 className="chevron-btn chevron-btn-inst"
                 target="_blank"
-                href="https://www.instagram.com/katalog.mebeli_maven.group/?igshid=MzRlODBiNWFlZA%3D%3D
+                href="https://www.instagram.com/maven_group_ua?exln=MTNhMmJxbXo2NDhkMQ==
 "
               >
                 {t("Main_inst_btn")}
